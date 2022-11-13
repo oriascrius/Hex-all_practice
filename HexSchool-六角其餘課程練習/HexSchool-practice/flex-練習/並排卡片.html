@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>並排卡片</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        /* 最外圍一層 */
+        .wrap {
+            display: flex;
+            justify-content: space-between;
+            width: 1024px;
+            margin: 0 auto;
+            background-color: #354939;
+        }
+
+        /* 左中右欄位 */
+        .three-set-block {
+            border-right: 20px solid #354939;
+        }
+
+        /* 欄位中上方標題區塊 */
+        .top-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 375px;
+            height: 265px;
+            background-color: #e7eeea;
+            font-size: 78px;
+            color: #37523d;
+            text-align: center;
+        }
+
+
+        /* 欄位中下方內文區塊 */
+        .bottom-block {
+            background-color: #ffffff;
+        }
+
+        .bottom-block div {
+            font-size: 30px;
+            color: #37523d;
+            padding: 35px 30px;
+        }
+
+        .bottom-block p {
+            font-size: 22px;
+            padding: 0 30px 50px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外一層 -->
+    <ul class="wrap">
+        <!-- 左中右欄位 -->
+        <li class="three-set-block">
+            <!-- 欄位中上方標題區塊 -->
+            <div class="top-block">
+                <h1>標題一</h1>
+            </div>
+            <!-- 欄位中下方內文區塊 -->
+            <div class="bottom-block">
+                <div>為什麼一定要吃甜點?</div>
+                <p>青山依舊在，幾度夕陽紅。慣
+                    看秋月春風，一壺濁酒喜相
+                    逢，浪花淘盡英雄。</p>
+            </div>
+        </li>
+
+        <li class="three-set-block">
+            <div class="top-block">
+                <h2>標題一</h2>
+            </div>
+            <div class="bottom-block">
+                <div>為什麼一定要吃甜點?</div>
+                <p>青山依舊在，幾度夕陽紅。慣
+                    看秋月春風，一壺濁酒喜相
+                    逢，浪花淘盡英雄。</p>
+            </div>
+        </li>
+
+        <li>
+            <div class="top-block">
+                <h2>標題一</h2>
+            </div>
+            <div class="bottom-block">
+                <div>為什麼一定要吃甜點?</div>
+                <p>青山依舊在，幾度夕陽紅。慣
+                    看秋月春風，一壺濁酒喜相
+                    逢，浪花淘盡英雄。</p>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>

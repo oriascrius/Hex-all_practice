@@ -1,0 +1,15 @@
+# 正常情況下，這個檔案會約束當前的專案的書寫規範。但為什麼了windows下沒生效呢？因為這個檔案需要你的編輯器支援。換言之你需要安裝外掛！
+# 在vscode中，可以直接搜尋editorconfig。安裝後重啟即可。
+[*.{js,jsx,ts,tsx,vue}]
+# 縮排使用空格
+indent_style = space
+# 縮排2個字元
+indent_size = 2
+# 行結尾使用 lf !!!!
+end_of_line = lf
+# 刪除行尾空格
+trim_trailing_whitespace = true
+# 檔案結尾新增一個空行
+insert_final_newline = true
+# 行最大長度
+max_line_length = 100

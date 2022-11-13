@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>雙欄選單設計</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            opacity: 0.5;
+        }
+
+        a:hover {
+            opacity: 1.5;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+
+        /* 最外圍一層 */
+        .wrap {
+            display: flex;
+            width: 1240px;
+            margin: 0 auto;
+        }
+
+        /* 導航清單 */
+        .nav-list {
+            width: 325px;
+            background-color: #e7eeea;
+            padding: 65px 0 0 10px;
+        }
+
+        .nav-list a {
+            display: block;
+            color: #677c6c;
+            font-size: 25px;
+            font-weight: 700;
+            margin: 38px auto;
+            text-align: center;
+        }
+
+        /* 內容 */
+        .content {
+            width: 600px;
+            margin: 0 0 0 90px;
+        }
+
+        .content h1 {
+            font-size: 25px;
+            color: #37523d;
+            margin: 80px 0 0 0;
+        }
+
+        .content p {
+            font-size: 20px;
+            margin: 38px 0 0 0;
+        }
+
+        /* 內容 圖片區塊 */
+        .content-img-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 600px;
+            margin: 38px 0 0 0;
+        }
+
+        .content-img-block img {
+            margin: 0 0 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 導航清單 -->
+        <div class="nav-list">
+            <img
+                width="300"
+                height="59"
+                src="https://hexschool.github.io/flexImgUrl/3/logo.png"
+                alt="logo"
+            >
+            <ul>
+                <li><a href="#">回到首頁</a></li>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">熱銷產品</a></li>
+                <li><a href="#">購物車</a></li>
+            </ul>
+        </div>
+        <!-- 內容 -->
+        <div class="content">
+            <h1>甜甜點點點</h1>
+            <p> 為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+            </p>
+            <p>
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+                為什麼選擇了做甜點為什麼選擇了做甜點
+            </p>
+            <!-- 內容 圖片區塊 -->
+            <div class="content-img-block">
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+                <img
+                    width="194"
+                    height="161"
+                    src="https://hexschool.github.io/flexImgUrl/3/pic.png"
+                    alt="product photos"
+                >
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

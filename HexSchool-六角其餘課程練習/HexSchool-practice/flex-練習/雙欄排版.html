@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>雙欄排版</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        h1,
+        h2 {
+            font-size: 30px;
+            color: #657a6a;
+        }
+
+        /* 最外圍一層 */
+        .wrap {
+            display: flex;
+            justify-content: space-around;
+            width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* 左右欄位 */
+        .two-black {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 550px;
+            height: 815px;
+            background-color: #e7eeea;
+        }
+
+        /* 欄位內文 */
+        .content {
+            padding: 0 40px;
+        }
+
+        .content h1 {
+            padding: 0 0 35px 0;
+        }
+
+        .content p,
+        .content h2 {
+            font-size: 25px;
+        }
+
+        .content p {
+            padding: 0 0 40px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 左右欄位 -->
+        <div class="two-black">
+            <img
+                width="264"
+                height="319"
+                src="https://hexschool.github.io/flexImgUrl/2/logo.png"
+                alt="logo"
+            >
+        </div>
+        <!-- 左右欄位 -->
+        <div class="two-black">
+            <!-- 欄位內文 -->
+            <div class="content">
+                <h1>為什麼選擇了做甜點?</h1>
+                <p>為什麼選擇了做甜點為什麼選擇了做甜點
+                    為什麼選擇了做甜點為什麼選擇了做甜點
+                    為什麼選擇了做甜點為什麼選擇了做甜點
+                    為什麼選擇了做甜點為什麼選擇了做甜點
+                </p>
+                <p>
+                    為什麼選擇了做甜點為什麼選擇了做甜點
+                    為什麼選擇了做甜點為什麼選擇了做甜點
+                </p>
+                <h2>-- 想吃甜點 是不需要理由的。</h2>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

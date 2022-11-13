@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+  </head>
+
+  <body>
+    <input type="text" placeholder="請輸入待辦事項" class="text" />
+    <input type="button" class="save" value="儲存待辦事項" />
+    <!-- 顯示待辦事項清單 -->
+    <ul class="list"></ul>
+
+    <script>
+      // 輸入代辦事項 框
+      const text = document.querySelector(".text");
+      // 儲存代辦事項 按鈕
+      const save = document.querySelector(".save");
+      // 裝 待辦事項 清單(ul)
+      const list = document.querySelector(".list");
+      // 宣告陣列 裝入 輸入的待辦事項
+      let data = [];
+
+      // 更新渲染 list(ul) 畫面
+      function renderData() {
+        // str 每一條新增待變事項的內容
+        let str = "";
+        // item 輸入的內容 、 index 為 每條內容加 編號
+        data.forEach(function (item, index) {
+          str += `<li> ${item.content}
+              <input
+              type="button"
+              class="delete"
+              value="刪除待辦事項"
+              data-num="${index}"
+              ></li>`;
+        });
+        // 每一條內容+刪除按鈕新增後，新增到 list 上
+        list.innerHTML = str;
+      }
+
+      // 新增待辦事項
+      // 儲存待辦事像按鈕 事件監聽
+      save.addEventListener("click", function (e) {
+        // 輸入內容為空時，跳出提醒，並 return 跳出
+        if (text.value.trim() == "") {
+          alert("請輸入內容");
+          return;
+        }
+        // 宣告空物件，newTodo 為每一條輸入的新事項
+        let newTodo = {};
+        // 讓每一條輸入的內容，加入到空物件中
+        newTodo.content = text.value.trim();
+        // 再加到 陣列 中
+        data.push(newTodo);
+        // 每次新增後，輸入框重置
+        text.value = "";
+        // 加入完後再呼叫 更新渲染
+        renderData();
+      });
+
+      // 刪除待辦事項
+      // 直接在 list(ul) 做點擊事件監聽
+      list.addEventListener("click", function (e) {
+        // 因為 list(ul) 內每一條 li 後面都有按鈕 class = "delete"
+        // 當沒有點擊到按鈕時，return 跳掉不做任何動作
+        if (e.target.getAttribute("class") !== "delete") {
+          return;
+        }
+        // 宣告  選取到每一條 li 時，因為每一條li 都有 class = "data-num"
+        let num = e.target.getAttribute("data-num");
+        console.log(num);
+        // 在 清單 中刪除 陣列編號 num ， 後面 1 代表刪除一筆
+        data.splice(num, 1);
+        // 每次刪除後，重新渲染畫面
+        renderData();
+      });
+    </script>
+  </body>
+</html>

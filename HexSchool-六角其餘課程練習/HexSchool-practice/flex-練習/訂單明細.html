@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>訂單明細</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        /* 訂單摘要 購物清單 標題 */
+        h2 {
+            font-size: 25px;
+            color: #829886;
+        }
+
+
+        /* 最外圍一層 */
+        .wrap {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        /* 訂單摘要 */
+        .order-summary {
+            width: 300px;
+            margin: 5px 5px;
+            border: 1px solid #e7eeea;
+            color: #829886;
+        }
+
+        /* 訂單摘要 標題 */
+        .order-summary-title {
+            background-color: #e7eeea;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        /* 訂單摘要 內的 計算結果 */
+        .order-summary li {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 15px;
+        }
+
+        /* 訂單摘要 小計 */
+        .order-summary__subTotal {
+            font-size: 14px;
+        }
+
+        /* 訂單摘要 運費 */
+        .order-summary__shipPrice {
+            font-size: 18px;
+        }
+
+        /* 訂單摘要 總計 */
+        .order-summary__total {
+            font-size: 25px;
+        }
+
+
+        /* 購物清單 */
+        .order-list {
+            width: 300px;
+            border: 1px solid #e7eeea;
+            margin: 20px 0 0 5px;
+            color: #829886;
+            gap: 10%;
+        }
+
+        /* 購物清單 產品名字 */
+        .order-list-itemName {
+            font-size: 18px;
+        }
+
+        /* 購物清單 產品價格 */
+        .order-list li div p {
+            font-size: 25px;
+        }
+
+
+
+        /* 購物清單標題 */
+        .order-list-title {
+            background-color: #e7eeea;
+            text-align: center;
+            line-height: 70px;
+        }
+
+
+        /* 購物清單 內的 商品列表  */
+        .order-list li {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 15px;
+        }
+
+        .order-list li h3 {
+            padding: 0 0 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 訂單摘要 -->
+        <div class="order-summary">
+            <!-- 訂單摘要 標題 -->
+            <div class="order-summary-title">
+                <h2>訂單摘要</h2>
+            </div>
+            <ul>
+                <li class="order-summary__subTotal">
+                    <div>小計</div>
+                    <p>NT$ 2,700</p>
+                </li>
+                <li class="order-summary__shipPrice">
+                    <div>運費</div>
+                    <p>NT$ 300</p>
+                </li>
+                <li class="order-summary__total">
+                    <div>總計</div>
+                    <p>NT$ 3,000</p>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- 購物清單 -->
+        <div class="order-list">
+            <!-- 購物清單 標題 -->
+            <div class="order-list-title">
+                <h2>購物清單</h2>
+            </div>
+            <ul>
+                <li>
+                    <img
+                        width="118"
+                        height="73"
+                        src="https://hexschool.github.io/flexImgUrl/9/pic.png"
+                        alt="Product photos"
+                    >
+
+                    <div>
+                        <div class="order-list-itemName">焦糖瑪卡龍 (2)</div>
+                        <p>NT$ 900</p>
+                    </div>
+                </li>
+                <li>
+                    <img
+                        width="118"
+                        height="73"
+                        src="https://hexschool.github.io/flexImgUrl/9/pic.png"
+                        alt="Product photos"
+                    >
+                    <div>
+                        <div class="order-list-itemName">焦糖瑪卡龍 (2)</div>
+                        <p>NT$ 900</p>
+                    </div>
+                </li>
+                <li>
+                    <img
+                        width="118"
+                        height="73"
+                        src="https://hexschool.github.io/flexImgUrl/9/pic.png"
+                        alt="Product photos"
+                    >
+                    <div>
+                        <div class="order-list-itemName">焦糖瑪卡龍 (2)</div>
+                        <p>NT$ 900</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

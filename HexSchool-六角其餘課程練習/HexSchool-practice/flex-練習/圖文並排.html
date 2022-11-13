@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>圖文並排</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            opacity: 0.5;
+        }
+
+        /* 最外圍一層 */
+        .wrap {
+            padding: 15px;
+            background: #37523d;
+        }
+
+        /* 內圓角邊框 */
+        .wrap-content {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* 表頭 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            background-color: #e7eeea;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .header img {
+            padding: 0 0 0 30px;
+        }
+
+        .header a {
+            display: block;
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            color: #37523d;
+            text-align: center;
+            padding: 0 10px 0 0;
+
+        }
+
+        /* 內容 */
+        .content {
+            display: flex;
+            align-items: center;
+        }
+
+        .content img {
+            margin: 30px 40px;
+        }
+
+        /* 內容中 文字區塊 */
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 410px;
+            width: 700px;
+        }
+
+        .content-text h1 {
+            font-size: 25px;
+            margin: 50px 0 30px 0;
+        }
+
+        /* 內容中 文字區塊 下方 a 連結 */
+        .content-text-a_block {
+            margin: 0 0 30px 0;
+            color: #415b47;
+            font-size: 20px;
+        }
+
+        .content-text-a_block a {
+            color: #415b47;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 內圓角邊框 -->
+        <div class="wrap-content">
+            <!-- 表頭 -->
+            <div class="header">
+                <img
+                    width="298"
+                    height="59"
+                    src="https://hexschool.github.io/flexImgUrl/6/logo.png"
+                    alt="logo"
+                >
+                <a href="#">more</a>
+            </div>
+            <!-- 內容 -->
+            <div class="content">
+                <img
+                    width="176"
+                    height="353"
+                    src="https://hexschool.github.io/flexImgUrl/6/pic.png"
+                    alt="product photos"
+                >
+                <!-- 內容中 文字區塊 -->
+                <div class="content-text">
+                    <div>
+                        <h1>想吃甜點&emsp;是不需要理由的。</h1>
+                        <p>青山依舊在，幾度夕陽紅。慣
+                            看秋月春風，一壺濁酒喜相
+                            逢，浪花淘盡英雄。
+                            青山依舊在，幾度夕陽紅。慣
+                            看秋月春風，一壺濁酒喜相
+                            逢，浪花淘盡英雄。</p>
+                        <p>青山依舊在，幾度夕陽紅。慣
+                            看秋月春風，一壺濁酒喜相
+                            逢，浪花淘盡英雄。
+                            青山依舊在，幾度夕陽紅。慣
+                            看秋月春風，一壺濁酒喜相
+                            逢，浪花淘盡英雄。</p>
+                    </div>
+                    <!-- 內容中 文字區塊 下方 a 連結 -->
+                    <div class="content-text-a_block">
+                        <a href="#">FB 分享</a>
+                        &ensp;
+                        <a href="#">IG 分享</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

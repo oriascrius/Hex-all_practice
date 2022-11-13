@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Document</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 最外圍一層 */
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 800px;
+            padding: 60px 0;
+            margin: 0 auto;
+            background-color: #00f5a8;
+        }
+
+        /* 左邊 標題區塊 */
+        .left-block {
+            writing-mode: vertical-lr;
+            color: #014e3f;
+            font-weight: 700;
+            margin: 65px 0 0 0;
+        }
+
+        .left-block h1 {
+            font-size: 40px;
+            letter-spacing: 1px;
+        }
+
+        .left-block h2 {
+            font-size: 18px;
+            letter-spacing: 10px;
+            margin: 10px 50px 0 0;
+        }
+
+        /* 右邊 卡片區塊 */
+        .right-block {
+            position: relative;
+            width: 410px;
+            height: 240px;
+            background-color: #ededed;
+            font-weight: 700;
+            box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin: 0 80px 0 0;
+            overflow: hidden;
+        }
+
+        .right-block img {
+            margin: 15px 0 0 15px;
+        }
+
+        .right-block h3 {
+            margin: 20px 0 0 25px;
+            color: #558b93;
+            font-size: 18px;
+        }
+
+        .right-block h4 {
+            margin: 25px 0 0 85px;
+            color: #075f4a;
+            font-size: 25px;
+
+        }
+
+        ul {
+            color: #4d7f86;
+            font-size: 14px;
+            line-height: 1.1;
+            margin: 20px 0 0 25px;
+        }
+
+        /* 多邊形 */
+        .hexagon-one {
+            position: absolute;
+            right: -106px;
+            top: -43px;
+            background: #00c277;
+            width: 200px;
+            height: 150px;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 42%);
+        }
+
+        .hexagon-two {
+            position: absolute;
+            right: 50px;
+            top: 75px;
+            width: 85px;
+            height: 75px;
+            background: #659e92;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .hexagon-three {
+            position: absolute;
+            right: -53px;
+            bottom: 15px;
+            width: 127.5px;
+            height: 112.5px;
+            background: #6bd4a7;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 左邊 標題區塊 -->
+        <div class="left-block">
+            <h1>HEX SCHOOL</h1>
+            <h2>網頁名片練習</h2>
+        </div>
+        <!-- 右邊 卡片區塊 -->
+        <div class="right-block">
+            <img
+                src="https://upload.cc/i1/2019/08/02/KJH1tO.png"
+                alt="六角學院logo"
+            >
+            <h3>實習生 Intern</h3>
+            <h4>OWOW QOO</h4>
+            <ul>
+                <li>波利馬資訊科技有限公司</li>
+                <li>公司電話 : <a href="tel:07-531350">07-531350</a></li>
+                <li><a href="mailto:service@hexschool.com">service@hexschool.com</a></li>
+                <li>通訊地址 : (803)高雄市鹽埕區七賢三路123號2樓</li>
+            </ul>
+            <!-- 多邊形 -->
+            <div class="hexagon-one"></div>
+            <div class="hexagon-two"></div>
+            <div class="hexagon-three"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>表頭表尾設計</title>
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /* ------------------------------------- */
+        body {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            opacity: 0.5;
+        }
+
+        a:hover {
+            opacity: 1.5;
+        }
+
+        /* 最外圍一層 */
+        .wrap {
+            margin: 0 auto;
+        }
+
+        /* 表頭 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            background-color: #e7eeea;
+            box-shadow: 0px 0px 5px 1px rgb(184, 183, 183);
+        }
+
+        .header ul {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 30px 0 0;
+        }
+
+        .header a {
+            color: #516957;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        .header img {
+            margin: 0 0 0 60px;
+        }
+
+        /* 內文 */
+        .content {
+            width: 820px;
+            margin: 80px auto 100px;
+        }
+
+        .content h1 {
+            font-size: 20px;
+        }
+
+        .content p {
+            margin: 28px 0 0 0;
+        }
+
+        .content img {
+            margin: 25px auto 5px;
+        }
+
+        /* 頁尾 */
+        .footer {
+            background-color: #37523d;
+            height: 55px;
+        }
+
+        .footer ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+
+        .footer a {
+            display: block;
+            color: #fdfefd;
+            font-size: 14px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最外圍一層 -->
+    <div class="wrap">
+        <!-- 表頭 -->
+        <div class="header">
+            <img
+                width="304"
+                height="61"
+                src="https://hexschool.github.io/flexImgUrl/4/logo.png"
+                alt="logo"
+            >
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <!-- 內文 -->
+        <div class="content">
+            <h1>甜甜點點點</h1>
+            <p>甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點
+                甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點
+            </p>
+            <img
+                width="599"
+                height="400"
+                src="https://hexschool.github.io/flexImgUrl/4/pic.png"
+                alt="product photos"
+            >
+            <p>甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜
+                甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點甜甜點點點
+            </p>
+        </div>
+        <!-- 頁尾 -->
+        <div class="footer">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>AJAX_POST-practice</title>
+</head>
+
+<body>
+    <form action="">
+        <h2>註冊帳號</h2>
+        <label for="register_account">帳號:</label>
+        <input
+            type="email"
+            class="register_account"
+            id="register_account"
+            placeholder="請輸入您要註冊的帳號"
+        >
+        </br>
+        <label for="register_passsword">密碼:</label>
+        <input
+            type="password"
+            class="register_password"
+            id="register_passsword"
+            placeholder="請輸入您要註冊的密碼"
+        >
+        </br>
+        <input
+            type="button"
+            value="送出"
+            class="register_send"
+        >
+    </form>
+
+    <form action="">
+        <h2>登入帳號</h2>
+        <label for="login_account">帳號:</label>
+        <input
+            type="email"
+            class="login_account"
+            id="login_account"
+            placeholder="請輸入您要登入的帳號"
+        >
+        </br>
+        <label for="login_password">密碼:</label>
+        <input
+            type="password"
+            class="login_password"
+            id="login_password"
+            placeholder="請輸入您要登入的密碼"
+        >
+        </br>
+        <input
+            type="button"
+            value="送出"
+            class="login_send"
+        >
+    </form>
+
+
+    <!-- AJAX -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // 註冊
+        const register_account = document.querySelector(".register_account");
+        const register_password = document.querySelector(".register_password");
+        const register_send = document.querySelector(".register_send ");
+
+        // 登入
+        const login_account = document.querySelector(".login_account");
+        const login_password = document.querySelector(".login_password");
+        const login_send = document.querySelector(".login_send");
+
+
+        // 註冊按鈕 監聽事件
+        register_send.addEventListener("click", Register);
+        // callRegister 註冊 送出按鈕後的動作
+        function Register() {
+            // 判斷帳號與密碼不能為空，為空時會跳出提醒訊息，並 return 重來
+            if (register_account.value.trim() == "" || register_password.value.trim() == "") {
+                alert("請填寫正確資訊");
+                return;
+            }
+
+            // 宣告空物件，放置 使用者輸入的帳號與密碼
+            let register_obj = {};
+            register_obj.email = register_account.value.trim();
+            register_obj.password = register_password.value.trim();
+
+            // AJAX axios post 寫法
+            axios.post('https://hexschool-tutorial.herokuapp.com/api/signup', register_obj)
+                .then(function (response) {
+                    // response.data.message == "帳號註冊成功" -> (要看做好的 API 怎麼寫的，照著寫)
+                    if (response.data.message == "帳號註冊成功") {
+                        // API 文件 已經寫好成功時的顯示內容
+                        alert(response.data.message);
+                    } else {
+                        // API 文件 已經寫好失敗時的顯示內容
+                        alert(response.data.message);
+                    }
+                    // 每次判斷完後 都讓輸入框 重置
+                    register_account.value = "";
+                    register_password.value = "";
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        };
+
+        // 登入按鈕 監聽事件
+        login_send.addEventListener("click", Login);
+        // callRegister 登入 送出按鈕後的動作
+        function Login() {
+            // 判斷帳號與密碼不能為空，為空時會跳出提醒訊息，並 return
+            if (login_account.value.trim() == "" || login_password.value.trim() == "") {
+                alert("請填寫正確資訊");
+                return;
+            }
+
+            // 宣告空物件，放置 使用者輸入的帳號與密碼
+            let login_obj = {};
+            login_obj.email = login_account.value.trim();
+            login_obj.password = login_password.value.trim();
+
+            // AJAX axios post 寫法
+            axios.post('https://hexschool-tutorial.herokuapp.com/api/signin', login_obj)
+                .then(function (response) {
+                    // response.data.message == "登入成功" -> (要看做好的 API 怎麼寫的，照著寫)
+                    if (response.data.message == "登入成功") {
+                        // API 文件 已經寫好成功時的顯示內容
+                        alert(response.data.message);
+                    } else {
+                        // API 文件 已經寫好失敗時的顯示內容
+                        alert(response.data.message);
+                    }
+                    // 每次判斷完後 都讓輸入框 重置
+                    login_account.value = "";
+                    login_password.value = "";
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        };
+
+    </script>
+</body>
+
+</html>

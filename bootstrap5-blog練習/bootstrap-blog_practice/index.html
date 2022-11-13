@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <!-- 自己的 CSS -->
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+  </head>
+  <body>
+    <!-- 外層框，左右留白 -->
+    <div class="container">
+      <!-- 1. header start -->
+      <!-- padding top 3 , 文字置中 -->
+      <!-- border-bottom 下底線 -->
+      <header class="py-3 text-center border-bottom">
+        <!-- link-dark，連結黑色 -->
+        <!-- text-decoration-none，a 連結 刪除下底線 -->
+        <a href="#" class="h2 link-dark text-decoration-none">泊岸的 Blog</a>
+      </header>
+      <!-- 1. header end -->
+
+      <!-- 2. navbar start -->
+      <!-- 導覽 結構 -> div-nav-nav-link -->
+      <!-- overflow-auto，超出視窗表現-自動生成xy軸  -->
+      <div class="overflow-auto py-1">
+        <!-- justify-content-between，等距排列 -->
+        <!-- flex-nowrap，縮小視窗不換行 -->
+        <!-- text-nowrap，文字不換行保持平行  -->
+        <div class="nav justify-content-between flex-nowrap text-nowrap">
+          <!-- link-secondary，相比默認連結藍色改成較深色 -->
+          <a class="nav-link link-secondary" href="#">HTML</a>
+          <a class="nav-link link-secondary" href="#">CSS</a>
+          <a class="nav-link link-secondary" href="#">JavaScript</a>
+          <a class="nav-link link-secondary" href="#">Backend</a>
+          <a class="nav-link link-secondary" href="#">社群</a>
+          <a class="nav-link link-secondary" href="#">技術</a>
+          <a class="nav-link link-secondary" href="#">管理</a>
+          <a class="nav-link link-secondary" href="#">創業</a>
+          <a class="nav-link link-secondary" href="#">設計</a>
+          <a class="nav-link link-secondary" href="#">藝術</a>
+          <a class="nav-link link-secondary" href="#">理財</a>
+        </div>
+        <!-- 2. navbar end -->
+      </div>
+      <!-- 3. 背景圖 start -->
+      <!-- 為何背景圖不用 class 定義，因為通常只出現一次，使用 url 也方便後端使用 -->
+      <!-- background-size: cover，CSS3 背景圖滿版 -->
+      <!-- rounded-3，邊框圓角 -->
+      <!-- bg-cover，自訂義 背景圖設定 滿寬 -->
+      <div
+        class="p-4 p-md-5 mb-4 text-white rounded-3 bg-cover"
+        style="
+          background-image: url(https://images.unsplash.com/photo-1626712485197-d7c62aaa1e32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
+        "
+      >
+        <!-- col-md-6，行動版時滿版，> md 大小時一半，不用 row 是因為只需要針對水平調整-->
+        <div class="col-md-6">
+          <!-- display-4，bootstrap 中可以選擇更大的大小 -->
+          <!-- fst-italic，斜體 -->
+          <h1 class="display-4 fst-italic">立刻聲明情人，森林戰鬥。</h1>
+          <!-- lead，相較 p 段落字體大一些 -->
+          <p class="lead">
+            能量職務會議，誘惑世界上您可以魅力，採購疾病有關手裡一次開。
+            能量職務會議，誘惑世界上您可以魅力，採購疾病有關手裡一次開。
+          </p>
+          <!-- 消除 p 段落 的向下 margin -->
+          <p class="mb-0"><a href="#" class="text-white">繼續閱讀</a></p>
+        </div>
+      </div>
+      <!-- 3. 背景圖 end -->
+
+      <!-- 4. 並排卡片 start -->
+      <!-- row-cols-1 row-cols-lg-2，行動版單欄、稍大視窗雙欄 -->
+      <!-- g-3，欄 (columns) 之間的 padding，行動板時上下間格靠 g-3 間隔，稍大視窗後也從本來 col 改成 g-3 間隔距離 -->
+      <div class="row row-cols-1 row-cols-lg-2 mb-5 g-3">
+        <!-- 左卡片 -->
+        <div class="col">
+          <!-- row + flex-row，分成左右 -->
+          <!-- h-100，設定左右卡片都高度一樣，因為本來框框高度是看內容文字而擴大 -->
+          <div class="card row g-0 flex-row h-100">
+            <!-- 卡片左邊文字 -->
+            <div class="col">
+              <!-- d-flex flex-column mb-auto h-100，本來左右文字不一讓高度不同，flex + h-100 統一排版 -->
+              <div class="p-4 d-flex flex-column mb-auto h-100">
+                <strong class="d-inline-block mb-2 text-primary">門派</strong>
+                <h3 class="mb-0">門派結果處理。</h3>
+                <!-- text-muted，淡色文字 -->
+                <time class="mb-1 text-muted">十月 2 日</time>
+                <!-- mb-auto，讓下方的 a 連結 推移到底部 -->
+                <p class="cart-text mb-auto">
+                  門派結果處理心情本。門派結果處理心情本。門派結果處理心情本。門派結果處理心情本。
+                </p>
+                <!-- 在 a 連結加上 stretched-link，讓整個卡片可以直接延伸連結功能 -->
+                <a href="#" class="stretched-link">繼續閱讀</a>
+              </div>
+            </div>
+            <!-- 卡片右邊放圖 -->
+            <div
+              class="col-4 d-none d-lg-block bg-cover"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1591686287882-b90d0d2acd04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fCVFNiVCNSVCNyVFNiVCNCU4QnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+              "
+            ></div>
+          </div>
+        </div>
+        <!-- 右卡片 -->
+        <div class="col">
+          <!-- row + flex-row，分成左右 -->
+          <!-- h-100，設定左右卡片都高度一樣，因為本來框框高度是看內容文字而擴大 -->
+          <div class="card row g-0 flex-row h-100">
+            <!-- 卡片左邊文字 -->
+            <div class="col">
+              <!-- d-flex flex-column mb-auto h-100，本來左右文字不一讓高度不同，flex + h-100 統一排版 -->
+              <div class="p-4 d-flex flex-column mb-auto h-100">
+                <strong class="d-inline-block mb-2 text-primary">門派</strong>
+                <h3 class="mb-0">門派結果處理。</h3>
+                <!-- text-muted，淡色文字 -->
+                <time class="mb-1 text-muted">十月 2 日</time>
+                <!-- mb-auto，讓下方的 a 連結 推移到底部 -->
+                <p class="cart-text mb-auto">
+                  結果處理心情本門派結果處理心情本。門派結果處理心情本。門派結果處理心情本。門派結果處理。
+                </p>
+                <!-- 在 a 連結加上 stretched-link，讓整個卡片可以直接延伸連結功能 -->
+                <a href="#" class="stretched-link">繼續閱讀</a>
+              </div>
+            </div>
+            <!-- 卡片右邊放圖 -->
+            <div
+              class="col-4 d-none d-lg-block bg-cover"
+              style="
+                background-image: url(https://images.unsplash.com/photo-1604584282105-fdc6f32a20bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8JUU2JUI1JUI3JUU2JUI0JThCfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+      <!-- 4. 並排卡片 end -->
+
+      <!-- 5.左文章，右側欄 start -->
+      <!-- 搜尋範例 article 右鍵 copy outerHTML 複製文章 -->
+      <!-- g-md-5，在寬視窗中，左文章、右側欄的中間擴大( 中間是 Gutters 是在欄(columns) 之間的 padding ) -->
+      <div class="row g-md-5">
+        <!-- 左文章 -->
+        <div class="col-md-8">
+          <h2>▎Vue 3 新手冬令營</h2>
+          <time>2022 年 十一 月<a href="#">卡斯伯</a></time>
+          <!-- 文章標籤 -->
+          <article
+            id="post-2021-07-07-vue3-summer-camp"
+            class="article article-type-post blog-item"
+          >
+            <div class="article-meta"></div>
+            <div class="article-inner">
+              <header class="article-header mb-2"></header>
+
+              <div class="article-entry">
+                <p>
+                  <!-- class="img-fluid" 將圖片自適應 -->
+                  <img
+                    class="img-fluid"
+                    src="https://firebasestorage.googleapis.com/v0/b/hexschool-api.appspot.com/o/blog%2F2021%2F07%2FVue3-SummerCamp-Cover.png?alt=media&amp;token=f8ef0d0e-2d7a-4a2f-bc6b-6152eb753624"
+                    alt="Vue 3 新手冬令營"
+                  />
+                </p>
+                <p>
+                  現在前端所需技能越來越深，而三大框架雖然資源豐富，但對於新手來說卻也不知道如何入門，因此我們舉辦「Vue
+                  3 新手夏令營」，讓更多的前端同好可以認識這門框架～
+                </p>
+                <h3 id="這個活動適合哪些人呢？">
+                  <a
+                    href="#這個活動適合哪些人呢？"
+                    class="headerlink"
+                    title="這個活動適合哪些人呢？"
+                  ></a
+                  >這個活動適合哪些人呢？
+                </h3>
+                <ul>
+                  <li>對於 JavaScript 有基礎掌握度</li>
+                  <li>
+                    對於 Vue 2 或其它框架有基本認識，想學習 Vue 3 的開發者
+                  </li>
+                  <li>想從基礎學習 Vue 3 的開發者</li>
+                </ul>
+                <p>
+                  如果你不確定自己的基礎是否可以學習 Vue 3，可以先觀看此<a
+                    href="https://www.youtube.com/watch?v=FGdKdn_CnWo"
+                    target="_blank"
+                    rel="noopener"
+                    >影片</a
+                  >，本影片內容是在直播介紹 JavaScript 中「ES6 Let 與
+                  Const」的語法觀念，如果你能瞭解直播課程上所介紹的內容，將可來參與本次活動。
+                </p>
+                <p>
+                  <!-- class="img-fluid" 將圖片自適應 -->
+                  <img
+                    class="img-fluid"
+                    src="https://firebasestorage.googleapis.com/v0/b/hexschool-api.appspot.com/o/blog%2F2021%2F07%2Fvue3-camp-editor.png?alt=media&amp;token=bcf3a2fd-783f-4a35-9420-d5b7ee06b0ea"
+                    alt="https://firebasestorage.googleapis.com/v0/b/hexschool-api.appspot.com/o/blog%2F2021%2F07%2Fvue3-camp-editor.png?alt=media&amp;token=bcf3a2fd-783f-4a35-9420-d5b7ee06b0ea"
+                  />
+                </p>
+                <h3 id="課程大綱">
+                  <a href="#課程大綱" class="headerlink" title="課程大綱"></a
+                  >課程大綱
+                </h3>
+                <p>
+                  <b>第一堂：7/14 Vue 起手式</b><br />起手式中將帶大家認識 Vue
+                  JS 的基本運作，以及 JavaScript
+                  中的常見基本知識，而這些知識將有助於接下來的學習及實戰開發。
+                </p>
+                <p>
+                  <b>第二堂：7/21 Vue 與指令</b><br />Vue
+                  是一個關注點分離的框架，開發者將專注於 JavaScript
+                  的資料處理，並透過指令的形式將資料呈現於畫面上。
+                </p>
+                <p>
+                  <b>第三堂：7/28 Options API</b><br />當學習到 Options API
+                  以後，已經可以開始嘗試各種應用開發，在此你將可以學會各種資料操作的技巧。
+                </p>
+                <p>
+                  <b>第四堂：8/4 Composition API</b><br />Composition API 是 Vue
+                  3 中一個相當大的新功能，開發將超出原有 Vue
+                  的限制，提供更大的變化及運用。
+                </p>
+                <h3 id="活動時間">
+                  <a href="#活動時間" class="headerlink" title="活動時間"></a
+                  >活動時間
+                </h3>
+                <ul>
+                  <li>報名時間：即日起開始報名</li>
+                  <li>活動開始時間：7/14 ~ 8/4</li>
+                </ul>
+                <p>內容包含「每週一場直播」、「每日任務」、「週間挑戰作業」</p>
+                <h3 id="直播參與小獎勵-🎁">
+                  <a
+                    href="#直播參與小獎勵-🎁"
+                    class="headerlink"
+                    title="直播參與小獎勵 🎁"
+                  ></a
+                  >直播參與小獎勵 🎁
+                </h3>
+                <p>
+                  為鼓勵參與直播，<b>參與三次直播</b>並<b>完成報到者</b>，將可抽額外實體獎品！<br />獎項如下：
+                </p>
+                <ul>
+                  <li>最大獎 1 名：米家無線吸塵器 mini</li>
+                  <li>貳獎 2 名：小米手環 5</li>
+                  <li>三獎 3 名： 小米體重計</li>
+                  <li>加碼獎 5 名：Udemy 自選課程（390 元內）</li>
+                </ul>
+                <p>
+                  <small
+                    >如果獎品不足，主辦單位將會以同價位品項作為替代。</small
+                  >
+                </p>
+                <h3 id="新手如何加入">
+                  <a
+                    href="#新手如何加入"
+                    class="headerlink"
+                    title="新手如何加入"
+                  ></a
+                  >新手如何加入
+                </h3>
+                <h5 id="任務一：加入-Discord-並自我介紹-活動已結束">
+                  <a
+                    href="#任務一：加入-Discord-並自我介紹-活動已結束"
+                    class="headerlink"
+                    title="任務一：加入 Discord 並自我介紹 (活動已結束)"
+                  ></a
+                  >任務一：加入 Discord 並自我介紹 (活動已結束)
+                </h5>
+                <p>
+                  讓學習一加一大於二，他人的問題也許是你接下來會遇到的問題，從互動中尋找自己還缺少的問題點，甚至會遇到你未來的合作夥伴喔。
+                </p>
+                <p>流程：</p>
+                <ol>
+                  <li>加入六角學院 Discord</li>
+                  <li>加入 <code>vue-夏令營公開頻道</code></li>
+                  <li>
+                    自我介紹一下，讓其他同學認識你吧<br />範例：大家好，我是
+                    卡斯伯，過去是設計師，現在想趁著 Vue 夏令營打好框架基礎。
+                  </li>
+                </ol>
+                <p>
+                  <a href="#" target="_blank" class="btn btn-primary disabled"
+                    >Discord 說明文件</a
+                  >
+                </p>
+                <h5 id="任務二：Vue-新手夏令營-課程文件">
+                  <a
+                    href="#任務二：Vue-新手夏令營-課程文件"
+                    class="headerlink"
+                    title="任務二：Vue 新手夏令營 課程文件"
+                  ></a
+                  >任務二：Vue 新手夏令營 課程文件
+                </h5>
+                <p>
+                  雖然是開放的夏令營活動，但本學院的資源都相當豐富，建議先打開，並存到你的個人最愛連結中，以便未來方便查找。<br /><a
+                    href="https://hackmd.io/@dbFY0UD9SUeKmNXhWf01ew/BkJoW-hn_/%2FC05go-8iTSS-nrMwKU22kA"
+                    target="_blank"
+                    class="btn btn-primary"
+                    >活動文件連結</a
+                  >
+                </p>
+                <h5 id="任務三：訂閱活動">
+                  <a
+                    href="#任務三：訂閱活動"
+                    class="headerlink"
+                    title="任務三：訂閱活動"
+                  ></a
+                  >任務三：訂閱活動
+                </h5>
+                <p>
+                  訂閱<a href="https://www.hexschool.com/calendar/"
+                    >六角行事曆</a
+                  >、<a
+                    href="https://www.youtube.com/channel/UC-b2nGm0xLzic38Byti0VjA/videos"
+                    target="_blank"
+                    rel="noopener"
+                    >Youtube 頻道</a
+                  ><br />活動將會在線上舉行，建議訂閱活動行事曆及 Youtube
+                  頻道，避免遺漏掉重要的課程喔。
+                </p>
+                <h3 id="這個活動是否需要費用">
+                  <a
+                    href="#這個活動是否需要費用"
+                    class="headerlink"
+                    title="這個活動是否需要費用"
+                  ></a
+                  >這個活動是否需要費用
+                </h3>
+                <p>不需要，這個活動完全免費</p>
+                <h3 id="常見問題">
+                  <a href="#常見問題" class="headerlink" title="常見問題"></a
+                  >常見問題
+                </h3>
+                <p>
+                  <b>Q: 一定要加入 Discord 嗎？</b><br />A: Discord 主要提供
+                  每日挑戰、主線回饋及學員助教討論，接下來如果有額外的加碼內容也僅會在
+                  Discord 中公告，如果要確保獲得完整學習體驗，建議加入 Discord
+                  一同學習。
+                </p>
+                <p>
+                  <b>Q: 課程是以 Vue 2 還是 Vue 3 為主呢？</b><br />A:
+                  本活動均是以最新版 Vue 3 為主。
+                </p>
+                <p>
+                  <b>Q: 我完全不會寫網頁，可以參加此活動嗎？</b><br />A:
+                  建議至少有撰寫 JavaScript 經驗在參加比較好。
+                </p>
+                <p>
+                  <b>Q: 參與過程的小作業，如果做不出來怎麼辦？</b><br />A:
+                  我們會提供範例解答及 Discord 志工討論。
+                </p>
+                <p><b>Q: 錄影檔案會公開嗎？</b><br />A: 會的，錄影完全公開</p>
+                <p>
+                  <b
+                    >Q:
+                    我想領直播參與小獎勵，也有參與直播，卻忘記報到可以補嗎？</b
+                  ><br />A: 不能喔～，請確保活動期間有報到成功，預期不接受補報
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- 右側欄 -->
+        <!-- d-none d-md-block，行動版時不顯示側欄，放大視窗才顯示側欄 -->
+        <div class="col-md-4 d-none d-md-block">
+          <!-- sticky-top 當往下滑文章，保持右側欄顯示、與文章頭對齊，不會往下滑後右側欄在上方 -->
+          <div class="sticky-top" style="top: 16px">
+            <!-- 右側欄中 上-關於我 -->
+            <div class="p-4 bg-light rounded">
+              <h4>關於我</h4>
+              <!-- p 段落 默認有向下 margin -->
+              <p class="mb-0">
+                從此禮品，詢問指出一生，不得至今兩個打。從此禮品，詢問指出一生，不得至今兩個打從此禮品，詢問指出一生，不得至今兩
+              </p>
+            </div>
+            <!-- 右側欄中 中-封存時間 -->
+            <div class="p-4">
+              <!-- list-unstyled，雖使用 有序 ol，但不使用默認順序碼 -->
+              <ol class="list-unstyled">
+                <h4>封存</h4>
+                <li><a href="#">2022年 1 月</a></li>
+                <li><a href="#">2022年 2 月</a></li>
+                <li><a href="#">2022年 3 月</a></li>
+                <li><a href="#">2022年 4 月</a></li>
+                <li><a href="#">2022年 5 月</a></li>
+                <li><a href="#">2022年 6 月</a></li>
+                <li><a href="#">2022年 7 月</a></li>
+                <li><a href="#">2022年 8 月</a></li>
+                <li><a href="#">2022年 9 月</a></li>
+                <li><a href="#">2022年 10 月</a></li>
+              </ol>
+            </div>
+            <!-- 右側欄中 下-追蹤我 -->
+            <div class="p-4">
+              <h4>追蹤我</h4>
+              <ul class="list-unstyled">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Github</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 5.左文章，右側欄 end -->
+    </div>
+    <!-- footer start -->
+    <footer class="bg-light border-top py-4 mt-5 text-center">
+      <p>Bootstrap 5 練習作業</p>
+      <p><a href="#">Back to top</a></p>
+    </footer>
+  </body>
+</html>

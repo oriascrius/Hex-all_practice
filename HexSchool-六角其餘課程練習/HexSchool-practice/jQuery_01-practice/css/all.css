@@ -1,0 +1,499 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* CSS Reset end */
+
+
+img {
+    object-fit: cover;
+}
+
+a,
+body {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    opacity: 0.5;
+}
+
+
+
+/* 最外圍一層 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 表頭 */
+header ul {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5px 0;
+    background-color: #f6f6f6;
+}
+
+/* 最後一個 li  */
+header ul:last-child {
+    margin: 0 10px 0 0;
+}
+
+/* 最後一個 li 不會加分隔線 */
+header li:not(:last-child):after {
+    content: "";
+    margin: 0 10px 5px;
+    border-left: 1px solid #c0c4cc;
+    height: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fb-a a {
+    color: #4460a0;
+}
+
+
+.twitter-a a {
+    color: #21b4ed;
+}
+
+/* 導航 */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3px 0;
+}
+
+.nav a:hover {
+    opacity: 1;
+}
+
+/* 圖片取代文字 logo */
+.nav h1 a {
+    width: 224px;
+    height: 50px;
+    display: block;
+    background-image: url(https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/singlePage/logo.png);
+    /* 讓文字超出原本區塊 */
+    text-indent: 101%;
+    /* 超過後的部分隱藏 */
+    overflow: hidden;
+    /* 不換行 */
+    white-space: nowrap;
+}
+
+/* 導航 list */
+.nav-list {
+    display: flex;
+}
+
+/* 導航 list 內 下拉選單 先隱藏 */
+/* banner h2  z-index: 9;  這裡給 10 覆蓋上去 */
+.nav-list ul {
+    display: none;
+    position: absolute;
+    width: 100px;
+    background-color: #e4e4e4;
+    z-index: 10;
+    margin: 1px 0 0 0;
+}
+
+.nav li {
+    margin: 0 10px 0 0;
+}
+
+/* 相對定位 做 hover */
+.nav ul a {
+    display: block;
+    width: 100px;
+    line-height: 50px;
+    text-align: center;
+    color: #22d3a7;
+    position: relative;
+}
+
+/* 導航 先隱藏下滑線 */
+.nav-list li a:after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    border-bottom: 3px solid transparent;
+    transition: 0.5s;
+}
+
+/* 導航 hover 出現下滑線 */
+.nav-list li a:hover:after {
+    width: 100%;
+    border-bottom: solid 3px #22d3a7;
+}
+
+
+/* 輪播 */
+/* banner (圖) */
+.banner {
+    position: relative;
+    margin: 0 0 60px 0;
+    overflow: hidden;
+    /* height: 360px; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+}
+
+.banner h2 {
+    position: absolute;
+    width: 1200px;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 30px;
+    color: #fff;
+    line-height: 50px;
+    padding: 40px 20px;
+    margin: 85px 0 0 0;
+    z-index: 9;
+}
+
+/* course 課程區塊 */
+.course {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 80px 0;
+}
+
+.course-content {
+    width: 32%;
+    line-height: 1.8;
+    box-shadow: 0 1px 5px rgb(147, 147, 147);
+    text-align: center;
+}
+
+.course-content h2 {
+    font-size: 20px;
+}
+
+.course-content p {
+    padding: 20px;
+}
+
+.course-content h3 {
+    padding: 10px 0 10px 0;
+
+}
+
+.course-content ol {
+    list-style: disc;
+    text-align: left;
+    padding: 0 100px 20px 120px;
+}
+
+
+
+/* 課程差別 */
+.lecture-table {
+    margin: 0 auto;
+    line-height: 38px;
+    margin: 0 auto 60px;
+    padding: 0 80px 0;
+    font-size: 18px;
+}
+
+/* 課程差別 標題 */
+.lecture-table h2 {
+    font-size: 25px;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.lecture-table table tr {
+    border-top: 2px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+}
+
+.lecture-table table th,
+td {
+    padding: 0 0 0 20px;
+}
+
+
+.lecture-table table th {
+    text-align: left;
+    background-color: #f7f7f7;
+}
+
+
+.lecture-table td {
+    width: 800px;
+}
+
+.lecture-table span {
+    color: #33b897;
+}
+
+
+.lecture-table table tr:hover {
+    background-color: #f7f7f7;
+}
+
+
+/* 聯絡表單 */
+.form {
+    background: linear-gradient(#00664b, #00a77d);
+    padding: 0 120px 30px;
+}
+
+.form h2 {
+    font-size: 25px;
+    line-height: 1.5;
+    text-align: center;
+    color: #f7f7f7;
+    padding: 35px 0 20px 0;
+}
+
+/* 表單內容 */
+.form-content {
+    display: flex;
+}
+
+.form textarea {
+    width: 465px;
+    border-radius: 5px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    /* textarea 去掉右下角 可拖動狀態條 */
+    resize: none;
+    margin: 0 0 0 25px;
+    font-size: 18px;
+    color: #9a9a9a;
+}
+
+/* 防止點擊時震動 先給透明框 */
+.form-content textarea,
+input {
+    border: 1px solid transparent;
+}
+
+/* 點擊輸入框時 輸入框有邊線 亮光 */
+.form-content textarea:focus,
+input:focus {
+    border-style: solid;
+    border-color: #03a9f4;
+    box-shadow: 0 0 15px #03a9f4;
+}
+
+/* 輸入內容 */
+.input-content {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    margin: 0 0 0 30px;
+}
+
+.input-content label {
+    margin: 0 0 3px 0;
+    color: #fff;
+}
+
+.input-content input {
+    width: 420px;
+    height: 30px;
+    margin: 0 0 20px 0;
+    border-radius: 3px;
+    outline: none;
+}
+
+.input-content .btn {
+    width: 80px;
+    height: 50px;
+    background-color: #00cc99;
+    color: #d6d6d6;
+    font-size: 16px;
+    align-self: flex-end;
+    border-radius: 10px;
+    border: 1px solid transparent;
+
+}
+
+.input-content .btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.input-content .btn:active {
+    transform: scale(1);
+    box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* input 默認文字 */
+.input-content input::placeholder {
+    padding: 0 0 0 10px;
+    color: #9a9a9a;
+}
+
+/* input 點擊時 內容透明 */
+.input-content input:focus::placeholder {
+    color: transparent;
+}
+
+
+
+/* 表尾 */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px;
+}
+
+
+.footer-content li {
+    margin: 10px 30px 0 0;
+}
+
+.footer-content a {
+    color: #e12d80;
+}
+
+/* 回到 TOP 按鈕 */
+.top-btn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}

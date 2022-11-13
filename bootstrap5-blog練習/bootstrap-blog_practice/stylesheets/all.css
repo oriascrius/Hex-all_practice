@@ -1,0 +1,15 @@
+/* 增加微軟正黑體 - 'Microsoft JhengHei',微軟正黑體 */
+:root {
+    --bs-font-sans-serif: system-ui, -apple-system, "Microsoft JhengHei",
+      微軟正黑體, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+      "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  /* 背景圖 設置 */
+  .bg-cover {
+    /* 選擇一張圖的 xy軸 中間 */
+    background-position: center center;
+    /* CSS3，contain:可以讓背景圖片自動縮放到填滿內容區域內的最大尺寸
+             cover:可以讓背景圖片自動縮放到覆蓋內容區域的最小尺寸 */
+    background-size: cover;
+  }

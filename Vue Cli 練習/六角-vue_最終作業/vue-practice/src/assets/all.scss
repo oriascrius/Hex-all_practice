@@ -1,0 +1,6 @@
+// 中間 要改成我們自己的 variables 路徑，後面直接是 variables，不用 _variables.scss 檔名
+@import '~bootstrap/scss/functions';
+@import './helpers/variables'; 
+@import '~bootstrap/scss/mixins';
+
+@import "~bootstrap/scss/bootstrap";

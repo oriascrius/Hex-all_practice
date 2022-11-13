@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>表單驗證套件</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <link
+    href="images/favicon.ico"
+    rel="shortcut icon"
+  >
+  <meta charset="UTF-8">
+  <script src="/javascripts/vendor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
+</head>
+
+<body class="bg-lighter">
+  <div class="container main my-5">
+    <div class="row">
+      <main class="col post">
+        <!-- 章節標題 -->
+        <div class="mb-4">
+          <h1 class="mt-0 text-muted">表單驗證套件</h1><small>檔名：<code>adv-vee-validation.html</code></small>
+        </div>
+        <!-- 🔥🔥練習開始🔥🔥 -->
+
+        <div id="app">
+          <h2>套用一個現成的流程</h2>
+          <p>參考文件：<a href="https://hackmd.io/FFv0a5cBToOATP7uI5COMQ">https://hackmd.io/FFv0a5cBToOATP7uI5COMQ</a></p>
+
+          <h3>範例：載入 VeeValidate 驗證套件</h3>
+
+          <!-- 步驟 5：套用 v-form 並加入 v-slot -->
+          <!-- 備註：v-slot 稱為插槽 Props，可以將驗證結果的回饋資料直接帶入於區塊中 -->
+          <!-- v-slot="{ errors }" 傳到 v-field(輸入框)內的 :class="{ 'is-invalid': errors['email'] }" 接收-->
+          <v-form
+            @submit="onSubmit"
+            v-slot="{ errors }"
+          >
+            <!-- 這裡方便我們看到錯誤訊息顯示什麼，到時候可把它刪除 -->
+            {{ errors }}
+            <div class="mb-3">
+              <label
+                for="email"
+                class="form-label"
+              >Email</label>
+
+              <!-- 步驟 6：套用 v-field 及 error-message -->
+              <!-- input 改成  v-field 並有結尾 </v-field> -->
+              <!-- 並在 v-field 內加上  rules 對應 步驟 三 的規則，寫法可以 email|required，中間 | 不空白 是相連的-->
+              <!-- 用 rules 而不是 :rules 是因為 用外部引入的官方文件，:rules 是對應 自己自定義規則  -->
+
+              <!-- :class="{ 'is-invalid': errors['email'] }"，is-invalid 是 bootstrap input 的樣式 -->
+              <!-- v-slot="{ errors }" 再傳入到 errors['email']，email 指的是 當 email 錯誤時 -->
+              <!-- v-model="user.email"，這邊只把 輸入的 email 丟到 data 裡，其他沒有操作 -->
+              <v-field
+                id="email"
+                name="email"
+                type="email"
+                class="form-control"
+                placeholder="請輸入 Email"
+                rules="email|required"
+                :class="{ 'is-invalid': errors['email'] }"
+                v-model="user.email"
+              ></v-field>
+              <!-- span 改成 error-message -->
+              <!-- error-message 內 加上 name 對應 v-field -->
+              <!-- class="invalid-feedback"，invalid-feedback 是對應到 上方 v-field 內的 :class is-invalid，才會有錯誤提醒出現 -->
+              <error-message
+                class="invalid-feedback"
+                name="email"
+              ></error-message>
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="name"
+                class="form-label"
+              >姓名</label>
+              <input
+                id="name"
+                name="姓名"
+                type="text"
+                class="form-control"
+                placeholder="請輸入姓名"
+              >
+              <span class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="phone"
+                class="form-label"
+              >電話</label>
+              <!-- input 改成 v-field -->
+              <!-- 這邊用 :rules 是對應到 自定義 methods 內的 isPhone -->
+              <!-- 電話錯誤的訊息 只會呈現在 上面的 error，與上方 email 做一個對比 -->
+              <v-field
+                id="phone"
+                name="電話"
+                type="text"
+                class="form-control"
+                placeholder="請輸入電話"
+                :rules="isPhone"
+              ></v-field>
+              <span class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="region"
+                class="form-label"
+              >地區</label>
+              <select
+                id="region"
+                name="地區"
+                class="form-control"
+              >
+                <option value="">請選擇地區</option>
+                <option value="台北市">台北市</option>
+                <option value="高雄市">高雄市</option>
+              </select>
+              <span class="invalid-feedback"></span>
+            </div>
+
+            <div class="mb-3">
+              <label
+                for="address"
+                class="form-label"
+              >地址</label>
+              <input
+                id="address"
+                name="地址"
+                type="text"
+                class="form-control"
+                placeholder="請輸入地址"
+              >
+              <span class="invalid-feedback"></span>
+            </div>
+
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >Submit</button>
+
+          </v-form>
+
+        </div>
+        <!-- 步驟 1：加入 VeeValidation 相關資源 -->
+        <!-- vee-validate 驗證 套件，https://hackmd.io/FFv0a5cBToOATP7uI5COMQ 網址內 三個 CDN網址 都導入 -->
+        <!-- 當時遇到問題，網址內 CDN 版本 都是 4.5.8，但會造成 讀不成功，所以我先改成舊版本  4.1.7 -->
+        <!-- 而發現  主套件 用 4.1.7，其他兩個用 4.5.8 才能跟課程一樣正確的輸入框-->
+
+        <!-- 主套件 -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/4.5.8/vee-validate.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/4.1.7/vee-validate.min.js"></script>
+        <!-- Rules -->
+        <script src="https://cdn.jsdelivr.net/npm/@vee-validate/rules@4.5.8/dist/vee-validate-rules.min.js"></script>
+        <!-- i18n -->
+        <script src="https://cdn.jsdelivr.net/npm/@vee-validate/i18n@4.5.8/dist/vee-validate-i18n.min.js"></script>
+        <script type="module">
+          // 步驟 3：定義規則，有 全部加入 的寫法，但可能遇到版本問題，所以這裡只要 email、必填 這兩個功能加進來就可
+          VeeValidate.defineRule('email', VeeValidateRules['email']);
+          VeeValidate.defineRule('required', VeeValidateRules['required']);
+
+          // 步驟 4：加入多國語系，將 外部資源 儲存至本地，檔案 zh_TW.json 
+          // 讀取外部的資源
+          // 利用 第三個網址 i18n 來讀取 
+          VeeValidateI18n.loadLocaleFromURL('./zh_TW.json');
+
+          // Activate the locale，設定檔
+          // VeeValidate.configure({
+          VeeValidate.configure({
+            generateMessage: VeeValidateI18n.localize('zh_TW'), // 切換成 中文版
+            validateOnInput: true, // 調整為：輸入文字時，就立即進行驗證
+          });
+
+          // 步驟 2：註冊元件
+          const app = Vue.createApp({
+            data() {
+              return {
+                user: {
+                  email: '',
+                  name: '',
+                  address: '',
+                  phone: ''
+                }
+              }
+            },
+            methods: {
+              // 在表單送出後，讓 this.user = {}，但是欄位會再驗證一次會跳出錯誤
+              // resetForm() 表單重置
+              onSubmit() {
+                console.log(values); // 送給 API 的資料值
+                resetForm(); // 把表單重置成預設值
+              },
+              isPhone(value) {
+                const phoneNumber = /^(09)[0-9]{8}$/
+                return phoneNumber.test(value) ? true : '需要正確的電話號碼'
+              }
+            },
+            created() {
+              console.log(this);
+            }
+          });
+
+          // 步驟 2：註冊元件，created 的後方，mount 的前面
+          // 註冊全域的表單驗證元件（VForm, VField, ErrorMessage）
+          app.component('VForm', VeeValidate.Form);
+          app.component('VField', VeeValidate.Field);
+          app.component('ErrorMessage', VeeValidate.ErrorMessage);
+
+          app.mount('#app');
+        </script>
+
+        <!-- 🙇🙇練習結束🙇🙇 -->
+      </main>
+
+      <aside class="col-md-3">
+        <div
+          class="sticky-top"
+          style="top: 76px"
+        >
+          <div class="list-group">
+
+            <a
+              href="/advApi/adv-refs.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              Refs
+            </a>
+
+            <a
+              href="/advApi/adv-teleport.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              Teleport
+            </a>
+
+            <a
+              href="/advApi/adv-provide.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              跨層級資料傳遞 Provide
+            </a>
+
+            <a
+              href="/advApi/adv-component-v-model.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              製作包含 v-model 的元件
+            </a>
+
+            <a
+              href="/advApi/adv-mixins.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              Mixin 混合
+            </a>
+
+            <a
+              href="/advApi/adv-extend.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              Extend 擴展
+            </a>
+
+            <a
+              href="/advApi/adv-directive.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              自訂義指令
+            </a>
+
+            <a
+              href="/advApi/adv-use-plugin.html"
+              class="list-group-item list-group-item-action
+        
+        "
+            >
+              外部套件引用
+            </a>
+
+            <a
+              href="/advApi/adv-vee-validation.html"
+              class="list-group-item list-group-item-action
+        
+        active"
+            >
+              表單驗證套件
+            </a>
+
+          </div>
+          <div class="mt-3 text-end p-2 bg-light rounded">
+            <small class="text-black-50 fw-light mb-0">文件版本：2022/6/21</small>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+
+  <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-secondary">
+    <div class="container-fluid">
+      <a
+        class="navbar-brand"
+        href="/"
+      >Vue 3 練習手冊</a>
+      <div
+        class="collapse navbar-collapse"
+        id="navbarCollapse"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a
+              class="nav-link "
+              href="/es6/shorthand.html"
+            >JS 必備觀念</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/intro/createApp.html"
+            >認識 Vue.js</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/template/v-text.html"
+            >模板</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/optionsApi/options-methods.html"
+            >方法</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/components/component_register.html"
+            >元件</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="/advApi/adv-refs.html"
+            >進階</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/router/vue-router.html"
+            >路由</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              href="/composition/proxy.html"
+            >Composition API</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <footer class="footer py-2 bg-light">
+    <div class="container text-center">
+      <small class="text-black-50 fw-light mb-0">六角學院 Vue 課程專屬文件</small>
+    </div>
+  </footer>
+  <link
+    rel="stylesheet"
+    href="/stylesheets/all.css"
+  >
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  >
+</body>
+
+</html>

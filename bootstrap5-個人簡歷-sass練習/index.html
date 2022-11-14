@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+    <!-- bootstrap-icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- min-vh-100 -> 內容較少時，高度先給 100  -->
+    <header class="min-vh-100 position-relative">
+      <!-- 左上方快 -->
+      <div class="deco-box position-absolute top-0 start-0"></div>
+      <!-- 右下方快 -->
+      <div class="deco-box position-absolute bottom-0 end-0"></div>
+      <!-- 因為封面圖只使用一次在這固定，所以直接 style 設定上下左右定在 header 中間 -->
+      <!-- style 的  background-image 用在通常只使用一次的地方，如果常用的用 HTML 標籤 img-->
+      <div
+        class="position-absolute bg-cover bg-attachment-fixed"
+        style="
+          top: 30px;
+          left: 30px;
+          right: 30px;
+          bottom: 30px;
+          background-image: url(https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+        "
+      ></div>
+      <!-- 因為絕對定位加上 top-50 start-50 雖然到中間，但是是以左上角開始呈現內容，所以要再加上 BS5 的 translate-middle 再置中-->
+      <div
+        class="position-absolute top-50 start-50 translate-middle text-center text-white"
+      >
+        <!-- display-1:BS5 的額外大小、fw-bold: BS5 font-weight-bold 粗體 -->
+        <h1 class="display-1 fw-bold">泊岸</h1>
+        <!-- 水平線 ， mx-n3 負值的 margin(讓兩邊延伸)，預設關閉，要在 BS5 中 _variables.scss 找到 enable-negative-margins  另外打開-->
+        <hr class="mb-1 mx-n5" />
+        <h2>前端工程師 (X)</h2>
+        <h2>廚房新手 (O)</h2>
+        <p>失智、頹廢、老人的步調進步中</p>
+      </div>
+    </header>
+    <!-- 自我介紹 -->
+    <div class="container py-5">
+      <!-- justify-content-center 讓左右的 col  置中 -->
+      <!-- flex-md-row-reverse 行動版 左右反轉 -->
+      <!-- gy-3 : 行動版時，圖與文字中間有空間 -->
+      <div class="row gy-3 justify-content-center flex-md-row-reverse">
+        <!-- 自我介紹 - 行動版(上方圖) : 因行動版時圖片要在文字上面，所以圖正常視窗時放在左邊，並讓外框帶反轉 -->
+        <div class="col-md-4">
+          <!-- w-100:寬給100 -->
+          <img
+            src="https://images.unsplash.com/photo-1612282131240-6e878907d0f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2021&q=80"
+            alt="故事發展"
+            class="w-100 object-fit-cover"
+            height="500"
+          />
+        </div>
+        <!-- 自我介紹 - 行動版(下方文字) -->
+        <div class="col-md-5 d-flex align-items-center">
+          <!-- 給內容一個外框，方便使用 flex 調整置中位置 -->
+          <div>
+            <h2 class="display-4">我的過度故事</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
+              quisquam quam tempora vitae, ducimus eos aliquid non dolores
+              suscipit similique veniam error. Fugiat, recusandae commodi optio
+              ducimus incidunt exercitationem consequatur.
+            </p>
+            <a href="#" class="btn btn-outline-primary mt-4 w-100"
+              >看看可悲故事發展</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 我的作品(O)我有作品嗎(X) -->
+    <!-- m-md-5 : 桌面板 才有 四周空格 -->
+    <div class="bg-light p-md-5 py-5 m-md-5">
+      <div class="container">
+        <h2 class="display-4 text-center mb-4">我的作品(O)我有作品嗎(X)</h2>
+        <!-- row-cols-lg-3 -> 桌面板 : 三欄卡片 -->
+        <!-- row-cols-1 -> 行動版 : 單欄卡片  -->
+        <!-- g-4 : 行動、桌面板時 上下左右都有空格 -->
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+          <div class="col">
+            <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+            <!-- 版本問題 需多加 border border-5  才能有邊框 -->
+            <div class="card text-white border border-5 h-100">
+              <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+              <!-- 再使用 object-fit-cover 讓 img 標籤，圖片裁切縮放正常 -->
+              <img
+                src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
+                class="card-img h-100 object-fit-cover"
+                alt="pasta"
+              />
+              <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
+              <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
+              <!-- 預設增加 top: auto 需要到 _variables.scss 中，position-values 加上 auto: auto -->
+              <!-- bg-dark-gradient 漸層遮布 -->
+              <!-- stretched-link : 連結延伸 ( Bootstrap 中卡片元件預設便帶有 position: relative ) -->
+              <div class="card-img-overlay top-auto bg-dark-gradient">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-outline-light w-100 stretched-link"
+                  >看作品</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+            <!-- 版本問題 需多加 border border-5  才能有邊框 -->
+            <div class="card text-white border border-5 h-100">
+              <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+              <!-- 再使用 object-fit-cover 讓 img 標籤，圖片裁切縮放正常 -->
+              <img
+                src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
+                class="card-img h-100 object-fit-cover"
+                alt="pasta"
+              />
+              <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
+              <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
+              <!-- 預設增加 top: auto 需要到 _variables.scss 中，position-values 加上 auto: auto -->
+              <!-- bg-dark-gradient 漸層遮布 -->
+              <!-- stretched-link : 連結延伸 ( Bootstrap 中卡片元件預設便帶有 position: relative ) -->
+              <div class="card-img-overlay top-auto bg-dark-gradient">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-outline-light w-100 stretched-link"
+                  >看作品</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+            <!-- 版本問題 需多加 border border-5  才能有邊框 -->
+            <div class="card text-white border border-5 h-100">
+              <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
+              <!-- 再使用 object-fit-cover 讓 img 標籤，圖片裁切縮放正常 -->
+              <img
+                src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
+                class="card-img h-100 object-fit-cover"
+                alt="pasta"
+              />
+              <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
+              <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
+              <!-- 預設增加 top: auto 需要到 _variables.scss 中，position-values 加上 auto: auto -->
+              <!-- bg-dark-gradient 漸層遮布 -->
+              <!-- stretched-link : 連結延伸 ( Bootstrap 中卡片元件預設便帶有 position: relative ) -->
+              <div class="card-img-overlay top-auto bg-dark-gradient">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content. Some quick example text to
+                  build on the card title and make up the bulk of the card's
+                  content.
+                </p>
+                <a href="#" class="btn btn-outline-light w-100 stretched-link"
+                  >看作品</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-primary p-5 text-white">
+      <div class="container">
+        <h2 class="display-4 text-center">可憐可憐我吧!!!</h2>
+        <div class="row justify-content-center">
+          <!-- 分成左右 5 等分而不是 12 等分各 6 等分，是因為要內容對比上面卡片邊框時再向內縮一些-->
+          <div class="col-md-5">
+            <h3 class="h4">聯絡方式</h3>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-envelope"></i> 123123222@gmail.com</li>
+              <li><i class="bi bi-telephone"></i> 0912 222 333</li>
+            </ul>
+            <h3 class="h4 mt-5">社群關懷</h3>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-line"></i> qqqqow</li>
+              <li><i class="bi bi-instagram"></i> qqqqow</li>
+              <li><i class="bi bi-facebook"></i> qqqqow</li>
+              <li><i class="bi bi-twitter"></i> qqqqow</li>
+            </ul>
+            <p>2022 by 泊岸. created with Bootstrap 5.</p>
+          </div>
+          <!-- 分成左右 5 等分而不是 12 等分各 6 等分，是因為要內容對比上面卡片邊框時再向內縮一些-->
+          <!-- 直接改成 form(表單) 標籤 -->
+          <!-- 驗證功能 class 內加上 needs-validation、class 外加上 novalidate -->
+          <form class="col-md-5 needs-validation" novalidate>
+            <!-- 預設表單 輸入框會比較分開，使用 g-2 讓輸入框相近點視為同個區塊  -->
+            <div class="row g-2">
+              <div class="col-md-6">
+                <label for="validationCustom01" class="form-label"
+                  >姓氏 *</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom01"
+                  value="Mark"
+                  required
+                />
+                <!-- <div class="valid-feedback">Looks good!</div> -->
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom02" class="form-label">名 *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom02"
+                  value="Otto"
+                  required
+                />
+                <div class="valid-feedback ms-2">好名字 !</div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email *</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                  required
+                />
+                <!-- 因為背景顏色關係預設顏色不明顯可以額外只調整 feedback 的提醒顏色  -->
+                <!-- _variables.scss 中更改 success、danger 色彩 -->
+                <!-- $form-feedback-valid-color: $success !default; -->
+                <!-- $form-feedback-invalid-color:$danger !default; -->
+                <div class="invalid-feedback ms-2">請輸入 Email，拜託啦 !</div>
+              </div>
+              <div class="mb-3 col-12">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >跟我說說話吧，給我一些回饋阿 -人-</label
+                >
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <!-- 表單送出鈕  要有 type="submit" -->
+              <div class="text-end col-12">
+                <button class="btn btn-outline-light" type="submit">
+                  送出表單
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // BS5 驗整表單 JS
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>

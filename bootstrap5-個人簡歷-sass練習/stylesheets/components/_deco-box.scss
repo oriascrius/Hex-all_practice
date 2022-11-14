@@ -1,0 +1,8 @@
+// 自定義元件(components)下的小元件
+ 
+ /* header 中的左上、右下藍色方塊 */
+ .deco-box {
+  height: 240px;
+  width: 240px;
+  background-color: var(--bs-primary);
+}

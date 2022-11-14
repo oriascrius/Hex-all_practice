@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./stylesheets/all.css" />
     <!-- bootstrap-icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     />
+    <!-- 自己的 css -->
+    <link rel="stylesheet" href="./stylesheets/all.css" />
   </head>
   <body>
     <!-- min-vh-100 -> 內容較少時，高度先給 100  -->
@@ -86,8 +87,8 @@
         <!-- row-cols-lg-3 -> 桌面板 : 三欄卡片 -->
         <!-- row-cols-1 -> 行動版 : 單欄卡片  -->
         <!-- g-4 : 行動、桌面板時 上下左右都有空格 -->
-        <div class="row row-cols-1 row-cols-lg-3 g-4">
-          <div class="col">
+        <ul class="row row-cols-1 row-cols-lg-3 g-4 list-unstyled">
+          <li class="col">
             <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
             <!-- 版本問題 需多加 border border-5  才能有邊框 -->
             <div class="card text-white border border-5 h-100">
@@ -96,7 +97,7 @@
               <img
                 src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
                 class="card-img h-100 object-fit-cover"
-                alt="pasta"
+                alt="pasta 第一款"
               />
               <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
               <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
@@ -114,17 +115,17 @@
                 >
               </div>
             </div>
-          </div>
-          <div class="col">
+          </li>
+          <li class="col">
             <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
             <!-- 版本問題 需多加 border border-5  才能有邊框 -->
             <div class="card text-white border border-5 h-100">
               <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
               <!-- 再使用 object-fit-cover 讓 img 標籤，圖片裁切縮放正常 -->
               <img
-                src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
+                src="https://images.unsplash.com/photo-1608334481162-bba440193a20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDZ8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
                 class="card-img h-100 object-fit-cover"
-                alt="pasta"
+                alt="pasta 第二款"
               />
               <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
               <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
@@ -142,17 +143,17 @@
                 >
               </div>
             </div>
-          </div>
-          <div class="col">
+          </li>
+          <li class="col">
             <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
             <!-- 版本問題 需多加 border border-5  才能有邊框 -->
             <div class="card text-white border border-5 h-100">
               <!-- 卡片內外層都 h-100，讓每個圖片都等高 -->
               <!-- 再使用 object-fit-cover 讓 img 標籤，圖片裁切縮放正常 -->
               <img
-                src="https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
+                src="https://images.unsplash.com/photo-1626299748494-939f18cf52be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHBhc3RhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
                 class="card-img h-100 object-fit-cover"
-                alt="pasta"
+                alt="pasta 第三款"
               />
               <!-- card-img-overlay 預設 是絕對定位 上下左右 都是 0 -->
               <!-- 改成 top: auto; 可以讓內容移動到卡片內下方 -->
@@ -172,28 +173,67 @@
                 >
               </div>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- Footer -->
     <footer class="bg-primary p-5 text-white">
       <div class="container">
-        <h2 class="display-4 text-center">可憐可憐我吧!!!</h2>
+        <h2 class="display-4 text-center mb-4">可憐可憐我吧QAQ</h2>
         <div class="row justify-content-center">
           <!-- 分成左右 5 等分而不是 12 等分各 6 等分，是因為要內容對比上面卡片邊框時再向內縮一些-->
           <div class="col-md-5">
+            <p>你好呀 ~ 說不定我有煮菜給你吃過唷 ^^</p>
             <h3 class="h4">聯絡方式</h3>
             <ul class="list-unstyled">
-              <li><i class="bi bi-envelope"></i> 123123222@gmail.com</li>
-              <li><i class="bi bi-telephone"></i> 0912 222 333</li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <!-- 信箱超連結 -->
+                <a
+                  href="mailto:123123222@gmail.com"
+                  class="text-decoration-none link-light ms-1"
+                >
+                  123123222@gmail.com</a
+                >
+              </li>
+              <li>
+                <i class="bi bi-telephone"></i>
+                <!-- 手機號碼寫法 超連結 -->
+                <a
+                  href="tel:+886-988222333"
+                  class="text-decoration-none link-light ms-1"
+                >
+                  0988 222 333</a
+                >
+              </li>
             </ul>
             <h3 class="h4 mt-5">社群關懷</h3>
             <ul class="list-unstyled">
-              <li><i class="bi bi-line"></i> qqqqow</li>
-              <li><i class="bi bi-instagram"></i> qqqqow</li>
-              <li><i class="bi bi-facebook"></i> qqqqow</li>
-              <li><i class="bi bi-twitter"></i> qqqqow</li>
+              <li>
+                <i class="bi bi-line"></i>
+                <a href="#" class="text-decoration-none link-light"
+                  >line-qoqqoqqq</a
+                >
+              </li>
+              <li>
+                <i class="bi bi-instagram"></i>
+                <a href="#" class="text-decoration-none link-light"
+                  >ig-qoqqoqqq</a
+                >
+              </li>
+              <li>
+                <i class="bi bi-facebook"></i>
+                <a href="#" class="text-decoration-none link-light"
+                  >fb-qoqqoqqq</a
+                >
+              </li>
+              <li>
+                <i class="bi bi-twitter"></i>
+                <a href="#" class="text-decoration-none link-light"
+                  >twitter-qoqqoqqq</a
+                >
+              </li>
             </ul>
             <p>2022 by 泊岸. created with Bootstrap 5.</p>
           </div>
@@ -211,7 +251,7 @@
                   type="text"
                   class="form-control"
                   id="validationCustom01"
-                  value="Mark"
+                  value=""
                   required
                 />
                 <!-- <div class="valid-feedback">Looks good!</div> -->
@@ -222,7 +262,7 @@
                   type="text"
                   class="form-control"
                   id="validationCustom02"
-                  value="Otto"
+                  value=""
                   required
                 />
                 <div class="valid-feedback ms-2">好名字 !</div>

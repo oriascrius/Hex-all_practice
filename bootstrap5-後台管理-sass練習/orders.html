@@ -1,0 +1,459 @@
+<!-- 上方導覽頁、左側選單在每個頁面都是固定的，所以更適合用後端的 Template lang，但現在是練習 bootstrap，所以可以把 index.html 改成 layout.html 當作共同版型用 -->
+<!-- order.html 這裡是 後台管理的 訂單列表 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bootstrap5-後台管理-sass練習</title>
+    <!-- bootstrap-icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <!-- 自己的 css -->
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+  </head>
+  <body vsc-initialized>
+    <div class="d-flex">
+      <!-- 左側欄固定寬度、滿高度 -->
+      <!-- flex - flex-column 設置垂直方向 -->
+      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column bg-white">
+        <!-- 1.後台名稱 -->
+        <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
+        <!-- 2.選單 -->
+        <!-- 因為選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
+        <div class="overflow-auto mt-3">
+          <div>
+            <a href="#" class="sidebar-link">
+              <div class="px-4"><i class="bi bi-house"></i>首頁</div>
+            </a>
+          </div>
+          <div>
+            <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
+            <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-order) -->
+            <a
+              href="#menu-order"
+              class="sidebar-link"
+              data-bs-toggle="collapse"
+            >
+              <!-- flex 排位置，左邊標題，右邊向下符號 -->
+              <div class="px-4 d-flex justify-content-between">
+                <p class="mb-0">訂單管理</p>
+                <i class="bi bi-caret-down"></i>
+              </div>
+            </a>
+            <!-- bootstrap 元件 - 折疊 (Collapse)，要 cdn bootstrap 的 js-->
+            <!-- 加上 class 摺疊 collapse，並有 id 給外層的 a 連結 對應-->
+            <div class="collapse" id="menu-order">
+              <a href="#" class="sidebar-link">
+                <div class="ps-5">其他項目</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- 3.登出按鈕 -->
+        <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
+        <a href="#" class="mt-auto sidebar-link">
+          <div class="px-4"><i class="bi bi-door-closed-fill"></i>登出</div>
+        </a>
+      </aside>
+      <!-- 右側欄 -->
+      <main class="main">
+        <!--  右側欄上方導覽頁 -->
+        <!-- sticky-top - > 元素固定在螢幕的底部，邊緣相接。但只有在滾動離開該元素之後才會執行 -->
+        <div class="bg-white w-100 border-bottom sticky-top">
+          <!-- bootstrap5 icon 搜尋 expand  -->
+          <!-- a 連結 - 收闔用按鈕 -->
+          <a
+            href="#"
+            class="d-inline-block py-3 px-4 border-end"
+            id="toggle-btn"
+            ><i class="bi bi-arrows-angle-expand"></i
+          ></a>
+        </div>
+        <!-- 主要內容 - 訂單列表 -->
+        <div class="p-4">
+          <!-- bootstrap 5 - 元件 - 導覽與頁籤 (Navs and tabs) - 右方 - 膠囊狀(nav-pills) -->
+          <ul class="nav nav-pills mb-4">
+            <li class="nav-item">
+              <!-- rounded-pill 圓角 -->
+              <a
+                class="nav-link rounded-pill active"
+                aria-current="page"
+                href="#"
+                >所有訂單
+                <!-- bootstrap 5 - 元件 - 標籤 (Badges) - 膠囊標籤 -->
+                <span class="badge rounded-pill bg-light text-dark">900 </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" aria-current="page" href="#"
+                >待處理
+                <span class="badge rounded-pill bg-light text-dark">32</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="#"
+                >已出貨
+                <span class="badge rounded-pill bg-light text-dark">855 </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill"
+                >退款
+                <span class="badge rounded-pill bg-light text-dark">2 </span>
+              </a>
+            </li>
+          </ul>
+          <!-- 資料內容 -->
+          <div class="card shadow-sm">
+            <!-- card-header 卡片內 搜尋表頭 -->
+            <div class="card-header bg-transparent">
+              <!-- input-group 搜尋群組 -->
+              <div class="input-group">
+                <!-- 與 home.html 對比，這裡加上了 下拉選單 - 單一按鈕 -->
+                <!-- bootstrap 5 - 元件 - 下拉選單 (Dropdowns) - 單一按鈕 -->
+                <div class="dropdown">
+                  <!-- btn-sm 按鈕調小 -->
+                  <button
+                    class="btn btn-outline-dark dropdown-toggle btn-sm"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    操作
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- input-group-text 搜尋框左邊前的 標誌或描述文字  -->
+                <span class="input-group-text border-0 bg-transparent pe-0">
+                  <i class="bi bi-search"></i>
+                </span>
+                <!-- 輸入框 -->
+                <input
+                  type="search"
+                  class="form-control border-0 shadow-none"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+            <!-- 搜尋框下方的資料內容 -->
+            <!-- p-0 貼齊搜尋框 -->
+            <div class="card-body p-0">
+              <!--  table-responsive 響應式，可以有卷軸出現 (會影響內部按編輯時，下拉選框不會超出 table 區塊，會不好看到文字)-->
+              <div class="table-responsive">
+                <!-- table 本身有向下 margin，mb-0 清除 -->
+                <table class="table table-hover mb-0">
+                  <thead class="bg-light">
+                    <!-- align-middle 改變 inline、inline-block、inline-table、和 table 元素的垂直對齊方式。 -->
+                    <tr class="align-middle">
+                      <!-- 對比 home.html，第一個加了 勾選鈕的上方 是空白的，並更改原本的訂單編號到第 2 個 -->
+                      <!-- 因為第一個是空白沒有文字，py-3 後上下空間比較小，可以另外加到第 2 個訂單編號中(因為有 文字 + 上 py-3 使得上下空間大一點)  -->
+                      <th scope="col" class="ps-4"></th>
+                      <th scope="col" class="py-3">訂單編號</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">用戶姓名</th>
+                      <th scope="col">購買品項</th>
+                      <th scope="col">付款狀態</th>
+                      <th scope="col">購買金額</th>
+                      <th scope="col" class="pe-4">編輯</th>
+                    </tr>
+                  </thead>
+                  <!-- text-nowrap 縮小視窗，文字不換行、也會出現卷軸 -->
+                  <tbody class="text-nowrap">
+                    <tr>
+                      <!-- 對比 home.html，第一個加了 勾選鈕、 class="form-check-input" 增加一點樣式 -->
+                      <td class="ps-4">
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td scope="row">TWX11451115</td>
+                      <td>aa12313@gmail.com</td>
+                      <td>泊岸沒有買</td>
+                      <td>消夜三連，每天必備</td>
+                      <td class="text-muted">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td class="text-end pe-4">
+                        <!-- 要加上 btn-group 變成群組，a 連結 + 下拉選單內容再放到裡面，這樣才會左右呈現而不是上下 -->
+                        <div class="btn-group">
+                          <a href="#" class="btn btn-sm btn-outline-dark"
+                            >編輯<i class="bi bi-pen"></i
+                          ></a>
+                          <!-- bootstrap 5 - 元件 - 下拉選單 (Dropdowns) - 單一按鈕 -->
+                          <!-- 可以刪掉本來的外層 <div class="dropdown"> -->
+                          <!-- <div class="dropdown"> -->
+                          <button
+                            class="btn btn-sm btn-outline-dark dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            操作
+                          </button>
+                          <ul
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1"
+                          >
+                            <li>
+                              <a class="dropdown-item" href="#">修改狀態</a>
+                            </li>
+                            <!-- bootstrap 5 - 元件 - 互動視窗 (Modal) - 完整範例 - 上方區塊  -->
+                            <!-- a 連結 刪除訂單，補上 data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                            <!-- data-bs-target="#exampleModal" -> 對應下方 id 改成 deleteModal -->
+                            <li>
+                              <a
+                                class="dropdown-item text-danger"
+                                href="#"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                data-bs-order-id="TWX11451115"
+                                >刪除訂單</a
+                              >
+                            </li>
+                          </ul>
+                          <!-- </div> -->
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <!-- 對比 home.html，第一個加了 勾選鈕、 class="form-check-input" 增加一點樣式 -->
+                      <td class="ps-4">
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td scope="row">TWX11451115</td>
+                      <td>aa12313@gmail.com</td>
+                      <td>泊岸沒有買</td>
+                      <td>消夜三連，每天必備</td>
+                      <td class="text-muted">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td class="text-end pe-4">
+                        <!-- 要加上 btn-group 變成群組，a 連結 + 下拉選單內容再放到裡面，這樣才會左右呈現而不是上下 -->
+                        <div class="btn-group">
+                          <a href="#" class="btn btn-sm btn-outline-dark"
+                            >編輯<i class="bi bi-pen"></i
+                          ></a>
+                          <!-- bootstrap 5 - 元件 - 下拉選單 (Dropdowns) - 單一按鈕 -->
+                          <!-- 可以刪掉本來的外層 <div class="dropdown"> -->
+                          <!-- <div class="dropdown"> -->
+                          <button
+                            class="btn btn-sm btn-outline-dark dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            操作
+                          </button>
+                          <ul
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1"
+                          >
+                            <li>
+                              <a class="dropdown-item" href="#">修改狀態</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">刪除訂單</a>
+                            </li>
+                          </ul>
+                          <!-- </div> -->
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <!-- 對比 home.html，第一個加了 勾選鈕、 class="form-check-input" 增加一點樣式 -->
+                      <td class="ps-4">
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td scope="row">TWX11451115</td>
+                      <td>aa12313@gmail.com</td>
+                      <td>泊岸沒有買</td>
+                      <td>消夜三連，每天必備</td>
+                      <td class="text-muted">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td class="text-end pe-4">
+                        <!-- 要加上 btn-group 變成群組，a 連結 + 下拉選單內容再放到裡面，這樣才會左右呈現而不是上下 -->
+                        <div class="btn-group">
+                          <a href="#" class="btn btn-sm btn-outline-dark"
+                            >編輯<i class="bi bi-pen"></i
+                          ></a>
+                          <!-- bootstrap 5 - 元件 - 下拉選單 (Dropdowns) - 單一按鈕 -->
+                          <!-- 可以刪掉本來的外層 <div class="dropdown"> -->
+                          <!-- <div class="dropdown"> -->
+                          <button
+                            class="btn btn-sm btn-outline-dark dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            操作
+                          </button>
+                          <ul
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1"
+                          >
+                            <li>
+                              <a class="dropdown-item" href="#">修改狀態</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">刪除訂單</a>
+                            </li>
+                          </ul>
+                          <!-- </div> -->
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <!-- 對比 home.html，第一個加了 勾選鈕、 class="form-check-input" 增加一點樣式 -->
+                      <td class="ps-4">
+                        <input type="checkbox" class="form-check-input" />
+                      </td>
+                      <td scope="row">TWX11451115</td>
+                      <td>aa12313@gmail.com</td>
+                      <td>泊岸沒有買</td>
+                      <td>消夜三連，每天必備</td>
+                      <td class="text-muted">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td class="text-end pe-4">
+                        <!-- 要加上 btn-group 變成群組，a 連結 + 下拉選單內容再放到裡面，這樣才會左右呈現而不是上下 -->
+                        <div class="btn-group">
+                          <a href="#" class="btn btn-sm btn-outline-dark"
+                            >編輯<i class="bi bi-pen"></i
+                          ></a>
+                          <!-- bootstrap 5 - 元件 - 下拉選單 (Dropdowns) - 單一按鈕 -->
+                          <!-- 可以刪掉本來的外層 <div class="dropdown"> -->
+                          <!-- <div class="dropdown"> -->
+                          <button
+                            class="btn btn-sm btn-outline-dark dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            操作
+                          </button>
+                          <ul
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1"
+                          >
+                            <li>
+                              <a class="dropdown-item" href="#">修改狀態</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">刪除訂單</a>
+                            </li>
+                          </ul>
+                          <!-- </div> -->
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 分頁 -->
+            <div class="card-footer bg-transparent py-3">
+              <!-- bootstrap 5  - 元件 - 分頁 (Pagination) - 概觀 -->
+              <nav aria-label="Page navigation example">
+                <!-- justify-content-end 將分頁碼放到右邊 -->
+                <!-- pagination 本身有 向下 margin，mb-0 調整 -->
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <!-- Modal - 刪除訂單 提醒框 -->
+            <!-- bootstrap 5 - 元件 - 互動視窗 (Modal) - 完整範例  - 下方區塊 -->
+            <!-- id="exampleModal" -> 改成 deleteModal -->
+            <div
+              class="modal fade"
+              id="deleteModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">刪除訂單</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- 裡面先放 <span id="deleteText"></span> -->
+                    <p>確認刪除 [<span id="deleteText"></span>] 的訂單嗎?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                      確認刪除
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 操作 - 刪除訂單 會呈現對應要刪除的那筆訂單編號 會出現在提醒框中 (不過這裡是寫綁定好的預設資料)  -->
+            <!-- bootstrap 5 - 元件 - 互動視窗 (Modal) - 完整範例  - 右方 - 不同的互動視窗內容的 JS (以下有改過寫法) -->
+            <script>
+              // 選取 提醒框
+              const modalByDelete = document.querySelector("#deleteModal");
+              // 當提醒框跳出時
+              modalByDelete.addEventListener("show.bs.modal", function (event) {
+                // event.relatedTarget 指的就是 自己這按鈕內(操作)的標籤
+                const button = event.relatedTarget;
+                // 對應 刪除訂單 的  data-bs-order-id
+                var orderId = button.dataset.bsOrderId;
+                console.log(button, orderId);
+                // 選取到 整個框框裡面的 預設 <span id="deleteText"></span>
+                const modalText = modalByDelete.querySelector("#deleteText");
+                // 將視窗提醒的 內容 對應 當初預設綁定在按鈕上 (之後會做動態的 不會像這樣寫死預設)
+                modalText.textContent = orderId;
+              });
+            </script>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 自己的 JS -->
+    <script src="./javascripts/all.js"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+<!-- 上方導覽頁、左側選單在每個頁面都是固定的，所以更適合用後端的 Template lang，但現在是練習 bootstrap，所以可以把 index.html 改成 layout.html 當作共同版型用 -->
+<!-- home.html 這裡是 後台管理的 首頁 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bootstrap5-後台管理-sass練習</title>
+    <!-- bootstrap-icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <!-- 自己的 css -->
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+  </head>
+  <body vsc-initialized>
+    <div class="d-flex">
+      <!-- 左側欄固定寬度、滿高度 -->
+      <!-- flex - flex-column 設置垂直方向 -->
+      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column bg-white">
+        <!-- 1.後台名稱 -->
+        <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
+        <!-- 2.選單 -->
+        <!-- 因為選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
+        <div class="overflow-auto mt-3">
+          <div>
+            <a href="#" class="sidebar-link">
+              <div class="px-4"><i class="bi bi-house"></i>首頁</div>
+            </a>
+          </div>
+          <div>
+            <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
+            <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-order) -->
+            <a
+              href="#menu-order"
+              class="sidebar-link"
+              data-bs-toggle="collapse"
+            >
+              <!-- flex 排位置，左邊標題，右邊向下符號 -->
+              <div class="px-4 d-flex justify-content-between">
+                <p class="mb-0">訂單管理</p>
+                <i class="bi bi-caret-down"></i>
+              </div>
+            </a>
+            <!-- bootstrap 元件 - 折疊 (Collapse)，要 cdn bootstrap 的 js-->
+            <!-- 加上 class 摺疊 collapse，並有 id 給外層的 a 連結 對應-->
+            <div class="collapse" id="menu-order">
+              <a href="#" class="sidebar-link">
+                <div class="ps-5">其他項目</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- 3.登出按鈕 -->
+        <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
+        <a href="#" class="mt-auto sidebar-link">
+          <div class="px-4"><i class="bi bi-door-closed-fill"></i>登出</div>
+        </a>
+      </aside>
+      <!-- 右側欄 -->
+      <main class="main">
+        <!--  右側欄上方導覽頁 -->
+        <!-- sticky-top - > 元素固定在螢幕的底部，邊緣相接。但只有在滾動離開該元素之後才會執行 -->
+        <div class="bg-white w-100 border-bottom sticky-top">
+          <!-- bootstrap5 icon 搜尋 expand  -->
+          <!-- a 連結 - 收闔用按鈕 -->
+          <a
+            href="#"
+            class="d-inline-block py-3 px-4 border-end"
+            id="toggle-btn"
+            ><i class="bi bi-arrows-angle-expand"></i
+          ></a>
+        </div>
+        <!-- stylesheets  - helpers - _variables.scss - border-radius-lg 有更改原本的大小 -->
+        <!-- stylesheets  - helpers - _variables.scss - card-border-radius - 大小直接改成對應 border-radius-lg  -->
+        <div class="p-4">
+          <!-- 主要內容 - 首頁 -->
+          <!-- row-cols-3 想要行動版、桌面板 都保持三欄  -->
+          <div class="row row-cols-3 mb-4">
+            <div class="col">
+              <!-- shadow-sm 卡片下沿 陰影 -->
+              <div class="card shadow-sm">
+                <div class="card-body text-end">
+                  <h2 class="display-6">在線人數</h2>
+                  <!-- P 段落本身有 向下 margin，補上 mb-0 -->
+                  <p class="display-4 mb-0">3,114</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body text-end">
+                  <h2 class="display-6">訂單數</h2>
+                  <!-- P 段落本身有 向下 margin，補上 mb-0 -->
+                  <p class="display-4 mb-0">1,011</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body text-end">
+                  <h2 class="display-6">營業額</h2>
+                  <!-- P 段落本身有 向下 margin，補上 mb-0 -->
+                  <p class="mb-0 text-success">
+                    <span class="fs-3">NT$</span
+                    ><span class="display-4">565,655</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 圖表部分 -->
+          <div class="row g-4 mb-4">
+            <!-- 縮小時，圖會分成上下 -->
+            <div class="col-lg-4">
+              <!-- h-100 讓左右的卡片都等高 -->
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <!-- canvas，課堂有提供 js -->
+                  <!-- 圓餅圖，img-fluid 讓 canvas 內的圖片響應式，要不然縮放時後兩欄會亂跑 -->
+                  <canvas id="pie-chart" class="img-fluid"></canvas>
+                </div>
+              </div>
+            </div>
+            <!-- 上面已經分 4，可以省略不寫 8 -->
+            <div class="col">
+              <!-- h-100 讓左右的卡片都等高 -->
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <!-- 格線條狀圖 -->
+                  <canvas id="bar-chart" class="img-fluid"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 資料內容 -->
+          <div class="card shadow-sm">
+            <!-- card-header 卡片內 搜尋表頭 -->
+            <div class="card-header bg-transparent">
+              <!-- input-group 搜尋群組 -->
+              <div class="input-group">
+                <!-- input-group-text 搜尋框左邊前的 標誌或描述文字  -->
+                <span class="input-group-text border-0 bg-transparent pe-0">
+                  <i class="bi bi-search"></i>
+                </span>
+                <!-- 輸入框 -->
+                <input
+                  type="search"
+                  class="form-control border-0 shadow-none"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+            <!-- 搜尋框下方的資料內容 -->
+            <!-- p-0 貼齊搜尋框 -->
+            <div class="card-body p-0">
+              <!-- table 響應式，可以有卷軸出現 -->
+              <div class="table-responsive">
+                <!-- table 本身有向下 margin，mb-0 清除 -->
+                <table class="table table-hover mb-0">
+                  <thead class="bg-light">
+                    <!-- align-middle 改變 inline、inline-block、inline-table、和 table 元素的垂直對齊方式。 -->
+                    <tr class="align-middle">
+                      <th scope="col" class="py-3 ps-4">訂單編號</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">用戶姓名</th>
+                      <th scope="col">購買品項</th>
+                      <th scope="col">付款狀態</th>
+                      <th scope="col">購買金額</th>
+                      <th scope="col" class="pe-4">編輯</th>
+                    </tr>
+                  </thead>
+                  <!-- text-nowrap 縮小視窗，文字不換行、也會出現卷軸 -->
+                  <tbody class="text-nowrap">
+                    <tr>
+                      <td scope="row" clsss="ps-4">TWX11451115</td>
+                      <td>aa12313@gmail.com</td>
+                      <td>泊岸沒有買</td>
+                      <td>消夜三連，每天必備</td>
+                      <td class="text-muted">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td class="text-end pe-4">
+                        <a href="#" class="btn btn-sm btn-outline-dark me-2"
+                          >編輯<i class="bi bi-pen"></i
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 分頁 -->
+            <div class="card-footer bg-transparent py-3">
+              <!-- bootstrap 5  - 元件 - 分頁 (Pagination) - 概觀 -->
+              <nav aria-label="Page navigation example">
+                <!-- justify-content-end 將分頁碼放到右邊 -->
+                <!-- pagination 本身有 向下 margin，mb-0 調整 -->
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- canvas JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 自己的 JS -->
+    <script src="./javascripts/all.js"></script>
+  </body>
+</html>

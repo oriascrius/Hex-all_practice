@@ -1,0 +1,88 @@
+// 這檔案用來控制左右欄設定
+$sidebar-width: 280px;
+
+// 行動版(預設) - 左側會跑到左邊外面，右側 main 會滿寬
+// 左側會跑到左邊外面
+.sidebar{
+    width: $sidebar-width;
+    // 向左邊移動自己的寬度 -> 跑出去視野
+    margin-left: -$sidebar-width;
+    // 收闔效果 - 當 執行 margin-left 時，執行 transition
+    // .25s 速度
+    transition: margin-left .25s;
+    position: fixed;
+    top: 0;
+    // 登出按鈕 設定
+    .sidebar-link {
+        color: $dark;
+        display: block;
+        text-decoration: none;
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+        &:hover {
+         background-color: rgba($primary, 0.16);
+        }
+       }
+        // 滑鼠點到的效果
+       .sidebar-link.active {
+        position: relative;
+        color: $primary !important;
+        background-color: rgba($primary, 0.16);
+        &::after {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 2px;
+         height: 100%;
+         width: 3px;
+         background: $primary;
+        }
+       }
+}
+
+// 右側 main 會滿寬
+.main{ 
+    width: 100%;
+}
+// 行動版 要設置 展開 sidebar 的功能(就是要能切換成桌面板 左右欄)
+.sidebar-toggled{
+    .sidebar{
+        margin-left: 0;
+    }
+    .main{
+        margin-left: $sidebar-width;
+    }
+}
+
+
+// 桌面板 (up)
+// bootstrap 官方 - 文件 - 排版 - 斷點 -最小寬度 
+@include media-breakpoint-up(lg) {
+// 左側先固定 280px，之後要更動從這檔案直接更動
+.sidebar{
+    // 上方行動版是負的，到桌面板要跑回來
+    margin-left: 0;
+    width: $sidebar-width;
+}
+
+// 右側算法 -> 整體空間減去 280px
+.main{  
+    // 這樣就不會寫固定值，直接運算 100vw(滿寬) - 左側固定寬度
+    // $sidebar-width 會呈現字串，要外層加上 #{} 才能轉成變數
+    width: calc(100vw - #{$sidebar-width});
+    margin-left: $sidebar-width;
+    transition: margin-left .25s;
+}
+
+// 桌面版 要設置 收合 sidebar 、展開 main 功能 (要能切換成行動版 只剩右側單欄滿寬)
+.sidebar-toggled{
+    .sidebar{
+        margin-left: -$sidebar-width;
+    }
+    .main{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+ }
+

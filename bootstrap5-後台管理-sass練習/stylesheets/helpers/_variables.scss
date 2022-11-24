@@ -1470,7 +1470,7 @@ $list-group-color:                  $gray-900 !default;
 $list-group-bg:                     $white !default;
 $list-group-border-color:           rgba($black, .125) !default;
 $list-group-border-width:           $border-width !default;
-$list-group-border-radius:          $border-radius !default;
+$list-group-border-radius:          $border-radius-lg;//$border-radius !default;
 
 $list-group-item-padding-y:         $spacer * .5 !default;
 $list-group-item-padding-x:         $spacer !default;

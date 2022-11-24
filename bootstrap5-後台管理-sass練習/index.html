@@ -1,12 +1,12 @@
 <!-- 上方導覽頁、左側選單在每個頁面都是固定的，所以更適合用後端的 Template lang，但現在是練習 bootstrap，所以可以把 index.html 改成 layout.html 當作共同版型用 -->
-<!-- home.html 這裡是 後台管理的 首頁 -->
+<!-- index.html 這裡是 後台管理的 首頁 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bootstrap5-後台管理-sass練習</title>
+    <title>後台管理-首頁</title>
     <!-- bootstrap-icons -->
     <link
       rel="stylesheet"
@@ -23,40 +23,63 @@
         <!-- 1.後台名稱 -->
         <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
         <!-- 2.選單 -->
-        <!-- 因為選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
+        <!-- 因為左側選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
         <div class="overflow-auto mt-3">
           <div>
-            <a href="#" class="sidebar-link">
-              <div class="px-4"><i class="bi bi-house"></i>首頁</div>
+            <!-- 不包含子選單 -->
+            <a href="index.html" class="sidebar-link active">
+              <div class="px-4">
+                <i class="bi bi-house me-2"></i>
+                首頁
+              </div>
             </a>
           </div>
           <div>
+            <!-- 包含子選項 -->
             <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
-            <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-order) -->
+            <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-admin) -->
             <a
-              href="#menu-order"
+              href="#menu-admin"
               class="sidebar-link"
               data-bs-toggle="collapse"
             >
               <!-- flex 排位置，左邊標題，右邊向下符號 -->
               <div class="px-4 d-flex justify-content-between">
-                <p class="mb-0">訂單管理</p>
+                <p class="mb-0">
+                  <i class="bi bi-card-checklist me-2"></i>
+                  訂單管理
+                </p>
                 <i class="bi bi-caret-down"></i>
               </div>
             </a>
             <!-- bootstrap 元件 - 折疊 (Collapse)，要 cdn bootstrap 的 js-->
             <!-- 加上 class 摺疊 collapse，並有 id 給外層的 a 連結 對應-->
-            <div class="collapse" id="menu-order">
-              <a href="#" class="sidebar-link">
-                <div class="ps-5">其他項目</div>
+            <div class="collapse" id="menu-admin">
+              <a href="orders.html" class="sidebar-link">
+                <div class="ps-5">訂單列表</div>
+              </a>
+              <a href="order.html" class="sidebar-link">
+                <div class="ps-5">單一訂單細節</div>
               </a>
             </div>
+          </div>
+          <!-- 其他連結 -->
+          <div>
+            <!-- 不包含子選單 -->
+            <a href="#" class="sidebar-link">
+              <div class="px-4">
+                <i class="bi bi-list-stars me-2"></i>
+                參考連結
+              </div>
+            </a>
           </div>
         </div>
         <!-- 3.登出按鈕 -->
         <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
         <a href="#" class="mt-auto sidebar-link">
-          <div class="px-4"><i class="bi bi-door-closed-fill"></i>登出</div>
+          <div class="px-4">
+            <i class="bi bi-door-closed-fill me-2"></i>登出
+          </div>
         </a>
       </aside>
       <!-- 右側欄 -->
@@ -105,7 +128,7 @@
                   <!-- P 段落本身有 向下 margin，補上 mb-0 -->
                   <p class="mb-0 text-success">
                     <span class="fs-3">NT$</span
-                    ><span class="display-4">565,655</span>
+                    ><span class="display-4">360455</span>
                   </p>
                 </div>
               </div>
@@ -147,11 +170,11 @@
                 <span class="input-group-text border-0 bg-transparent pe-0">
                   <i class="bi bi-search"></i>
                 </span>
-                <!-- 輸入框 -->
+                <!-- 查詢訂單 輸入框 -->
                 <input
                   type="search"
                   class="form-control border-0 shadow-none"
-                  placeholder="Search"
+                  placeholder="請輸入要搜尋的內容"
                 />
               </div>
             </div>
@@ -201,13 +224,13 @@
                 <!-- pagination 本身有 向下 margin，mb-0 調整 -->
                 <ul class="pagination justify-content-end mb-0">
                   <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
+                    <a class="page-link" href="#">«</a>
                   </li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
                   <li class="page-item"><a class="page-link" href="#">2</a></li>
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#">»</a>
                   </li>
                 </ul>
               </nav>

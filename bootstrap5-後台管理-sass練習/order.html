@@ -1,0 +1,447 @@
+<!-- 上方導覽頁、左側選單在每個頁面都是固定的，所以更適合用後端的 Template lang，但現在是練習 bootstrap，所以可以把 index.html 改成 layout.html 當作共同版型用 -->
+<!-- 這是 訂單管理內的 單一訂單細節 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>後台管理-單一訂單細節</title>
+    <!-- bootstrap-icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <!-- 自己的 css -->
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+  </head>
+  <!-- Sticky 與 scroll spy 的混合運用 -->
+  <!-- bootstrap 5 - 元件 - 滾動監控 (Scrollspy) - navbar 範例 - 在 body 放上 data-bs-spy="scroll" data-bs-target="#navbar-example2" -->
+  <!-- 其中 navbar-example2  要改成 對應監控的(摘要、購買品項 ... ) 的 id detail-list-item -->
+  <!-- 當左邊標題 對應右邊內容 滾輪往下滑 主題會跟著內容移動 -->
+  <!-- 右方內容多時，滾動監控跳動距離比較符合，反之內容少就可能滑個幾下就換主題了 -->
+  <!-- 設定 data-bs-offset="80" 時，當區塊距離最上方約 80px 的距離時，就會偵測到該區塊，並在導覽列顯示 active 樣式 -->
+  <body
+    vsc-initialized
+    data-bs-spy="scroll"
+    data-bs-target="#detail-list-item"
+    data-bs-offset="80"
+  >
+    <div class="d-flex">
+      <!-- 左側欄固定寬度、滿高度 -->
+      <!-- flex - flex-column 設置垂直方向 -->
+      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column bg-white">
+        <!-- 1.後台名稱 -->
+        <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
+        <!-- 2.選單 -->
+        <!-- 因為左側選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
+        <div class="overflow-auto mt-3">
+          <div>
+            <!-- 不包含子選單 -->
+            <a href="index.html" class="sidebar-link">
+              <div class="px-4">
+                <i class="bi bi-house me-2"></i>
+                首頁
+              </div>
+            </a>
+          </div>
+          <div>
+            <!-- 包含子選項 -->
+            <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
+            <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-admin) -->
+            <a
+              href="#menu-admin"
+              class="sidebar-link"
+              data-bs-toggle="collapse"
+            >
+              <!-- flex 排位置，左邊標題，右邊向下符號 -->
+              <div class="px-4 d-flex justify-content-between">
+                <p class="mb-0">
+                  <i class="bi bi-card-checklist me-2"></i>
+                  訂單管理
+                </p>
+                <i class="bi bi-caret-down"></i>
+              </div>
+            </a>
+            <!-- bootstrap 元件 - 折疊 (Collapse)，要 cdn bootstrap 的 js-->
+            <!-- 加上 class 摺疊 collapse，並有 id 給外層的 a 連結 對應-->
+            <div class="collapse" id="menu-admin">
+              <a href="orders.html" class="sidebar-link">
+                <div class="ps-5">訂單列表</div>
+              </a>
+              <a href="order.html" class="sidebar-link active">
+                <div class="ps-5">單一訂單細節</div>
+              </a>
+            </div>
+          </div>
+          <!-- 其他連結 -->
+          <div>
+            <!-- 不包含子選單 -->
+            <a href="#" class="sidebar-link">
+              <div class="px-4">
+                <i class="bi bi-list-stars me-2"></i>
+                參考連結
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- 3.登出按鈕 -->
+        <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
+        <a href="#" class="mt-auto sidebar-link">
+          <div class="px-4"><i class="bi bi-door-closed-fill"></i>登出</div>
+        </a>
+      </aside>
+      <!-- 右側欄 -->
+      <main class="main">
+        <!--  右側欄上方導覽頁 -->
+        <!-- sticky-top - > 元素固定在螢幕的底部，邊緣相接。但只有在滾動離開該元素之後才會執行 -->
+        <div class="bg-white w-100 border-bottom sticky-top">
+          <!-- bootstrap5 icon 搜尋 expand  -->
+          <!-- a 連結 - 收闔用按鈕 -->
+          <a
+            href="#"
+            class="d-inline-block py-3 px-4 border-end"
+            id="toggle-btn"
+            ><i class="bi bi-arrows-angle-expand"></i
+          ></a>
+        </div>
+        <!-- 主要內容 -->
+        <div class="p-4">
+          <div class="row">
+            <!-- 左側 -->
+            <div class="col-lg-3 mb-3">
+              <!-- bootstrap 5 元件 - 列表群組 (List group) - 連結和按鈕  -->
+              <!-- 更改 小圓角 -> 大圓角 變數，stylesheets - helpers - _variables.scss - list-group-border-radius，將 $border-radius 改成 $border-radius-lg -->
+              <!-- sticky-top 滾動向下後，列表會維持定在 視窗 top 0 得位置，我們要再向下一些，加上 style="top: 80px" 就可以定在 距離 頂端 視窗 top 0 向下 80px 的位置-->
+              <!-- ------ -->
+              <!-- Sticky 與 scroll spy 的混合運用 -->
+              <!-- bootstrap 5 - 元件 - 滾動監控 (Scrollspy) - navbar 範例 - 在 body 放上 data-bs-spy="scroll" data-bs-target="#navbar-example2" -->
+              <!-- 其中 navbar-example2  要改成 對應監控的(摘要、購買品項 ... ) 的 id detail-list-item -->
+              <div
+                id="detail-list-item"
+                class="list-group sticky-top"
+                style="top: 80px"
+              >
+                <a
+                  href="#card-summary"
+                  class="list-group-item list-group-item-action active"
+                  aria-current="true"
+                >
+                  摘要
+                </a>
+                <a
+                  href="#card-detail"
+                  class="list-group-item list-group-item-action"
+                  >購買品項</a
+                >
+                <a
+                  href="#card-invoice"
+                  class="list-group-item list-group-item-action"
+                  >發票管理</a
+                >
+                <a
+                  href="#card-danger"
+                  class="list-group-item list-group-item-action"
+                  >危險操作</a
+                >
+              </div>
+            </div>
+            <!-- 右側 -->
+            <div class="col-lg-9">
+              <div class="col-lg-9">
+                <div class="card mb-3">
+                  <div class="card-header" id="card-summary">摘要</div>
+                  <div class="card-body">
+                    <!-- bootstrap 5 - 內容 - 文字排版 - 描述型列表對齊 dl dt dd -->
+                    <!-- text-truncate 文字太長 裁掉 -->
+                    <dl class="row mb-0">
+                      <dt class="col-sm-3 text-truncate">訂單編號</dt>
+                      <dd class="col-sm-9">TX123456789</dd>
+                      <dt class="col-sm-3 text-truncate">訂單金額</dt>
+                      <dd class="col-sm-9">1,800</dd>
+                      <dt class="col-sm-3 text-truncate">訂單狀態</dt>
+                      <dd class="col-sm-9">待處理</dd>
+                      <dt class="col-sm-3 text-truncate">發票狀態</dt>
+                      <dd class="col-sm-9">未開立</dd>
+                    </dl>
+                  </div>
+                </div>
+                <!-- table-responsive 可以產生 卷軸 -->
+                <div class="card mb-3 table-responsive">
+                  <div class="card-header" id="card-detail">購買品項</div>
+                  <div class="card-body p-0">
+                    <table
+                      class="table table-hover mb-0 text-nowrap align-middle w-100"
+                      style="font-size: 14px"
+                    >
+                      <thead class="bg-light">
+                        <tr>
+                          <th scope="col" class="ps-4 py-3 border-0"></th>
+                          <th scope="col" class="py-3 border-0">貨號</th>
+                          <th scope="col" class="py-3 border-0">商品名稱</th>
+                          <th scope="col" class="py-3 border-0">購買價格</th>
+                          <th scope="col" class="py-3 border-0">訂購數量</th>
+                          <th scope="col" class="py-3 border-0">出貨狀態</th>
+                          <th scope="col" class="py-3 pe-3 border-0">編輯</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-nowrap">
+                        <tr class="align-middle">
+                          <td class="ps-4">
+                            <input class="form-check-input" type="checkbox" />
+                          </td>
+                          <td scope="row">P1234567</td>
+                          <td>大麥克全家餐</td>
+                          <td>900</td>
+                          <td>1</td>
+                          <td>
+                            <div class="text-muted">尚未處理</div>
+                          </td>
+                          <td class="text-center pe-3">
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                編輯
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a class="dropdown-item" href="#">尚未處理</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">已出貨</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">已取貨</a>
+                                </li>
+                                <li>
+                                  <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >刪除品項</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="align-middle">
+                          <td class="ps-4">
+                            <input class="form-check-input" type="checkbox" />
+                          </td>
+                          <td scope="row">P1234567</td>
+                          <td>義大利麵佐番茄醬</td>
+                          <td>450</td>
+                          <td>2</td>
+                          <td>
+                            <div class="text-muted">尚未處理</div>
+                          </td>
+                          <td class="text-center pe-3">
+                            <div class="btn-group">
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                編輯
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a class="dropdown-item" href="#">尚未處理</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">已出貨</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">已取貨</a>
+                                </li>
+                                <li>
+                                  <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                  <a class="dropdown-item text-danger" href="#"
+                                    >刪除品項</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="px-4 py-3">
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          出貨狀態管理
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item" href="#">尚未處理</a>
+                          </li>
+                          <li><a class="dropdown-item" href="#">已出貨</a></li>
+                          <li><a class="dropdown-item" href="#">已取貨</a></li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a class="dropdown-item text-danger" href="#"
+                              >刪除品項</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mb-3">
+                  <div class="card-header" id="card-invoice">發票管理</div>
+                  <div class="card-body">
+                    <div class="row mb-3">
+                      <label for="invoiceType" class="col-sm-2 col-form-label"
+                        >發票類型</label
+                      >
+                      <div class="col-sm-10">
+                        <select name="" id="invoiceType" class="form-select">
+                          <option value="">個人發票</option>
+                          <option value="" selected>營業人三聯式發票</option>
+                          <option value="">捐贈發票</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="taxNumber" class="col-sm-2 col-form-label"
+                        >統一編號</label
+                      >
+                      <div class="col-sm-10">
+                        <input
+                          type="text"
+                          id="taxNumber"
+                          class="form-control"
+                          value="44223311"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="companyName" class="col-sm-2 col-form-label"
+                        >公司名稱</label
+                      >
+                      <div class="col-sm-10">
+                        <input
+                          type="text"
+                          id="companyName"
+                          class="form-control"
+                          value="六角西餐廳"
+                        />
+                      </div>
+                    </div>
+                    <div class="text-end">
+                      <button type="button" class="btn btn-outline-primary">
+                        更新資訊
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- 危險操作卡片 -->
+                <div class="card" id="danger">
+                  <div class="card-header">危險操作</div>
+                  <div class="card-body">
+                    <div class="row align-items-center mb-3">
+                      <div class="col-4 col-md-2">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary w-100"
+                        >
+                          退款
+                        </button>
+                      </div>
+                      <div class="col-8 col-md-10">退還用戶款項</div>
+                    </div>
+                    <div class="row align-items-center mb-3">
+                      <div class="col-4 col-md-2">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary w-100"
+                        >
+                          折讓
+                        </button>
+                      </div>
+                      <div class="col-8 col-md-10">
+                        針對已開立的訂單退回部分款項
+                      </div>
+                    </div>
+                    <div class="row align-items-center">
+                      <div class="col-4 col-md-2">
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger w-100"
+                        >
+                          刪除訂單
+                        </button>
+                      </div>
+                      <div class="col-8 col-md-10">
+                        將訂單刪除，並移除相關訂單資訊
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
+            <!-- 上方 br 留白用 -->
+            <!-- Sticky 與 scroll spy 的混合運用 -->
+            <!-- bootstrap 5 - 元件 - 滾動監控 (Scrollspy) - navbar 範例 - 在 body 放上 data-bs-spy="scroll" data-bs-target="#navbar-example2" -->
+            <!-- 其中 navbar-example2  要改成 對應監控的 主題 的 id detail-list-item -->
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 自己的 JS -->
+    <script src="./javascripts/all.js"></script>
+  </body>
+</html>

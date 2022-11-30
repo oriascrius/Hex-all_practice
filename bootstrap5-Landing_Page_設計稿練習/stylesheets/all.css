@@ -58,7 +58,7 @@
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
   --bs-border-radius: 0.375rem;
   --bs-border-radius-sm: 0.25rem;
-  --bs-border-radius-lg: 0.75rem;
+  --bs-border-radius-lg: 0.5rem;
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
@@ -2079,7 +2079,7 @@ progress {
   min-height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
 }
 .form-control-lg::file-selector-button {
   padding: 0.5rem 1rem;
@@ -2173,7 +2173,7 @@ textarea.form-control-lg {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   font-size: 1.25rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
 }
 
 .form-check {
@@ -2497,7 +2497,7 @@ textarea.form-control-lg {
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
 }
 
 .input-group-sm > .form-control,
@@ -3093,7 +3093,7 @@ textarea.form-control-lg {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-font-size: 1.25rem;
-  --bs-btn-border-radius: 0.75rem;
+  --bs-btn-border-radius: 0.5rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -3683,12 +3683,12 @@ textarea.form-control-lg {
   --bs-navbar-color: rgba(0, 0, 0, 0.55);
   --bs-navbar-hover-color: rgba(0, 0, 0, 0.7);
   --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
-  --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-active-color: rgba(13, 202, 240, 0.9);
   --bs-navbar-brand-padding-y: 0.3125rem;
   --bs-navbar-brand-margin-end: 1rem;
   --bs-navbar-brand-font-size: 1.25rem;
-  --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
-  --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-brand-color: rgba(13, 202, 240, 0.9);
+  --bs-navbar-brand-hover-color: rgba(13, 202, 240, 0.9);
   --bs-navbar-nav-link-padding-x: 0.5rem;
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
@@ -4106,9 +4106,9 @@ textarea.form-control-lg {
   --bs-card-title-spacer-y: 0.5rem;
   --bs-card-border-width: 1px;
   --bs-card-border-color: var(--bs-border-color-translucent);
-  --bs-card-border-radius: 0.75rem;
+  --bs-card-border-radius: 0.375rem;
   --bs-card-box-shadow: ;
-  --bs-card-inner-border-radius: calc(0.75rem - 1px);
+  --bs-card-inner-border-radius: calc(0.375rem - 1px);
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
   --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
@@ -4533,7 +4533,7 @@ textarea.form-control-lg {
   --bs-pagination-padding-x: 1.5rem;
   --bs-pagination-padding-y: 0.75rem;
   --bs-pagination-font-size: 1.25rem;
-  --bs-pagination-border-radius: 0.75rem;
+  --bs-pagination-border-radius: 0.5rem;
 }
 
 .pagination-sm {
@@ -4737,7 +4737,7 @@ textarea.form-control-lg {
   --bs-list-group-bg: #fff;
   --bs-list-group-border-color: rgba(0, 0, 0, 0.125);
   --bs-list-group-border-width: 1px;
-  --bs-list-group-border-radius: 0.75rem;
+  --bs-list-group-border-radius: 0.375rem;
   --bs-list-group-item-padding-x: 1rem;
   --bs-list-group-item-padding-y: 0.5rem;
   --bs-list-group-action-color: #495057;
@@ -5190,9 +5190,9 @@ textarea.form-control-lg {
   --bs-modal-bg: #fff;
   --bs-modal-border-color: var(--bs-border-color-translucent);
   --bs-modal-border-width: 1px;
-  --bs-modal-border-radius: 0.75rem;
+  --bs-modal-border-radius: 0.5rem;
   --bs-modal-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --bs-modal-inner-border-radius: calc(0.75rem - 1px);
+  --bs-modal-inner-border-radius: calc(0.5rem - 1px);
   --bs-modal-header-padding-x: 1rem;
   --bs-modal-header-padding-y: 1rem;
   --bs-modal-header-padding: 1rem 1rem;
@@ -5583,8 +5583,8 @@ textarea.form-control-lg {
   --bs-popover-bg: #fff;
   --bs-popover-border-width: 1px;
   --bs-popover-border-color: var(--bs-border-color-translucent);
-  --bs-popover-border-radius: 0.75rem;
-  --bs-popover-inner-border-radius: calc(0.75rem - 1px);
+  --bs-popover-border-radius: 0.5rem;
+  --bs-popover-inner-border-radius: calc(0.5rem - 1px);
   --bs-popover-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
@@ -5772,7 +5772,6 @@ textarea.form-control-lg {
   display: block;
 }
 
-/* rtl:begin:ignore */
 .carousel-item-next:not(.carousel-item-start),
 .active.carousel-item-end {
   transform: translateX(100%);
@@ -5783,7 +5782,6 @@ textarea.form-control-lg {
   transform: translateX(-100%);
 }
 
-/* rtl:end:ignore */
 .carousel-fade .carousel-item {
   opacity: 0;
   transition-property: opacity;
@@ -10765,64 +10763,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.sidebar {
-  width: 280px;
-  margin-left: -280px;
-  transition: margin-left 0.25s;
-  position: fixed;
-  top: 0;
-}
-.sidebar .sidebar-link {
-  color: #212529;
-  display: block;
-  text-decoration: none;
-  padding-top: 0.875rem;
-  padding-bottom: 0.875rem;
-}
-.sidebar .sidebar-link:hover {
-  background-color: rgba(13, 110, 253, 0.16);
-}
-.sidebar .sidebar-link.active {
-  position: relative;
-  color: #0d6efd !important;
-  background-color: rgba(13, 110, 253, 0.16);
-}
-.sidebar .sidebar-link.active::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 2px;
-  height: 100%;
-  width: 3px;
-  background: #0d6efd;
-}
-
-.main {
-  width: 100%;
-}
-
-.sidebar-toggled .sidebar {
-  margin-left: 0;
-}
-.sidebar-toggled .main {
-  margin-left: 280px;
-}
-
-@media (min-width: 992px) {
-  .sidebar {
-    margin-left: 0;
-    width: 280px;
-  }
-  .main {
-    width: calc(100vw - 280px);
-    margin-left: 280px;
-    transition: margin-left 0.25s;
-  }
-  .sidebar-toggled .sidebar {
-    margin-left: -280px;
-  }
-  .sidebar-toggled .main {
-    width: 100%;
-    margin-left: 0;
-  }
+.header {
+  height: 627px;
+  background-size: cover;
+  background-position: bottom center;
 }/*# sourceMappingURL=all.css.map */

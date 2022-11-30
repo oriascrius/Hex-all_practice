@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page 設計稿練習</title>
+    <!-- bootstrap 5 icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+    <!-- Noto Sans 字體官網，下方 styles 搜尋 -> 選取 Regular400、Bold700，右方會出現連結 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 這邊先在 body 加上 字體  */
+      body {
+        /* Noto Sans 字體官網，下方 Styles 搜尋 -> 選取 Regular400、Bold700，右方會出現連結，除了連結還要加上 CSS  */
+        /* 預設使用 Regular，class="fw-bold" -> 變成粗體的 Bold */
+        font-family: "Noto Sans TC", sans-serif;
+      }
+    </style>
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+  </head>
+  <body>
+    <!-- 1. Navbar start-->
+    <!-- bootstrap 5 -> 元件 -> 導覽列 (Navbar) -> 支援內容，把向下選單、搜尋、表單都先刪除用不到 -->
+    <!-- 設計稿 navbar 白色，bg-light 改成 bg-white -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- https://hexschool.github.io/bootstrap5-homework/index.html -> 設計圖顯示 navbar 內容偏中間，所以外框 container-fluid 滿寬 改成 container -->
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <!-- bootstrap 5 -> icon -> 搜尋 record (Record fill) -->
+          <!-- text-info 將圖標變成淡藍色 -->
+          <i class="bi bi-record-fill text-info"></i>
+          泊岸
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- 預設 me-auto，這裡要將這區塊向右，所以改成 ms-auto -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <!-- 設計稿中，active 顏色是淡藍色，這裡直接到 stylesheets/helpers/_variables.scss 中 1108 行 $navbar-light-active-color 更改變數 -->
+              <!-- $black -> $info  -->
+              <a class="nav-link active" aria-current="page" href="#">首頁</a>
+            </li>
+            <!-- 每個 li 加上 mx-3 增加左右 margin -->
+            <li class="nav-item mx-3">
+              <a class="nav-link" href="#">服務介紹</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link" href="#">方案費用</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link" href="#">常見問題</a>
+            </li>
+            <li class="nav-item mx-3">
+              <!-- 設計稿中，這裡是按鈕，改成 btn btn-info 並且 info 淡藍色 -->
+              <a class="btn btn-info" href="#">方案費用</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 1. Navbar end -->
+
+    <!-- 2. header 背景滿寬圖 start -->
+    <!-- 新建額外元件 CSS stylesheets/components/_header.scss 加入 class="header"  -->
+    <!-- 直接在標籤上，加上 style 背景圖 -->
+    <!-- align-items-lg-center 桌面板時垂直置中 -->
+    <header
+      class="header px-4 py-5 d-flex justify-content-center align-items-lg-center"
+      style="background-image: url(./images/home_bg.jpg)"
+    >
+      <!-- 背景圖中的文字 -->
+      <div class="text-white text-center">
+        <p class="fs-5">你是不是也有夢想</p>
+        <h1 class="fw-bold">當個小懶蟲?</h1>
+        <p>
+          想有人幫你丟垃圾、澆花、買飯、洗衣服，最好還可以幫你寫功課、工作！<br />
+          不想做討厭的事也不想被罵，只想把時間花在更喜歡的事情上，<br />
+          來！就讓我們幫你實現願望^__^！
+        </p>
+      </div>
+    </header>
+    <!-- 2. header 背景滿寬圖 end -->
+
+    <!-- 3. section 多欄式卡片 start -->
+    <section class="container my-5">
+      <!-- 手機排版時要 上文字+下圖片，所以排版要先 文字+圖，flex-row-reverse -> 讓桌面版 預設 左文字+右圖片 相反成 -> 左圖片+右文字 -->
+      <div class="row flex-row-reverse">
+        <!-- 桌面版時，左右各半 -->
+        <!-- 文字 -->
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+          <div>
+            <h2>讓我們幫你節省寶貴的時間</h2>
+            <!-- bootstrap 5 -> 通用類別 -> 文字 (Text) -> 行高 lh -->
+            <p class="lh-lg text-secondary">
+              我們有專業的清潔大師、花草大師， <br />
+              也有學霸、來自各界的專業人才，<br />
+              幫您處理您沒時間做的小事、大事，<br />
+              讓你安心把人生花在你覺得更有意義的事情上！ <br />
+              （只要您有錢即可
+            </p>
+          </div>
+        </div>
+        <!-- 桌面版時，左右各半 -->
+        <!-- 圖 -->
+        <div class="col-lg-6">
+          <!-- 圖片 加上 class="w-100" 滿寬 -->
+          <img src="./images/info.jpg" class="w-100" alt="info" />
+        </div>
+      </div>
+    </section>
+    <!-- 3. section 多欄式卡片 end -->
+
+    <!-- 3. section 多欄式卡片 start -->
+    <!-- 3. section 多欄式卡片 end -->
+
+    <!-- 4. section 連續背景圖 start  -->
+    <section class="py-5" style="background-image: url(./images/bg_paper.png)">
+      <div class="container">
+        <h2 class="text-center mb-4">你有這些煩惱嗎？</h2>
+      </div>
+    </section>
+    <!-- 4. section 連續背景圖 end  -->
+
+    <!-- bootstrap 5 JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+      integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

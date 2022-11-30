@@ -19,13 +19,13 @@
     <div class="d-flex">
       <!-- 左側欄固定寬度、滿高度 -->
       <!-- flex - flex-column 設置垂直方向 -->
-      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column bg-white">
+      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column">
         <!-- 1.後台名稱 -->
-        <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
+        <h1 class="px-4 h6"><strong>泊岸不想開餐廳</strong> - 後台管理</h1>
         <!-- 2.選單 -->
         <!-- 因為左側選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
-        <div class="overflow-auto mt-3">
-          <div>
+        <ul class="overflow-auto mt-3 list-unstyled">
+          <li class="list-group-item">
             <!-- 不包含子選單 -->
             <a href="index.html" class="sidebar-link active">
               <div class="px-4">
@@ -33,8 +33,8 @@
                 首頁
               </div>
             </a>
-          </div>
-          <div>
+          </li>
+          <li>
             <!-- 包含子選項 -->
             <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
             <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-admin) -->
@@ -62,9 +62,9 @@
                 <div class="ps-5">單一訂單細節</div>
               </a>
             </div>
-          </div>
+          </li>
           <!-- 其他連結 -->
-          <div>
+          <li>
             <!-- 不包含子選單 -->
             <a href="#" class="sidebar-link">
               <div class="px-4">
@@ -72,21 +72,19 @@
                 參考連結
               </div>
             </a>
-          </div>
-        </div>
+          </li>
+        </ul>
         <!-- 3.登出按鈕 -->
         <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
-        <a href="#" class="mt-auto sidebar-link">
-          <div class="px-4">
-            <i class="bi bi-door-closed-fill me-2"></i>登出
-          </div>
+        <a href="#" class="mt-auto sidebar-link px-4">
+          <i class="bi bi-door-closed-fill me-2"></i>登出
         </a>
       </aside>
       <!-- 右側欄 -->
       <main class="main">
         <!--  右側欄上方導覽頁 -->
         <!-- sticky-top - > 元素固定在螢幕的底部，邊緣相接。但只有在滾動離開該元素之後才會執行 -->
-        <div class="bg-white w-100 border-bottom sticky-top">
+        <div class="bg-white w-100 sticky-top border-bottom">
           <!-- bootstrap5 icon 搜尋 expand  -->
           <!-- a 連結 - 收闔用按鈕 -->
           <a
@@ -200,7 +198,7 @@
                   <!-- text-nowrap 縮小視窗，文字不換行、也會出現卷軸 -->
                   <tbody class="text-nowrap">
                     <tr>
-                      <td scope="row" clsss="ps-4">TWX11451115</td>
+                      <td scope="row" class="ps-4">TWX11451115</td>
                       <td>aa12313@gmail.com</td>
                       <td>泊岸沒有買</td>
                       <td>消夜三連，每天必備</td>
@@ -249,5 +247,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- 自己的 JS -->
     <script src="./javascripts/all.js"></script>
+    <!-- 自己的 canvas JS -->
+    <script src="./javascripts/canvas.js"></script>
   </body>
 </html>

@@ -18,18 +18,18 @@
     <div class="d-flex">
       <!-- 左側欄固定寬度、滿高度 -->
       <!-- flex - flex-column 設置垂直方向 -->
-      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column bg-white">
+      <aside class="sidebar vh-100 border-end pt-3 d-flex flex-column">
         <!-- 1.後台名稱 -->
-        <div class="px-4"><strong>泊岸不想開餐廳</strong> - 後台管理</div>
+        <h1 class="px-4 h6"><strong>泊岸不想開餐廳</strong> - 後台管理</h1>
         <!-- 2.選單 -->
         <!-- 因為選單內容不一定，所以用 overflow-auto" 自己有上下滾動，不影響 後台名稱、登出按鈕  -->
-        <div class="overflow-auto mt-3">
-          <div>
+        <ul class="overflow-auto mt-3 list-unstyled">
+          <li>
             <a href="#" class="sidebar-link">
               <div class="px-4"><i class="bi bi-house"></i>首頁</div>
             </a>
-          </div>
-          <div>
+          </li>
+          <li>
             <!-- 折疊 - data-bs-toggle="collapse" 放在 a 標籤 -->
             <!-- a href 對應 下方有 class 摺疊 collapse 的 id (menu-order) -->
             <a
@@ -50,12 +50,12 @@
                 <div class="ps-5">訂單列表</div>
               </a>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
         <!-- 3.登出按鈕 -->
         <!-- mt-auto 搭配 外層 flex，向上退移自己一邊 -->
-        <a href="#" class="mt-auto sidebar-link">
-          <div class="px-4"><i class="bi bi-door-closed-fill"></i>登出</div>
+        <a href="#" class="mt-auto sidebar-link px-4">
+          <i class="bi bi-door-closed-fill me-2"></i>登出
         </a>
       </aside>
       <!-- 右側欄 -->

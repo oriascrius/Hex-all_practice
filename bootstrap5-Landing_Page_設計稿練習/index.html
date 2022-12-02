@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page 設計稿練習</title>
+    <title>Landing Page 設計稿練習 - 首頁</title>
     <!-- bootstrap 5 icon -->
     <link
       rel="stylesheet"
@@ -133,12 +133,241 @@
     <!-- 3. section 多欄式卡片 end -->
 
     <!-- 4. section 連續背景圖 start  -->
+    <!-- 背景圖是滿寬 -->
     <section class="py-5" style="background-image: url(./images/bg_paper.png)">
+      <!-- 所以這理財是內容，並使用 container 做格現向內縮 -->
       <div class="container">
         <h2 class="text-center mb-4">你有這些煩惱嗎？</h2>
+        <!-- 手機板 : row-col-1 單欄、桌面板 : row-cols-lg-4 四個欄位 -->
+        <!-- 手機板 : g-3 較小間距、桌面板 : g-lg-4 較大間距 -->
+        <div class="row row-cols-1 row-cols-lg-4 g-3 g-lg-4">
+          <div class="col">
+            <div class="card border-0 shadow">
+              <div class="card-body text-center py-4">
+                <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
+                <i class="bi bi-trash-fill fs-s-48 text-info"></i>
+                <h3 class="h4">追不到垃圾車</h3>
+                <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
+                <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
+                <p class="text-secondary card-text lh-lg">
+                  每天追垃圾很煩嗎？<br />倒個垃圾還要走出門好累對吧？
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 shadow">
+              <div class="card-body text-center py-4">
+                <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
+                <i class="bi bi-flower1 fs-s-48 text-info"></i>
+                <h3 class="h4">不會照顧盆栽</h3>
+                <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
+                <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
+                <p class="text-secondary card-text lh-lg">
+                  覺得很可愛所以買一堆，<br />
+                  結果根本不會照顧，快死光了？
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 shadow">
+              <div class="card-body text-center py-4">
+                <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
+                <i class="bi bi-book-fill fs-s-48 text-info"></i>
+                <h3 class="h4">作業不會寫</h3>
+                <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
+                <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
+                <p class="text-secondary card-text lh-lg">
+                  什麼微積分、程式設計、<br />
+                  或是設計稿，不會做也不想做？
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 shadow">
+              <div class="card-body text-center py-4">
+                <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
+                <i class="bi bi-emoji-frown fs-s-48 text-info"></i>
+                <h3 class="h4">很不開心</h3>
+                <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
+                <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
+                <p class="text-secondary card-text lh-lg">
+                  每天都把時間花在不想做的事情就飽了，<br />
+                  怎麼快樂？
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <!-- 4. section 連續背景圖 end  -->
+
+    <!-- 5. section 表單響應式卡片排版 start -->
+    <section class="py-5 container">
+      <h2 class="text-center mb-4">方案費用</h2>
+      <!-- 手機板 : row-col-1 單欄、桌面板 : row-cols-lg-3 三個欄位 -->
+      <!-- 手機板 : g-3 較小間距、桌面板 : g-lg-4 較大間距 -->
+      <div class="row row-cols-1 row-cols-lg-3 g-3 g-lg-4">
+        <!-- 左 -->
+        <div class="col">
+          <!-- card -記得卡片 border-0，要不然邊框會變大-->
+          <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
+          <div class="card border-0 shadow h-100">
+            <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
+            <div class="card-header text-center border-0">小小搭懶蟲</div>
+            <!-- card-body -->
+            <div class="card-body text-center">
+              <!-- class="img-fluid" 給圖片加上響應式 -->
+              <img
+                src="./images/plan01.jpg"
+                class="img-fluid"
+                alt="小小搭懶蟲"
+              />
+              <div class="text-info mt-3">
+                NT <strong class="fs-1">298</strong>/月
+              </div>
+            </div>
+            <!-- card-body 下方 -->
+            <!-- bootstrap 5 - 元件 - 卡片 (Cards) - 列表群組 - 混合樣式  - list-group list-group-flush -->
+            <ul class="list-group list-group-flush border-top border-bottom">
+              <!-- check icon -->
+              <!-- 這裡使用 ps-5，讓文字向右縮一些，留出左邊空位給 check icon -->
+              <li class="list-group-item text-secondary ps-5">
+                <!-- position-absolute 讓 check icon 與文字重疊，start-0 再向左排版，ms-3 向右微調對齊下方-->
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >每週三天定時收垃圾
+              </li>
+              <li class="list-group-item text-secondary ps-5">
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >當你的小鬧鐘，提醒你要完成的重要事項
+              </li>
+              <li class="list-group-item text-secondary ps-5">
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >幫你查資料
+              </li>
+            </ul>
+            <!-- card-body -->
+            <div class="card-body d-flex">
+              <button type="button" class="btn btn-info w-100 align-self-end">
+                選擇方案
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 中 -->
+        <div class="col">
+          <!-- card -記得卡片 border-0，要不然邊框會變大-->
+          <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
+          <div class="card border-0 shadow h-100">
+            <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
+            <div class="card-header text-center border-0 bg-info text-white">
+              睡一整天囉
+            </div>
+            <!-- card-body -->
+            <div class="card-body text-center">
+              <!-- class="img-fluid" 給圖片加上響應式 -->
+              <img
+                src="./images/plan02.jpg"
+                class="img-fluid"
+                alt="睡一整天方案"
+              />
+              <div class="text-info mt-3">
+                NT <strong class="fs-1">666</strong>/月
+              </div>
+            </div>
+            <!-- card-body 下方 -->
+            <!-- bootstrap 5 - 元件 - 卡片 (Cards) - 列表群組 - 混合樣式  - list-group list-group-flush -->
+            <ul class="list-group list-group-flush border-top border-bottom">
+              <!-- check icon -->
+              <!-- 這裡使用 ps-5，讓文字向右縮一些，留出左邊空位給 check icon -->
+              <li class="list-group-item text-secondary ps-5">
+                <!-- position-absolute 讓 check icon 與文字重疊，start-0 再向左排版，ms-3 向右微調對齊下方-->
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >小懶蟲方案所有服務
+              </li>
+              <li class="list-group-item text-secondary ps-5">
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >每週一天幫你整理房間
+              </li>
+              <li class="list-group-item text-secondary ps-5">
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >幫你安排三餐（會先確認你的喜好）
+              </li>
+              <li class="list-group-item text-secondary ps-5">
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >每週一天幫你採買日用品（限台灣）
+              </li>
+            </ul>
+            <!-- card-body -->
+            <div class="card-body">
+              <button type="button" class="btn btn-info w-100">選擇方案</button>
+            </div>
+          </div>
+        </div>
+        <!-- 右 -->
+        <div class="col">
+          <!-- card -記得卡片 border-0，要不然邊框會變大-->
+          <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
+          <div class="card border-0 shadow h-100">
+            <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
+            <div class="card-header text-center border-0 text-secondary">
+              自由自在的人生
+            </div>
+            <!-- card-body -->
+            <!-- 這裡需注意，card-body 本身有 flex-grow:1 伸展值，會讓空間剩餘分配 -->
+            <!-- 需要單獨修改，flex-grow-0，讓空間縮小，課堂也講到能給予每個卡片固定大小的方式-->
+            <div class="card-body text-center flex-grow-0">
+              <!-- class="img-fluid" 給圖片加上響應式 -->
+              <img
+                src="./images/plan03.jpg"
+                class="img-fluid"
+                alt="自由自在的人生"
+              />
+              <div class="text-info my-3 mt-3 fs-5">客製化詢價</div>
+            </div>
+            <!-- card-body 下方 -->
+            <!-- bootstrap 5 - 元件 - 卡片 (Cards) - 列表群組 - 混合樣式  - list-group list-group-flush -->
+            <ul class="list-group list-group-flush border-top border-bottom">
+              <!-- check icon -->
+              <!-- 這裡使用 ps-5，讓文字向右縮一些，留出左邊空位給 check icon -->
+              <li class="list-group-item text-secondary ps-5">
+                <!-- position-absolute 讓 check icon 與文字重疊，start-0 再向左排版，ms-3 向右微調對齊下方-->
+                <i
+                  class="bi bi-check-lg text-info position-absolute start-0 ms-3"
+                ></i
+                >希望有個小秘書、小幫手，完成您交辦的客製化任務，歡迎與我們聯繫！
+              </li>
+            </ul>
+            <!-- card-body -->
+            <!-- 加上 d-flex -->
+            <div class="card-body d-flex">
+              <!-- align-self-end 自己沉底 -->
+              <button type="button" class="btn btn-info w-100 align-self-end">
+                線上諮詢
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 5. section 表單響應式卡片排版 end -->
 
     <!-- bootstrap 5 JS -->
     <script

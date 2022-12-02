@@ -1,0 +1,14 @@
+// 自定 裝飾線
+.deco-line{
+    padding-left: 1rem;
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: $info;
+    }
+}

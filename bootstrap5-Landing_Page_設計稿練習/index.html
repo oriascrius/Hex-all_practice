@@ -10,20 +10,22 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     />
-    <!-- Noto Sans 字體官網，下方 styles 搜尋 -> 選取 Regular400、Bold700，右方會出現連結 -->
+    <!-- Noto Sans 字體官網，下方 styles 搜尋 -> 選取 Regular 400、Bold 700，右方會出現連結，除了連結還要加上 CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@700&display=swap"
       rel="stylesheet"
     />
     <style>
       /* 這邊先在 body 加上 字體  */
-      body {
-        /* Noto Sans 字體官網，下方 Styles 搜尋 -> 選取 Regular400、Bold700，右方會出現連結，除了連結還要加上 CSS  */
-        /* 預設使用 Regular，class="fw-bold" -> 變成粗體的 Bold */
+      /* Noto Sans 字體官網，下方 Styles 搜尋 -> 選取 Regular 400、Bold 700，右方會出現連結，除了連結還要加上 CSS  */
+      /* 預設使用 Regular，class="fw-bold" -> 變成粗體的 Bold */
+      /* 這邊先註腳，統一把字體放到 _variables 545行 $font-family-sans-serif，放在所有字體之前代表較優先使用*/
+      /* body {
+        font-family: "Noto Sans", sans-serif;
         font-family: "Noto Sans TC", sans-serif;
-      }
+      } */
     </style>
     <link rel="stylesheet" href="./stylesheets/all.css" />
   </head>
@@ -34,12 +36,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <!-- https://hexschool.github.io/bootstrap5-homework/index.html -> 設計圖顯示 navbar 內容偏中間，所以外框 container-fluid 滿寬 改成 container -->
       <div class="container">
-        <a class="navbar-brand" href="#">
-          <!-- bootstrap 5 -> icon -> 搜尋 record (Record fill) -->
-          <!-- text-info 將圖標變成淡藍色 -->
-          <i class="bi bi-record-fill text-info"></i>
-          泊岸
-        </a>
+        <h2>
+          <a class="navbar-brand" href="#">
+            <!-- bootstrap 5 -> icon -> 搜尋 record (Record fill) -->
+            <!-- text-info 將圖標變成淡藍色 -->
+            <i class="bi bi-record-fill text-info"></i>
+            泊岸
+          </a>
+        </h2>
+        <!-- bootstrap 5 預設，當縮小視窗會出現選單按鈕 -->
         <button
           class="navbar-toggler"
           type="button"
@@ -54,24 +59,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- 預設 me-auto，這裡要將這區塊向右，所以改成 ms-auto -->
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item mx-3">
               <!-- 設計稿中，active 顏色是淡藍色，這裡直接到 stylesheets/helpers/_variables.scss 中 1108 行 $navbar-light-active-color 更改變數 -->
               <!-- $black -> $info  -->
-              <a class="nav-link active" aria-current="page" href="#">首頁</a>
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >首頁</a
+              >
             </li>
             <!-- 每個 li 加上 mx-3 增加左右 margin -->
             <li class="nav-item mx-3">
               <a class="nav-link" href="#">服務介紹</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="#">方案費用</a>
+              <a class="nav-link" href="./payment.html">方案費用</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="#">常見問題</a>
+              <a class="nav-link" href="./question.html">常見問題</a>
             </li>
             <li class="nav-item mx-3">
               <!-- 設計稿中，這裡是按鈕，改成 btn btn-info 並且 info 淡藍色 -->
-              <a class="btn btn-info" href="#">方案費用</a>
+              <a class="btn btn-info fw-bold" href="./payment.html">方案費用</a>
             </li>
           </ul>
         </div>
@@ -108,7 +115,7 @@
         <!-- 文字 -->
         <div class="col-lg-6 d-flex align-items-center justify-content-center">
           <div>
-            <h2>讓我們幫你節省寶貴的時間</h2>
+            <h2 class="fw-bold">讓我們幫你節省寶貴的時間</h2>
             <!-- bootstrap 5 -> 通用類別 -> 文字 (Text) -> 行高 lh -->
             <p class="lh-lg text-secondary">
               我們有專業的清潔大師、花草大師， <br />
@@ -129,24 +136,21 @@
     </section>
     <!-- 3. section 多欄式卡片 end -->
 
-    <!-- 3. section 多欄式卡片 start -->
-    <!-- 3. section 多欄式卡片 end -->
-
     <!-- 4. section 連續背景圖 start  -->
     <!-- 背景圖是滿寬 -->
     <section class="py-5" style="background-image: url(./images/bg_paper.png)">
       <!-- 所以這理財是內容，並使用 container 做格現向內縮 -->
       <div class="container">
-        <h2 class="text-center mb-4">你有這些煩惱嗎？</h2>
+        <h2 class="text-center mb-4 fw-bold">你有這些煩惱嗎？</h2>
         <!-- 手機板 : row-col-1 單欄、桌面板 : row-cols-lg-4 四個欄位 -->
         <!-- 手機板 : g-3 較小間距、桌面板 : g-lg-4 較大間距 -->
-        <div class="row row-cols-1 row-cols-lg-4 g-3 g-lg-4">
-          <div class="col">
-            <div class="card border-0 shadow">
+        <ul class="row row-cols-1 row-cols-lg-4 g-3 g-lg-4 list-unstyled">
+          <li class="col">
+            <div class="card border-0 shadow h-100">
               <div class="card-body text-center py-4">
                 <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
                 <i class="bi bi-trash-fill fs-s-48 text-info"></i>
-                <h3 class="h4">追不到垃圾車</h3>
+                <h3 class="h4 fw-bold">追不到垃圾車</h3>
                 <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
                 <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
                 <p class="text-secondary card-text lh-lg">
@@ -154,13 +158,13 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 shadow">
+          </li>
+          <li class="col">
+            <div class="card border-0 shadow h-100">
               <div class="card-body text-center py-4">
                 <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
                 <i class="bi bi-flower1 fs-s-48 text-info"></i>
-                <h3 class="h4">不會照顧盆栽</h3>
+                <h3 class="h4 fw-bold">不會照顧盆栽</h3>
                 <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
                 <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
                 <p class="text-secondary card-text lh-lg">
@@ -169,13 +173,13 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 shadow">
+          </li>
+          <li class="col">
+            <div class="card border-0 shadow h-100">
               <div class="card-body text-center py-4">
                 <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
                 <i class="bi bi-book-fill fs-s-48 text-info"></i>
-                <h3 class="h4">作業不會寫</h3>
+                <h3 class="h4 fw-bold">作業不會寫</h3>
                 <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
                 <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
                 <p class="text-secondary card-text lh-lg">
@@ -184,47 +188,50 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 shadow">
+          </li>
+          <li class="col">
+            <div class="card border-0 shadow h-100">
               <div class="card-body text-center py-4">
                 <!-- trash icon，到 _utilities 的 font-size 469行 自訂義大小，讓 icon 變大-->
                 <i class="bi bi-emoji-frown fs-s-48 text-info"></i>
-                <h3 class="h4">很不開心</h3>
+                <h3 class="h4 fw-bold">很不開心</h3>
                 <!-- text-secondary 文字淺色、、lh-lg 大一點的行高 -->
                 <!-- card-text 可以將文字內容可以添加到卡片中，這裡用來讓卡片下方縮上來 -->
                 <p class="text-secondary card-text lh-lg">
-                  每天都把時間花在不想做的事情就飽了，<br />
-                  怎麼快樂？
+                  每天都把時間花在不想做的事<br />情就飽了， 怎麼快樂？
                 </p>
               </div>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
     <!-- 4. section 連續背景圖 end  -->
 
     <!-- 5. section 表單響應式卡片排版 start -->
     <section class="py-5 container">
-      <h2 class="text-center mb-4">方案費用</h2>
+      <h2 class="text-center mb-4 fw-bold">方案費用</h2>
       <!-- 手機板 : row-col-1 單欄、桌面板 : row-cols-lg-3 三個欄位 -->
       <!-- 手機板 : g-3 較小間距、桌面板 : g-lg-4 較大間距 -->
-      <div class="row row-cols-1 row-cols-lg-3 g-3 g-lg-4">
+      <ul class="row row-cols-1 row-cols-lg-3 g-3 g-lg-4 list-unstyled">
         <!-- 左 -->
-        <div class="col">
+        <li class="col mb-4">
           <!-- card -記得卡片 border-0，要不然邊框會變大-->
           <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
           <div class="card border-0 shadow h-100">
             <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
-            <div class="card-header text-center border-0">小小搭懶蟲</div>
+            <div
+              class="card-header text-center border-0 fs-4 fw-bold text-secondary"
+            >
+              小小搭懶蟲
+            </div>
             <!-- card-body -->
-            <div class="card-body text-center">
+            <div class="card-body text-center flex-grow-0">
               <!-- class="img-fluid" 給圖片加上響應式 -->
               <img
                 src="./images/plan01.jpg"
                 class="img-fluid"
-                alt="小小搭懶蟲"
+                alt="睡一整天方案"
               />
               <div class="text-info mt-3">
                 NT <strong class="fs-1">298</strong>/月
@@ -257,23 +264,30 @@
             </ul>
             <!-- card-body -->
             <div class="card-body d-flex">
-              <button type="button" class="btn btn-info w-100 align-self-end">
+              <button
+                type="button"
+                class="btn btn-info w-100 fw-bold align-self-end"
+              >
                 選擇方案
               </button>
             </div>
           </div>
-        </div>
+        </li>
         <!-- 中 -->
-        <div class="col">
+        <li class="col mb-4">
           <!-- card -記得卡片 border-0，要不然邊框會變大-->
           <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
           <div class="card border-0 shadow h-100">
             <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
-            <div class="card-header text-center border-0 bg-info text-white">
+            <div
+              class="card-header text-center border-0 bg-info text-white fs-4 fw-bold"
+            >
               睡一整天囉
             </div>
             <!-- card-body -->
-            <div class="card-body text-center">
+            <!-- 這裡需注意，card-body 本身有 flex-grow:1 伸展值，會讓空間剩餘分配 -->
+            <!-- 需要單獨修改，flex-grow-0 讓空間縮小，課堂講到也能使用給予每個卡片固定大小的方式-->
+            <div class="card-body text-center flex-grow-0">
               <!-- class="img-fluid" 給圖片加上響應式 -->
               <img
                 src="./images/plan02.jpg"
@@ -317,22 +331,26 @@
             </ul>
             <!-- card-body -->
             <div class="card-body">
-              <button type="button" class="btn btn-info w-100">選擇方案</button>
+              <button type="button" class="btn btn-info w-100 fw-bold">
+                選擇方案
+              </button>
             </div>
           </div>
-        </div>
+        </li>
         <!-- 右 -->
-        <div class="col">
+        <li class="col mb-4">
           <!-- card -記得卡片 border-0，要不然邊框會變大-->
           <!-- h-100 每個卡片都要加，讓卡片固定等高 -->
           <div class="card border-0 shadow h-100">
             <!-- card-header - 記得卡片 border-0，要不然邊框會變大-->
-            <div class="card-header text-center border-0 text-secondary">
+            <div
+              class="card-header text-center border-0 text-secondary fw-bold fs-4"
+            >
               自由自在的人生
             </div>
             <!-- card-body -->
             <!-- 這裡需注意，card-body 本身有 flex-grow:1 伸展值，會讓空間剩餘分配 -->
-            <!-- 需要單獨修改，flex-grow-0，讓空間縮小，課堂也講到能給予每個卡片固定大小的方式-->
+            <!-- 需要單獨修改，flex-grow-0 讓空間縮小，課堂講到也能使用給予每個卡片固定大小的方式-->
             <div class="card-body text-center flex-grow-0">
               <!-- class="img-fluid" 給圖片加上響應式 -->
               <img
@@ -340,7 +358,7 @@
                 class="img-fluid"
                 alt="自由自在的人生"
               />
-              <div class="text-info my-3 mt-3 fs-5">客製化詢價</div>
+              <div class="text-info my-4 mt-4 fs-5 fw-bold">客製化詢價</div>
             </div>
             <!-- card-body 下方 -->
             <!-- bootstrap 5 - 元件 - 卡片 (Cards) - 列表群組 - 混合樣式  - list-group list-group-flush -->
@@ -359,15 +377,74 @@
             <!-- 加上 d-flex -->
             <div class="card-body d-flex">
               <!-- align-self-end 自己沉底 -->
-              <button type="button" class="btn btn-info w-100 align-self-end">
+              <button
+                type="button"
+                class="btn btn-info w-100 align-self-end fw-bold"
+              >
                 線上諮詢
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
     <!-- 5. section 表單響應式卡片排版 end -->
+
+    <!-- 6. section Q&A start -->
+    <section class="bg-light py-5">
+      <div class="container">
+        <h2 class="fw-bold text-center mb-4">需要其他協助嗎？</h2>
+        <ul class="row justify-content-center list-unstyled g-3 g-lg-4">
+          <!-- 左卡片 -->
+          <li class="col-8 col-lg-3">
+            <!-- class 加上 btn，當作按鈕用，如果直接用 button 標籤，要再調整寬度 -->
+            <div class="card border-0 shadow h-100 btn">
+              <div class="card-body text-center fs-5">
+                <a
+                  href="tel:+8867555666"
+                  class="link-dark text-decoration-none text-nowrap"
+                  ><i class="bi bi-telephone-fill text-info me-1"></i>
+                  07-555-666</a
+                >
+              </div>
+            </div>
+          </li>
+          <!-- 中卡片 -->
+          <li class="col-8 col-lg-3">
+            <div class="card border-0 shadow h-100 btn">
+              <div class="card-body text-center fs-5">
+                <a
+                  href="https://www.facebook.com/"
+                  class="link-dark text-decoration-none text-nowrap"
+                >
+                  <i class="bi bi-facebook text-info me-1"></i>
+                  我就是個小懶蟲</a
+                >
+              </div>
+            </div>
+          </li>
+          <!-- 右卡片 -->
+          <li class="col-8 col-lg-3">
+            <div class="card border-0 shadow h-100 btn">
+              <div class="card-body text-center fs-5">
+                <a
+                  href="./question.html"
+                  class="link-dark text-decoration-none text-nowrap"
+                  ><i class="bi bi-question-lg text-info me-1"></i> 常見問題</a
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- 6.section Q&A end -->
+
+    <!-- 7.footer start -->
+    <footer class="bg-secondary text-white py-3 text-center">
+      <small>Copyright © 2021 小懶蟲.All rights reserved.</small>
+    </footer>
+    <!-- 7.footer end -->
 
     <!-- bootstrap 5 JS -->
     <script

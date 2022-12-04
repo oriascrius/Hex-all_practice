@@ -1,4 +1,5 @@
 // 設計稿中，header 背景滿寬圖 設定
+// index.html 的 header 背景 CSS　設定
 .header{
     height: 627px;
     // 背景圖設定 - 當圖片 < 視窗寬，會呈現 1又1/3的圖片
@@ -6,4 +7,8 @@
     background-size: cover;
     // 設定 圖片位置 下 中 ( 主體貓咪要出現 )，才不會視窗縮放時，圖片只呈現某區塊 ( 貓咪圖跑偏了 )
     background-position: bottom center;
+}
+// payment.html 的 header 背景 CSS　設定
+.paymentHeader{
+    height: 180px;
 }

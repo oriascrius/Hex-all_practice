@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page 設計稿練習 - 方案購買</title>
+    <title>Landing Page 設計稿練習 - 常見問題</title>
     <!-- bootstrap 5 icon -->
     <link
       rel="stylesheet"
@@ -23,9 +23,9 @@
       /* 預設使用 Regular，class="fw-bold" -> 變成粗體的 Bold */
       /* 這邊先註腳，統一把字體放到 _variables 545行 $font-family-sans-serif，放在所有字體之前代表較優先使用*/
       /* body {
-        font-family: "Noto Sans", sans-serif;
-        font-family: "Noto Sans TC", sans-serif;
-      } */
+       font-family: "Noto Sans", sans-serif;
+       font-family: "Noto Sans TC", sans-serif;
+     } */
     </style>
     <link rel="stylesheet" href="./stylesheets/all.css" />
   </head>
@@ -71,10 +71,10 @@
               <a class="nav-link" href="#">服務介紹</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link active" href="./payment.html">方案費用</a>
+              <a class="nav-link" href="./payment.html">方案費用</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="./question.html">常見問題</a>
+              <a class="nav-link active" href="#">常見問題</a>
             </li>
             <li class="nav-item mx-3">
               <!-- 設計稿中，這裡是按鈕，改成 btn btn-info 並且 info 淡藍色 -->
@@ -96,162 +96,99 @@
     >
       <!-- 背景圖中的文字 -->
       <div class="text-white text-center">
-        <p class="fw-bold text-info fs-3">HAPPY LIFE</p>
-        <h1 class="fw-bold text-dark">開始當個小懶蟲</h1>
+        <p class="fw-bold text-info fs-3">Q&A</p>
+        <h1 class="fw-bold text-dark">常見問題</h1>
       </div>
     </header>
     <!-- 2. header 背景滿寬圖 end -->
 
-    <!-- 3. 選擇方案 start -->
-    <section class="py-5 container">
-      <div class="row justify-content-center g-3 g-lg-2">
+    <!-- 3. 開合選單 start -->
+    <div class="container">
+      <div class="row justify-content-center">
         <div class="col-lg-8">
-          <!-- 桌面版 : p-lg-5 間距、手機版 : 無間距 -->
-          <!-- 預設 shadow-lg 是指 陰影尺吋要 lg 大，這裡想改成控制斷點，當桌面板時有陰影，手機板時不要陰影，所以到 _utilities shadow 54行 更改成 中斷點 -->
-          <!-- 課程沒有加上 shadow-none，但我在手機版時會有陰影，所以我這裡直接多加 shadow-none(手機版) -->
-          <form action="" class="p-lg-5 shadow-lg">
-            <!-- 自定 裝飾線的 CSS -->
-            <h3 class="deco-line mb-3 fw-bold fs-4">選擇方案</h3>
-            <!-- 選擇方案 -->
-            <ul class="row row-cols-1 row-cols-lg-3 list-unstyled g-3">
-              <!-- 左按鈕 -->
-              <li class="col mb-2">
-                <button
-                  type="button"
-                  class="btn btn-outline-info w-100 btn-lg py-3 text-dark fw-bold"
+          <div class="container py-5">
+            <!-- bootstrap 5 - 元件 - 手風琴 (Accordion) - 範例 -->
+            <ul class="accordion list-unstyled" id="accordionExample">
+              <li class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    方案的服務內容可以調整嗎？
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
                 >
-                  <!-- 手機版 : d-none、桌面版 : d-lg-block -> 手機版時沒有換行，桌面版時有換行 -->
-                  <!-- 手機版  : 一行呈現 、桌面版 : 換行、兩行呈現 -->
-                  小小搭懶蟲 <br class="d-none d-lg-block" />
-                  NT 298/月
-                </button>
+                  <div class="accordion-body">
+                    <strong
+                      >可以唷可以唷可以唷可以唷可以唷可以唷可以唷可以唷可以唷可以唷</strong
+                    >
+                  </div>
+                </div>
               </li>
-              <!-- 中按鈕 -->
-              <li class="col mb-2">
-                <button
-                  type="button"
-                  class="btn btn-outline-info w-100 btn-lg py-3 text-dark fw-bold"
+              <li class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    一次只能購買一年嗎？
+                  </button>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample"
                 >
-                  睡一整天囉 <br class="d-none d-lg-block" />
-                  NT 666/月
-                </button>
+                  <div class="accordion-body">
+                    <strong>建議建議建議建議建議建議建議建議建議</strong>
+                  </div>
+                </div>
               </li>
-              <!-- 右按鈕 -->
-              <li class="col mb-2">
-                <!-- btn-special 自定 active 按鈕的陰影 -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info w-100 btn-lg py-3 text-dark active btn-special fw-bold"
+              <li class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    付款方式有哪些呢？
+                  </button>
+                </h2>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
                 >
-                  客製化方案 <br class="d-none d-lg-block" />
-                  客服詢價
-                </button>
+                  <div class="accordion-body">
+                    <strong>現金、linepay、街口支付、悠遊卡</strong>
+                  </div>
+                </div>
               </li>
             </ul>
-            <!-- 填寫資料 -->
-            <h3 class="deco-line mb-3 fw-bold fs-4">填寫資料</h3>
-            <div class="mb-3">
-              <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col">
-                  <label for="firstname" class="form-label">名字</label>
-                  <input
-                    type="text"
-                    id="firstname"
-                    class="form-control"
-                    aria-label="first name"
-                    required
-                  />
-                </div>
-                <div class="col">
-                  <label for="lastname" class="form-label">姓氏</label>
-                  <input
-                    type="text"
-                    id="lastname"
-                    class="form-control"
-                    aria-label="last name"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="phone" class="form-label">手機號碼</label>
-              <input
-                type="tel"
-                id="phone"
-                class="form-control"
-                aria-label="phone"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">電子郵件</label>
-              <input
-                type="email"
-                id="email"
-                class="form-control"
-                aria-label="email"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="address" class="form-label">住址</label>
-              <input
-                type="text"
-                id="address"
-                class="form-control"
-                aria-label="address"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="time" class="form-label">方便聯繫時間</label>
-              <select id="time" class="form-select" aria-label="time" required>
-                <option value="1">9:00-12:00</option>
-                <option value="2">13:00-17:00</option>
-                <option value="3">18:00-21:00</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <p>加購服務</p>
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="add-1"
-                aria-label="buy"
-              />
-              <label for="add-1" class="form-check-label ms-1 me-3"
-                >每週一清掃家裡+100</label
-              ><br class="d-block d-lg-none" />
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="add-2"
-                aria-label="buy"
-              />
-              <label for="add-2" class="form-check-label ms-1 me-3"
-                >按摩+50</label
-              ><br class="d-block d-lg-none" />
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="add-3"
-                aria-label="buy"
-              />
-              <label for="add-3" class="form-check-label ms-1 me-3"
-                >聽你說話+150</label
-              >
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">備註說明</label>
-              <textarea id="message" class="form-control" rows="3"></textarea>
-            </div>
-            <button class="btn btn-info w-100 my-4">選擇方案</button>
-          </form>
+          </div>
         </div>
       </div>
-    </section>
-    <!-- 3. 選擇方案 end -->
+    </div>
+    <!-- 3. 開合選單 end -->
 
     <!-- 4. section Q&A start -->
     <section class="bg-light py-5">
@@ -290,9 +227,7 @@
           <li class="col-8 col-lg-3">
             <div class="card border-0 shadow h-100 btn">
               <div class="card-body text-center fs-5">
-                <a
-                  href="./question.html"
-                  class="link-dark text-decoration-none text-nowrap"
+                <a href="#" class="link-dark text-decoration-none text-nowrap"
                   ><i class="bi bi-question-lg text-info me-1"></i> 常見問題</a
                 >
               </div>

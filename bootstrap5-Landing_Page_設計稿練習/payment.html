@@ -68,17 +68,19 @@
             </li>
             <!-- 每個 li 加上 mx-3 增加左右 margin -->
             <li class="nav-item mx-3">
-              <a class="nav-link" href="#">服務介紹</a>
+              <a class="nav-link" href="./index.html#services">服務介紹</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link active" href="./payment.html">方案費用</a>
+              <a class="nav-link" href="./index.html#programCost">方案費用</a>
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link" href="./question.html">常見問題</a>
             </li>
             <li class="nav-item mx-3">
               <!-- 設計稿中，這裡是按鈕，改成 btn btn-info 並且 info 淡藍色 -->
-              <a class="btn btn-info fw-bold" href="./payment.html">方案費用</a>
+              <a class="btn btn-info fw-bold text-white" href="./payment.html"
+                >購買方案</a
+              >
             </li>
           </ul>
         </div>
@@ -104,18 +106,17 @@
 
     <!-- 3. 選擇方案 start -->
     <section class="py-5 container">
-      <div class="row justify-content-center g-3 g-lg-2">
+      <div class="row justify-content-center">
         <div class="col-lg-8">
           <!-- 桌面版 : p-lg-5 間距、手機版 : 無間距 -->
           <!-- 預設 shadow-lg 是指 陰影尺吋要 lg 大，這裡想改成控制斷點，當桌面板時有陰影，手機板時不要陰影，所以到 _utilities shadow 54行 更改成 中斷點 -->
-          <!-- 課程沒有加上 shadow-none，但我在手機版時會有陰影，所以我這裡直接多加 shadow-none(手機版) -->
           <form action="" class="p-lg-5 shadow-lg">
             <!-- 自定 裝飾線的 CSS -->
             <h3 class="deco-line mb-3 fw-bold fs-4">選擇方案</h3>
             <!-- 選擇方案 -->
-            <ul class="row row-cols-1 row-cols-lg-3 list-unstyled g-3">
+            <ul class="row row-cols-1 row-cols-lg-3 list-unstyled mb-5 gy-2">
               <!-- 左按鈕 -->
-              <li class="col mb-2">
+              <li class="col">
                 <button
                   type="button"
                   class="btn btn-outline-info w-100 btn-lg py-3 text-dark fw-bold"
@@ -127,7 +128,7 @@
                 </button>
               </li>
               <!-- 中按鈕 -->
-              <li class="col mb-2">
+              <li class="col">
                 <button
                   type="button"
                   class="btn btn-outline-info w-100 btn-lg py-3 text-dark fw-bold"
@@ -137,7 +138,7 @@
                 </button>
               </li>
               <!-- 右按鈕 -->
-              <li class="col mb-2">
+              <li class="col">
                 <!-- btn-special 自定 active 按鈕的陰影 -->
                 <button
                   type="button"
@@ -160,6 +161,7 @@
                     class="form-control"
                     aria-label="first name"
                     required
+                    placeholder="例如 : 大明"
                   />
                 </div>
                 <div class="col">
@@ -170,6 +172,7 @@
                     class="form-control"
                     aria-label="last name"
                     required
+                    placeholder="例如 : 王"
                   />
                 </div>
               </div>
@@ -182,6 +185,7 @@
                 class="form-control"
                 aria-label="phone"
                 required
+                placeholder="例如 : 0911222333"
               />
             </div>
             <div class="mb-3">
@@ -192,6 +196,7 @@
                 class="form-control"
                 aria-label="email"
                 required
+                placeholder="例如 : name@example.com"
               />
             </div>
             <div class="mb-3">
@@ -202,6 +207,7 @@
                 class="form-control"
                 aria-label="address"
                 required
+                placeholder="例如 : 台北市中山區..."
               />
             </div>
             <div class="mb-3">

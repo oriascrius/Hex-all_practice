@@ -69,17 +69,17 @@
             </li>
             <!-- 每個 li 加上 mx-3 增加左右 margin -->
             <li class="nav-item mx-3">
-              <a class="nav-link" href="#">服務介紹</a>
+              <a class="nav-link" href="#services">服務介紹</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="./payment.html">方案費用</a>
+              <a class="nav-link" href="#programCost">方案費用</a>
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link" href="./question.html">常見問題</a>
             </li>
             <li class="nav-item mx-3">
               <!-- 設計稿中，這裡是按鈕，改成 btn btn-info 並且 info 淡藍色 -->
-              <a class="btn btn-info fw-bold" href="./payment.html">方案費用</a>
+              <a class="btn btn-info fw-bold" href="./payment.html">購買方案</a>
             </li>
           </ul>
         </div>
@@ -139,7 +139,11 @@
 
     <!-- 4. section 連續背景圖 start  -->
     <!-- 背景圖是滿寬 -->
-    <section class="py-5" style="background-image: url(./images/bg_paper.png)">
+    <section
+      id="services"
+      class="py-5"
+      style="background-image: url(./images/bg_paper.png)"
+    >
       <!-- 所以這理財是內容，並使用 container 做格現向內縮 -->
       <div class="container">
         <h2 class="text-center mb-4 fw-bold">你有這些煩惱嗎？</h2>
@@ -210,7 +214,7 @@
     <!-- 4. section 連續背景圖 end  -->
 
     <!-- 5. section 表單響應式卡片排版 start -->
-    <section class="py-5 container">
+    <section id="programCost" class="py-5 container">
       <h2 class="text-center mb-4 fw-bold">方案費用</h2>
       <!-- 手機板 : row-col-1 單欄、桌面板 : row-cols-lg-3 三個欄位 -->
       <!-- 手機板 : g-3 較小間距、桌面板 : g-lg-4 較大間距 -->

@@ -51,6 +51,8 @@ $utilities: map-merge(
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
+    // 自定
+    // 把預設 lg 大小先註解掉 -> 修改成中斷點使用 ( 加上 responsive: true )
     "shadow": (
       property: box-shadow,
       responsive: true,
@@ -58,8 +60,6 @@ $utilities: map-merge(
       values: (
         null: $box-shadow,
         sm: $box-shadow-sm,
-        // 自定
-        // 把預設 lg 大小先註解掉 -> 修改成中斷點使用 ( 加上 responsive: true )
         // lg: $box-shadow-lg,
         none: none,
       )

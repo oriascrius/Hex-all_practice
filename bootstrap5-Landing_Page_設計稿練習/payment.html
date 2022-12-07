@@ -110,7 +110,13 @@
         <div class="col-lg-8">
           <!-- 桌面版 : p-lg-5 間距、手機版 : 無間距 -->
           <!-- 預設 shadow-lg 是指 陰影尺吋要 lg 大，這裡想改成控制斷點，當桌面板時有陰影，手機板時不要陰影，所以到 _utilities shadow 54行 更改成 中斷點 -->
-          <form action="" class="p-lg-5 shadow-lg">
+          <!-- 可試著改成 shadow-lg-lg，陰影 - 斷點 - 大陰影 -->
+          <!-- 當時讀不到陰影改變，以下可能原因
+            因 all.scss 有匯入 bootstrap 原本的 utilities，
+            因此沒有套用到自定義的 helpers/_utilities.scss，
+            將 bootstrap 的 utilities 移除再重新編譯應該就會看到調整後的 class ( 20221208 最後調整好 all.scss 引入順序，到時候再看順序有沒有問題 )
+          -->
+          <form action="" class="p-lg-5 shadow-lg-lg">
             <!-- 自定 裝飾線的 CSS -->
             <h3 class="deco-line mb-3 fw-bold fs-4">選擇方案</h3>
             <!-- 選擇方案 -->

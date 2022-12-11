@@ -1,33 +1,25 @@
-// 查詢載入 bs5 順序需要這樣 官方提供的順序會有錯誤
+// 查詢載入 bs5 順序需要這樣 官方提供的順序會有錯誤 20221208 最後測試 引入順序
 // @import "~bootstrap/scss/functions";
 // @import 自己複製出來的 variables - 自定義變數
-// @import "~bootstrap/scss/variables";
 // @import "~bootstrap/scss/maps";
-// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/variables"; ( 有自己複製的就不加 )
 // @import "~bootstrap/scss/mixins";
-// @import "~bootstrap/scss/utilities";
-// @import 自己複製出來的 utilities - 自定義通用類別
+// @import "~bootstrap/scss/utilities"; ( 有自己複製的就不加 )
+// @import 自己複製出來的 utilities - 自定義變數
 // @import "~bootstrap/scss/helpers";
 // @import "~bootstrap/scss/utilities/api";
 
-
-// Custom.scss
-// Option B: Include parts of Bootstrap
-
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
 // 自己複製出來的 variables - 自定義變數
 @import "./helpers/variables";
 
-
 // 官方沒有 maps 自己加 或是順序移到 functions 後面
 @import "../node_modules/bootstrap/scss/maps";
-
-// Configuration
-@import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/utilities"; 
+// @import "../node_modules/bootstrap/scss/utilities"; 
+
 // 自己複製出來的 utilities - 自定義通用類別
 @import "./helpers/utilities";
 

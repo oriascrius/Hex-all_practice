@@ -131,7 +131,6 @@ table {
 }
 
 * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -143,8 +142,6 @@ html {
 body {
   min-height: 100vh;
   background: #eee;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: #333;
   background-image: linear-gradient(174deg, #ffd370 2%, #ffd370 46%, #fff 46%, #fff 100%, #e8e8e8 100%);
@@ -183,7 +180,6 @@ h1 {
   padding: 1rem;
   border-radius: 10px;
   background: #fff;
-  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -196,15 +192,11 @@ input[type=text] {
   color: #333;
 }
 
-input[type=text]::-webkit-input-placeholder {
-  color: #9f9a91;
-}
-
 input[type=text]:-ms-input-placeholder {
   color: #9f9a91;
 }
 
-input[type=text]::-ms-input-placeholder {
+input[type=text]::-moz-placeholder {
   color: #9f9a91;
 }
 
@@ -214,8 +206,6 @@ input[type=text]::placeholder {
 
 .input {
   padding: 4px 4px 4px 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -237,8 +227,6 @@ input[type=text]::placeholder {
 }
 
 .tab {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-align: center;
   color: #9f9a91;
@@ -282,7 +270,6 @@ input[type=text]::placeholder {
   opacity: 0;
   right: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   text-decoration: none;
   color: #333;
@@ -306,14 +293,8 @@ input[type=text]::placeholder {
 }
 
 .list_footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 1.5rem 2rem 1rem 0.5rem;
   font-size: 14px;
@@ -375,14 +356,12 @@ input[type=text]::placeholder {
   position: absolute;
   left: 0.5rem;
   top: 50%;
-  -webkit-transform: translateY(-50%) scale(1);
   transform: translateY(-50%) scale(1);
   height: 20px;
   width: 20px;
   border-radius: 5px;
   border: 1px solid #333;
   pointer-events: none;
-  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
@@ -391,7 +370,6 @@ input[type=text]::placeholder {
   position: absolute;
   left: 14px;
   top: 27%;
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   height: 15px;
   width: 0.5rem;
@@ -400,7 +378,6 @@ input[type=text]::placeholder {
   border-right: 3px solid #ffd370;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
@@ -411,7 +388,6 @@ input[type=text]::placeholder {
 
 .checkbox input:checked ~ span::before {
   border-color: transparent;
-  -webkit-transform: translateY(-50%) scale(0);
   transform: translateY(-50%) scale(0);
 }
 

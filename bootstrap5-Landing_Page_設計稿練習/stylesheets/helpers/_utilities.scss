@@ -51,16 +51,17 @@ $utilities: map-merge(
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
-    // 自定
-    // 把預設 lg 大小先註解掉 -> 修改成中斷點使用 ( 加上 responsive: true )
     "shadow": (
       property: box-shadow,
-      responsive: true,
+      responsive: true, // 開啟 RWD 中斷點
       class: shadow,
-      values: (
+      values: ( 
         null: $box-shadow,
-        sm: $box-shadow-sm,
-        // lg: $box-shadow-lg,
+        sm: $box-shadow-sm,   
+      // 自定
+      // 如果把預設 lg 大小先註解 -> 上方加上 responsive: true 就可以變成 中斷點 使用 ( 標籤加上 shadow-lg -> 桌面板lg時有 陰影 )
+      // 如果不把 lg 註解 ->  上方加上 responsive: true 一樣有 中斷點 使用 ( 標籤加上 shadow-lg-lg -> 桌面板lg時有 lg 大的陰影 )
+        lg: $box-shadow-lg,
         none: none,
       )
     ),

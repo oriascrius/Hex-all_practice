@@ -1,177 +1,216 @@
-<!DOCTYPE html><html><head><title>v-model 修飾符</title><meta name="viewport" content="width=device-width, initial-scale=1"><link href="images/favicon.ico" rel="shortcut icon"><meta charset="UTF-8"><script src="/javascripts/vendor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script></head><body class="bg-lighter">
-<div class="container main my-5"><div class="row"><main class="col post">
-<!-- 章節標題 --><div class="mb-4"><h1 class="mt-0 text-muted">v-model 修飾符</h1><small>檔名：<code>v-model-modifiers.html</code></small></div>
-<!-- 🔥🔥練習開始🔥🔥 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>v-model 修飾符</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="images/favicon.ico" rel="shortcut icon" />
+    <meta charset="UTF-8" />
+    <script src="/javascripts/vendor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
+  </head>
+  <body class="bg-lighter">
+    <div class="container main my-5">
+      <div class="row">
+        <main class="col post">
+          <!-- 章節標題 -->
+          <div class="mb-4">
+            <h1 class="mt-0 text-muted">v-model 修飾符</h1>
+            <small>檔名：<code>v-model-modifiers.html</code></small>
+          </div>
+          <!-- 🔥🔥練習開始🔥🔥 -->
 
-<div id="app">
-  <h3>修飾符</h3>
-  <h4 class="mt-3">延遲 Lazy</h4>
-  {{ lazyMsg }}
-  <input type="text" class="form-control" v-model="lazyMsg">
-  <h4 class="mt-3">純數值 Number</h4>
-  {{ numberMsg }}{{ typeof numberMsg }}
-  <input type="text" class="form-control" v-model="numberMsg">
-  <h4 class="mt-3">修剪 Trim</h4>
-  這是一段{{ trimMsg }}緊黏的文字
-  <input type="text" class="form-control" v-model="trimMsg">
+          <div id="app">
+            <h3>修飾符</h3>
+            <h4 class="mt-3">延遲 Lazy</h4>
+            <small
+              >在 v-model +上 v-model.lazy，<br />
+              可以讓離開當下輸入框時才呈現值
+            </small>
+            {{ lazyMsg }}
+            <input type="text" class="form-control" v-model.lazy="lazyMsg" />
+            <h4 class="mt-3">純數值 Number</h4>
+            <small
+              >如果希望 input 輸入框只能塡數字，那要將 type="number"，<br />
+              確保輸入的內容是數字，要在 input 輸入框加上 v-model.number，<br />
+              以防可能都是 string 型態
+            </small>
+            <br />
+            {{ numberMsg }}{{ typeof numberMsg }}
+            <input
+              type="text"
+              class="form-control"
+              v-model.number="numberMsg"
+            />
+            <h4 class="mt-3">修剪 Trim</h4>
+            <small>v-model.trim 可以修剪掉 輸入框內 前後空白</small> <br />
+            這是一段{{ trimMsg }}緊黏的文字
+            <input type="text" class="form-control" v-model.trim="trimMsg" />
+          </div>
 
-</div>
+          <script>
+            const App = {
+              data() {
+                return {
+                  lazyMsg: "",
+                  numberMsg: "",
+                  trimMsg: "",
+                };
+              },
+            };
 
-<script>
-const App = {
-  data() {
-    return {
-      lazyMsg: '',
-      numberMsg: '',
-      trimMsg: ''
-    }
-  },
-};
+            Vue.createApp(App).mount("#app");
+          </script>
+          <!-- 🙇🙇練習結束🙇🙇 -->
+        </main>
 
-Vue.createApp(App).mount('#app');
-</script>
-<!-- 🙇🙇練習結束🙇🙇 -->
-</main>
-  
-    <aside
-      class="col-md-3"><div class="sticky-top" style="top: 76px">
-  <div class="list-group">
-  
-    <a href="/template/v-text.html"
-      class="list-group-item list-group-item-action
-        list-group-item-success
-        ">
-      渲染資料於畫面上
-    </a>
-  
-    <a href="/template/v-for.html"
-      class="list-group-item list-group-item-action
-        list-group-item-success
-        ">
-      呈現多筆資料
-    </a>
-  
-    <a href="/template/v-if.html"
-      class="list-group-item list-group-item-action
-        list-group-item-success
-        ">
-      渲染判斷
-    </a>
-  
-    <a href="/template/v-bind.html"
-      class="list-group-item list-group-item-action
-        list-group-item-success
-        ">
-      屬性綁定
-    </a>
-  
-    <a href="/template/v-style.html"
-      class="list-group-item list-group-item-action
-        list-group-item-success
-        ">
-      樣式切換
-    </a>
-  
-    <a href="/template/form.html"
-      class="list-group-item list-group-item-action
-        list-group-item-danger
-        ">
-      v-model 與表單
-    </a>
-  
-    <a href="/template/v-model-modifiers.html"
-      class="list-group-item list-group-item-action
-        list-group-item-danger
-        active">
-      v-model 修飾符
-    </a>
-  
-    <a href="/template/v-on.html"
-      class="list-group-item list-group-item-action
-        list-group-item-info
-        ">
-      v-on 事件觸發
-    </a>
-  
-    <a href="/template/v-on-modifiers.html"
-      class="list-group-item list-group-item-action
-        list-group-item-info
-        ">
-      v-on 修飾符
-    </a>
-  
-    <a href="/template/v-on-dom-event.html"
-      class="list-group-item list-group-item-action
-        list-group-item-info
-        ">
-      補充：v-on DOM 事件
-    </a>
-  
-    <a href="/template/directive-final-easy.html"
-      class="list-group-item list-group-item-action
-        
-        ">
-      章節挑戰 - 簡單版
-    </a>
-  
-    <a href="/template/directive-final.html"
-      class="list-group-item list-group-item-action
-        
-        ">
-      章節挑戰 - 挑戰版
-    </a>
-  
-  </div>
-  <div class="mt-3 text-end p-2 bg-light rounded">
-    <small class="text-black-50 fw-light mb-0">文件版本：2022/6/21</small>
-  </div>
-</div>
+        <aside class="col-md-3">
+          <div class="sticky-top" style="top: 76px">
+            <div class="list-group">
+              <a
+                href="/template/v-text.html"
+                class="list-group-item list-group-item-action list-group-item-success"
+              >
+                渲染資料於畫面上
+              </a>
 
-</aside>
-    
-  </div>
-</div>
+              <a
+                href="/template/v-for.html"
+                class="list-group-item list-group-item-action list-group-item-success"
+              >
+                呈現多筆資料
+              </a>
 
-<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Vue 3 練習手冊</a>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link " href="/es6/shorthand.html">JS 必備觀念</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/intro/createApp.html">認識 Vue.js</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/template/v-text.html">模板</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/optionsApi/options-methods.html">方法</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/components/component_register.html">元件</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/advApi/adv-refs.html">進階</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/router/vue-router.html">路由</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/composition/proxy.html">Composition API</a>
-        </li>
-      </ul>
+              <a
+                href="/template/v-if.html"
+                class="list-group-item list-group-item-action list-group-item-success"
+              >
+                渲染判斷
+              </a>
+
+              <a
+                href="/template/v-bind.html"
+                class="list-group-item list-group-item-action list-group-item-success"
+              >
+                屬性綁定
+              </a>
+
+              <a
+                href="/template/v-style.html"
+                class="list-group-item list-group-item-action list-group-item-success"
+              >
+                樣式切換
+              </a>
+
+              <a
+                href="/template/form.html"
+                class="list-group-item list-group-item-action list-group-item-danger"
+              >
+                v-model 與表單
+              </a>
+
+              <a
+                href="/template/v-model-modifiers.html"
+                class="list-group-item list-group-item-action list-group-item-danger active"
+              >
+                v-model 修飾符
+              </a>
+
+              <a
+                href="/template/v-on.html"
+                class="list-group-item list-group-item-action list-group-item-info"
+              >
+                v-on 事件觸發
+              </a>
+
+              <a
+                href="/template/v-on-modifiers.html"
+                class="list-group-item list-group-item-action list-group-item-info"
+              >
+                v-on 修飾符
+              </a>
+
+              <a
+                href="/template/v-on-dom-event.html"
+                class="list-group-item list-group-item-action list-group-item-info"
+              >
+                補充：v-on DOM 事件
+              </a>
+
+              <a
+                href="/template/directive-final-easy.html"
+                class="list-group-item list-group-item-action"
+              >
+                章節挑戰 - 簡單版
+              </a>
+
+              <a
+                href="/template/directive-final.html"
+                class="list-group-item list-group-item-action"
+              >
+                章節挑戰 - 挑戰版
+              </a>
+            </div>
+            <div class="mt-3 text-end p-2 bg-light rounded">
+              <small class="text-black-50 fw-light mb-0"
+                >文件版本：2022/6/21</small
+              >
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
-  </div>
-</nav>
 
-<footer class="footer py-2 bg-light">
-  <div class="container text-center">
-    <small class="text-black-50 fw-light mb-0">六角學院 Vue 課程專屬文件</small>
-  </div>
-</footer>
-<link rel="stylesheet" href="/stylesheets/all.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Vue 3 練習手冊</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/es6/shorthand.html">JS 必備觀念</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/intro/createApp.html">認識 Vue.js</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/template/v-text.html">模板</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/optionsApi/options-methods.html"
+                >方法</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/components/component_register.html"
+                >元件</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/advApi/adv-refs.html">進階</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/router/vue-router.html">路由</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/composition/proxy.html"
+                >Composition API</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <footer class="footer py-2 bg-light">
+      <div class="container text-center">
+        <small class="text-black-50 fw-light mb-0"
+          >六角學院 Vue 課程專屬文件</small
+        >
+      </div>
+    </footer>
+    <link rel="stylesheet" href="/stylesheets/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+  </body>
 </html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <input type="email" id="email" />
+      <input type="password" id="password" />
+      <button type="button" id="login">登入</button>
+    </div>
+
+    <div>
+      <button type="button" id="check">確認是否登入</button>
+      <button type="button" id="getProducts">取得後台的產品列表</button>
+      <button type="button" id="addProduct">新增一個產品</button>
+      <button type="button" id="delProduct">刪除一個產品</button>
+    </div>
+
+    <script>
+      const url = "https://vue3-course-api.hexschool.io/v2"; // 請加入站點，申請 API 的網址，第二版補上 v2
+      const path = "qoqvuedemo"; // 請加入個人 API Path，注意註冊測試 API 到這都要改成小寫
+
+      // #1 如何串接 API 資料
+
+      const emailInput = document.querySelector("#email");
+      const pwInput = document.querySelector("#password");
+      const loginBtn = document.querySelector("#login");
+      const checkBtn = document.querySelector("#check");
+      const getProductsBtn = document.querySelector("#getProducts");
+      const addProductBtn = document.querySelector("#addProduct");
+      const delProductBtn = document.querySelector("#delProduct");
+
+      loginBtn.addEventListener("click", login);
+
+      function login() {
+        const username = emailInput.value;
+        const password = pwInput.value;
+
+        const user = {
+          username,
+          password,
+        };
+
+        // #2 發送 API 至遠端並登入（並儲存 Token）（post）
+        axios
+          .post(`${url}/admin/signin`, user)
+          // 成功結果
+          .then((res) => {
+            console.log(res);
+            // 存入 token、expired
+            // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie#%E7%A4%BA%E4%BE%8B2_%E5%BE%97%E5%88%B0%E5%90%8D%E4%B8%BAtest2%E7%9A%84cookie
+            // 示例 3 -> document.cookie = "someCookieName=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; 做更改
+            // someCookieName 自定義名稱，expired 需 new Date 做轉型
+            const { token, expired } = res.data;
+            document.cookie = `qoqVueDemo=${token}; expires=${new Date(
+              expired
+            )};`;
+          })
+          // 失敗結果
+          .catch((error) => {
+            // 回傳 dir，response - data - error可以看到失敗訊息
+            console.dir(error);
+          });
+      }
+
+      checkBtn.addEventListener("click", checkLogin);
+      function checkLogin(params) {
+        // #3 取得 Token（Token 僅需要設定一次）
+        // https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie#%E7%A4%BA%E4%BE%8B2_%E5%BE%97%E5%88%B0%E5%90%8D%E4%B8%BAtest2%E7%9A%84cookie
+        // 示例 2 - var myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)test2\s*\=\s*([^;]*).*$)|^.*$/, "$1");做更改
+        // test2 改成上面自定義名稱 - qoqVueDemo
+        const token = document.cookie.replace(
+          /(?:(?:^|.*;\s*)qoqVueDemo\s*\=\s*([^;]*).*$)|^.*$/,
+          "$1"
+        );
+        // https://github.com/axios/axios
+        // Global axios defaults - axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;做更改
+        // 將 token 儲存在 headers
+        axios.defaults.headers.common["Authorization"] = token;
+
+        // #4  確認是否登入（post）
+        axios
+          .post(`${url}/api/user/check`)
+          // 成功結果
+          .then((res) => {
+            console.log(res.data);
+          })
+          // 失敗結果
+          .catch((error) => {
+            // 回傳 dir，response - data - error可以看到失敗訊息
+            console.dir(error);
+          });
+      }
+      // 將 token 複製到 https://hexschool.github.io/vue3-courses-swaggerDoc/#/%E7%99%BB%E5%85%A5%E5%8F%8A%E9%A9%97%E8%AD%89/post_v2_api_user_check
+      // 登入成功後請點「Authorize」輸入 Token。就不用一直重新輸入帳號密碼登入使用 API 功能（Try it out）
+
+      getProductsBtn.addEventListener("click", getProducts);
+      function getProducts() {
+        // #5 取得後台產品列表（get）
+        // 先點擊"確認是否登入"按鈕後，取得 headers 夾帶 token
+        axios
+          .get(`${url}/api/${path}/admin/products`)
+          // 成功結果
+          .then((res) => {
+            console.log(res.data);
+          })
+          // 失敗結果
+          .catch((error) => {
+            // 回傳 dir，response - data - error可以看到失敗訊息
+            console.dir(error);
+          });
+      }
+
+      addProductBtn.addEventListener("click", addProduct);
+      function addProduct() {
+        // 這裡先做一個假資料，預設要加入的產品
+        const product = {
+          data: {
+            title: "[賣]動物園造型衣服999",
+            category: "衣服2",
+            origin_price: 100,
+            price: 300,
+            unit: "個",
+            description: "Sit down please 名設計師設計",
+            content: "這是內容",
+            is_enabled: 1,
+            imageUrl:
+              "https://images.unsplash.com/photo-1573662012516-5cb4399006e7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80",
+          },
+        };
+
+        // #6 新增一個產品（post）
+        // 新增產品雖然有照片欄位，但有另個 API 專門做上傳圖片用（並且通常附帶表單欄位的HTML），回傳圖片網址再給新增產品 API 用
+        axios
+          .post(`${url}/api/${path}/admin/product`, product) // product 是上方做的假資料
+          // 成功結果
+          .then((res) => {
+            console.log(res.data);
+          })
+          // 失敗結果
+          .catch((error) => {
+            // 回傳 dir，response - data - error可以看到失敗訊息
+            console.dir(error);
+          });
+      }
+
+      delProductBtn.addEventListener("click", removeProduct);
+      function removeProduct() {
+        // #7 刪除一個產品（delete）
+        // ID：-NJpg8rUR4req7aUgoiw，剛剛新增的假資料 ID
+        axios
+          .delete(`${url}/api/${path}/admin/product/-NJpg8rUR4req7aUgoiw`) // product 是上方做的假資料
+          // 成功結果
+          .then((res) => {
+            console.log(res.data);
+          })
+          // 失敗結果
+          .catch((error) => {
+            // 回傳 dir，response - data - error可以看到失敗訊息
+            console.dir(error);
+          });
+      }
+    </script>
+  </body>
+</html>

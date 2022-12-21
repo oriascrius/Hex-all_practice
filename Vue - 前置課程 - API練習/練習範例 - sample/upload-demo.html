@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  </head>
+  <body>
+    <div></div>
+
+    <div>
+      <input
+        type="file"
+        class="form-control"
+        id="file"
+        placeholder="請輸入圖片連結"
+      />
+    </div>
+
+    <script>
+      const url = "https://vue3-course-api.hexschool.io/v2"; // 請加入站點，申請 API 的網址，第二版補上 v2
+      const path = "qoqvuedemo"; // 請加入個人 API Path，注意註冊測試 API 到這都要改成小寫
+
+      const fileInput = document.querySelector("#file");
+
+      fileInput.addEventListener("change", upload);
+
+      // 最後回傳上傳的圖片網址，可以網上搜尋
+      function upload() {
+        // token
+        const token = document.cookie.replace(
+          /(?:(?:^|.*;\s*)qoqVueDemo\s*\=\s*([^;]*).*$)|^.*$/,
+          "$1"
+        );
+        // headers 裝 token
+        axios.defaults.headers.common["Authorization"] = token;
+
+        // --------- 以上可以保持登入狀態
+
+        // #1 撰寫上傳的 API 事件
+        // 通常附帶表單欄位的 HTML，回傳圖片網址再給新增產品 API 用
+        console.dir(fileInput); // 丟入圖片後，可在 console 中看到 files 類陣列
+        const file = fileInput.files[0];
+        console.log(file);
+        // 因 API 是 form 表單，所以 JS 也用 FormData
+        // 想像 FormData 對應 API 提供的 form HTML，並對到 API HTML 中 name 屬性，並加上上傳圖片的類陣列
+        const formData = new FormData();
+        formData.append("file-to-upload", file);
+        // 並把 FormData 給 API
+        axios
+          .post(`${url}/api/${path}/admin/upload`, formData)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      }
+    </script>
+  </body>
+</html>

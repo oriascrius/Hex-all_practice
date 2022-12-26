@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>陣列技巧</title>
+  </head>
+  <body></body>
+  <script>
+    const people = [
+      {
+        name: "卡斯伯",
+        order: "鍋燒意麵",
+        price: 80,
+      },
+      {
+        name: "小明",
+        order: "牛肉麵",
+        price: 120,
+      },
+      {
+        name: "漂亮阿姨",
+        order: "滷味切盤",
+        price: 40,
+      },
+      {
+        name: "Ray",
+        order: "大麻將乾麵",
+        price: 60,
+      },
+    ];
+
+    // 1. 請一一列出每個人的訂單
+    // forEach 的第三個參數較少用到
+    // for VS forEach，for 可中斷、forEach 不可中斷
+    // people.forEach((item, index) => {
+    //   console.log(item, index);
+    // });
+
+    // 2. 小明看到今天有打八折！！，請將所有訂單新增一個新價格，金額是 80%
+    // 2.1 forEach
+    // const newOrders = [];
+    // people.forEach((item, index) => {
+    //   //   newOrder.push(item); push 舊方法
+    //   //   ES6 方法（展開），新訂單陣列都多加新價格屬性
+    //   //   如果不加上[index]會報錯，因為 const 值已經固賦予，加上代表去更改內部東西就可以
+    //   newOrders[index] = {
+    //     ...item,
+    //     newPrice: item.price * 0.8,
+    //   };
+    // });
+    // console.log(newOrders);
+
+    // 2.2 map + 箭頭函式，相比 foreach，因為 map、filter 會回傳資料，所以不用另外宣告新陣列去裝資料
+    // 注意這裡建頭函式後，{} 外層要有 () 包住要不然會報錯
+    // const newOrders = people.map((item, index) => ({
+    //   ...item,
+    //   newPrice: item.price * 0.8,
+    // }));
+    // console.log(newOrders);
+
+    // 3. 老闆說，今天疫情沒有八折啦，不過 80 元的可以給滷蛋
+    // 複製新訂單陣列，將超過80元價格的訂單加到新訂單中
+    // 3.1 forEach
+    // const newOrders2 = [];
+    // people.forEach((item, index) => {
+    //   if (item.price >= 80) {
+    //     newOrders2.push(item);
+    //   }
+    // });
+    // console.log(newOrders2);
+
+    // 3.2 filter
+    // const newOrders2 = people.filter(function (item, index) {
+    //   return item.price >= 80; // 為真的，就會回傳該物件
+    // });
+
+    // 3.3 filter + arrow
+    // const newOrders2 = people.filter((item) => item.price >= 80);
+    // console.log(newOrders2);
+
+    // 4. 過一段時間後，老闆發現牛肉沒了，把點牛肉麵的換成牛肉湯麵
+    // 4.1 forEach
+    // let newIndex = 0; // 初始值給 -1 也可以，這裡是宣告變數裝索引值用
+    // people.forEach((item, index) => {
+    //   if (item.order === "牛肉麵") {
+    //     // 把有牛肉麵的訂單索引選起來
+    //     newIndex = index;
+    //   }
+    // });
+    // people[newIndex].order = "牛肉湯麵";
+    // console.log(people[newIndex]);
+
+    // 4.2 findIndex
+    // const index = people.findIndex(function(item) {
+    //   return item.order === '牛肉麵'
+    // })
+
+    // 4.3 findIndex + arrow
+    // const index = people.findIndex(item => item.order === '牛肉麵')
+
+    // people[index].order = '牛肉湯麵'
+    // console.log(people[index]);
+
+    // 5. 老闆說 POS 機壞了，麻煩幫忙出一下 LI 結構，方便列印發
+    // 5.1 forEach
+    // let htmlTemplate = "";
+    // people.forEach((item, index) => {
+    //   htmlTemplate += `<li>
+    //     ${item.order}, ${item.price}
+    //     </li>`;
+    // });
+    // console.log(htmlTemplate);
+
+    // 5.2 map，因為 map 回傳的是陣列，所以加上 join('')，意思是把每個 "逗號，"都替換成 '' -> 回傳成 字串
+    // const htmlTemplate = people.map(function(obj, key) {
+    //   return `<li>
+    //     ${obj.order}, ${obj.price}
+    //   </li>`;
+    // }).join('');
+    // console.log(htmlTemplate);
+
+    // 5.3
+    // const htmlTemplate = people.map((obj, key) =>  `<li>
+    //   ${obj.order}, ${obj.price}
+    // </li>`).join('');
+    // console.log(htmlTemplate);
+
+    // 6. 老闆要收錢了，請問老闆應該收多少錢
+    // 6.1 forEach
+    // let total = 0;
+    // people.forEach((item, index) => {
+    //   total += item.price;
+    // });
+    // console.log(total);
+
+    // 6.2 reduce -> acc:前個值、cur:當值，0代表起始值
+    // const total = people.reduce(function(acc, cur) { //reduce(acc,cur)
+    //   console.log(acc);
+    //   return acc + cur.price; // 這裡代表 累加 前值+當值
+    // }, 0);
+
+    // 6.3 reduce + 箭頭
+    // const total = people.reduce((acc, cur) => acc + cur.price, 0);
+    // console.log(total);
+
+    // console.log(total);
+
+    // 7. 今天誰吃最貴！請排序所有的金額，b-a:大->小
+    // const peopleSort = people.sort((a, b) => {
+    //   return b.price - a.price; //-(a-b) or b-a
+    // });
+    // console.log(peopleSort);
+  </script>
+</html>

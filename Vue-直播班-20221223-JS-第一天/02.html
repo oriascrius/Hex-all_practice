@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDN(整包加入)方式</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      img {
+        max-width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      `v-` : 指令
+      <!-- <div>
+        名字：{{ person.name }}
+        喜歡：{{ person.like }}
+        <img v-bind:src="person.imageUrl"
+             v-bind:alt="person.like">
+      </div> -->
+
+      <div v-for="item in people">
+        名字：{{ item.name }} 喜歡：{{ item.like }}
+        <button type="button" v-on:click="temp = {...item}">按我</button>
+      </div>
+      <hr />
+      <!-- 不需要處理重新渲染的行為 -->
+      <div v-if="temp.name">
+        名字：{{ temp.name }} 喜歡：{{ temp.like }}
+        <img v-bind:src="temp.imageUrl" v-bind:alt="temp.like" />
+        <!-- 取消選取 -->
+        <button type="button" v-on:click="temp = {}">取消選取</button>
+      </div>
+      <div v-else-if="!temp.name">當 temp 沒有資料的時候</div>
+    </div>
+    <script>
+      const { createApp } = Vue;
+      // 1. 建立元件
+      // 2. 生成 Vue 應用程式
+      // 3. 渲染至畫面上
+      const app = {
+        // 建立資料
+        data() {
+          return {
+            temp: {},
+            person: {
+              name: "卡斯伯",
+              like: "鍋燒意麵",
+              price: 95,
+              imageUrl:
+                "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            },
+            people: [
+              {
+                name: "卡斯伯",
+                like: "鍋燒意麵",
+                price: 95,
+                imageUrl:
+                  "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+              },
+              {
+                name: "瑞",
+                like: "炒麵",
+                price: 80,
+                imageUrl:
+                  "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnJpZWQlMjBub29kbGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+              },
+              {
+                name: "小明",
+                like: "黑胡椒燴飯",
+                price: 120,
+                imageUrl:
+                  "https://images.unsplash.com/photo-1637362520022-81292a4bff4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+              },
+              {
+                name: "喬伊",
+                like: "生菜沙拉",
+                price: 80,
+                imageUrl:
+                  "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+              },
+            ],
+          };
+        },
+      };
+
+      createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

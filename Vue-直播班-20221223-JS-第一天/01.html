@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESModule - import esm (需要的加入)方法</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      img {
+        max-width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 畫面 -->
+    <div id="app">
+      <table>
+        <thead>
+          <tr>
+            <th width="200">品名</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th width="150">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 跑迴圈 -> 使用 v-for -> 不用一個一個寫 -->
+          <!-- v-for 類似於 類似於 forEach -->
+          <tr v-for="(item) in order">
+            <td>{{ item.name}}</td>
+            <td>{{ item.price}}</td>
+            <td>{{ item.quantity}}</td>
+            <td>{{item.price * item.quantity}}</td>
+          </tr>
+          <tr>
+            <td>粉係馬卡龍</td>
+            <td>120</td>
+            <td>2</td>
+            <td>$ 240</td>
+          </tr>
+          <tr>
+            <td>甜蜜左擁右抱</td>
+            <td>200</td>
+            <td>7</td>
+            <td>$ 1400</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">總計：</td>
+            <td>NT$ 1760</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+  <!-- 要補上 type="module" -->
+  <script type="module">
+    // 學習把畫面的資料拉出來
+    // 1.拉出資料
+    // 2.重新渲染
+    const order = [
+      { name: "綠色馬卡龍", price: 120, quantity: 3 },
+      { name: "粉系馬卡龍", price: 120, quantity: 2 },
+      { name: "甜蜜左擁右抱", price: 200, quantity: 7 },
+    ];
+    const total = 2000;
+    // 假設值從後端取得
+
+    // 改為使用 Vue 開發 - Vue esm cdn - https://cdnjs.com/libraries/vue
+    // 以下是只取出 Vue 的 createApp
+    import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.26/vue.esm-browser.min.js";
+
+    // 必備起手式
+    // 1. 建立元件
+    const app = {
+      // 資料
+      data() {
+        // data 是一個function
+        return {
+          order,
+          total,
+        };
+      },
+    };
+    // 2. 生成 Vue 應用程式
+    createApp(app) // 生成
+      .mount("#app"); // 渲染
+    // 3. 渲染至畫面上
+  </script>
+</html>

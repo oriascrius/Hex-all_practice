@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20221223-forEach</title>
+  </head>
+  <body></body>
+  <script>
+    const people = {
+      casper: {
+        name: "卡斯伯",
+        like: "鍋燒意麵",
+        price: 95,
+        // text: ...
+      },
+      ray: {
+        name: "瑞",
+        like: "炒麵",
+        price: 80,
+      },
+      ming: {
+        name: "小明",
+        like: "黑胡椒燴飯",
+        price: 120,
+      },
+      joy: {
+        name: "喬伊",
+        like: "生菜沙拉",
+        price: 80,
+      },
+    };
+
+    // Object.keys()
+    // Object.values()
+
+    // console.log(Object.values(people));
+    // Object.keys(people)
+    //   .forEach((key) => {
+    //     console.log(key);
+    //     console.log(people[key]);
+    // })
+
+    // 問題：
+    // 1. 如何加總所有值
+    // let sum = 0;
+    // // item: 物件 ,key: 索引
+    // people.forEach((item, key) => {
+    //   // console.log(item, key);
+    //   sum += item.price;
+    // })
+    // console.log(sum);
+
+    // 2. 如何為每個加入一個段落文字 `${name} 喜歡 ${like}，單價為${price} 元`
+    // people.forEach((item, key) => {
+    //   item.text = `${item.name} 喜歡 ${item.like}，單價為${item.price} 元`
+    // });
+    // console.log(people);
+
+    // 3. 如何取出價格超過 90 元的項目
+    // const order = [];
+    // people.forEach((person) => {
+    //   if (person.price > 90) {
+    //     order.push(person);
+    //   }
+    // })
+    // console.log(order);
+  </script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kata 示範 - 練習</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul></ul>
+    </div>
+    <!-- 輸入框 -->
+    <input type="text" id="inputByAdd" />
+    <!-- 新增按鈕 -->
+    <button type="button" id="buttonByAdd">新增</button>
+    <script>
+      // 資料
+      const data = [
+        {
+          id: 1,
+          content: "我是卡斯伯",
+        },
+        {
+          id: 2,
+          content: "我是小明",
+        },
+      ];
+
+      // 資料數量 -> 剛好順序 1 2 3 ... 按照 id 1 2 3 ...
+      let num = data.length;
+
+      // 取得 DOM 元素 - 輸入框
+      const inputByAdd = document.querySelector("#inputByAdd");
+      // 取得 DOM 元素 - 新增按鈕
+      const buttonByAdd = document.querySelector("#buttonByAdd");
+      // 取得 DOM 元素 - 事項列表
+      const app = document.querySelector("#app ul");
+
+      // 新增按鈕點擊事件
+      buttonByAdd.addEventListener("click", (e) => {
+        // 取得 輸入框的內容
+        const val = inputByAdd.value;
+        // 每次輸入完重置輸入框
+        inputByAdd.value = "";
+        // 將每一次輸入框資料更新到 data 陣列中
+        addItem(val);
+        // 測試輸入框內容
+        // console.log(val);
+      });
+
+      // 渲染
+      function render() {
+        // 空字串
+        let template = "";
+        // 遍歷資料放入空字串
+        data.forEach((item) => {
+          template =
+            template +
+            `<li>${item.content}<button type="button" class="btnRemove" data-id="${item.id}}">刪除</button></li>`;
+        });
+        // 將 DOM 元素列表，放入字串
+        app.innerHTML = template;
+
+        // 取得 DOM 元素 - 選取每個事項中的刪除按鈕的 class ( 之前在渲染中埋入 class )
+        const btnsForRemove = document.querySelectorAll(".btnRemove");
+        // 遍歷每個事項的刪除按鈕
+        btnsForRemove.forEach((btn) => {
+          // 每個事項的刪除按鈕事件
+          btn.addEventListener("click", (evt) => {
+            // 事項 id
+            // console.log(evt.target.dataset.id);
+            // 取得點擊要刪除的事項 id，並從 dataset.id 返回的 ** 轉成 純數值
+            const id = Number.parseInt(evt.target.dataset.id);
+            // 測試返回的 id
+            // console.log(id);
+            // 根據 id 刪除資料
+            removeItem(id);
+          });
+        });
+      }
+
+      // 新增資料
+      function addItem(content) {
+        num++;
+        data.push({
+          id: num,
+          content,
+        });
+        // 新增事項後，渲染畫面
+        render();
+        // 確認目前資料
+        // console.log(data);
+      }
+
+      // 刪除資料
+      function removeItem(id) {
+        // 刪除時丟入當下選到的 id，如果跟 資料的 id 符合，得到 那筆 id 的陣列位置
+        const index = data.findIndex((item) => item.id === id);
+        // 並利用返回位置，直接刪除單筆
+        data.splice(index, 1);
+        // 刪除事項後，渲染畫面
+        render();
+        // 確認目前資料
+        // console.log(data);
+      }
+      render();
+      // addItem("我叫做杰倫");
+      // removeItem(2);
+    </script>
+  </body>
+</html>

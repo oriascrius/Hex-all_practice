@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20221223-縮寫</title>
+  </head>
+  <body></body>
+  <script>
+    // 縮寫：不會影響到運作
+    // const obj = {
+    //   myName: '物件',
+    //   fn() {
+    //     return this.myName;
+    //   }
+    // }
+
+    // console.log(obj.fn());
+
+    // #1 物件字面值
+    // 函式
+    // 屬性名稱
+    // const obj = {
+    //   myName: '物件',
+    //   fn() {
+    //     return this.myName;
+    //   }
+    // }
+    // console.log(obj);
+
+    // const myName = '卡斯伯';
+    // const auntie = '漂亮阿姨';
+    // const obj = {
+    //   myName,
+    //   auntie
+    // };
+    // console.log(obj);
+
+    // #2 展開
+    const groupA = ["小明", "杰倫", "阿姨"];
+    const groupB = ["老媽", "老爸"];
+    // const groupAll = groupA.concat(groupB);
+    // const groupAll = [...groupA, ...groupB]; // 精簡
+    // console.log(groupAll);
+
+    // 複製一個，而且要新增一個方法
+    // const methods = {
+    //   myName: '方法集合1',
+    //   fn1() {
+    //     console.log(this.myName);
+    //   }
+    // }
+
+    // const methods2 = {
+    //   ...methods, // 複製（淺層複製）
+    //   fn2() {
+    //     console.log('另外增加的 fn2');
+    //   }
+    // }
+    // methods2.fn2()
+
+    // console.log(methods, methods2);
+
+    // #3 解構
+    const people = {
+      casper: {
+        name: "卡斯伯",
+        like: "鍋燒意麵",
+        price: 95,
+      },
+      ray: {
+        name: "瑞",
+        like: "炒麵",
+        price: 80,
+      },
+      ming: {
+        name: "小明",
+        like: "黑胡椒燴飯",
+        price: 120,
+      },
+    };
+    // const casper = people.casper; // 2.
+    // const ray = people.ray;
+    // const { casper, ray, ming } = people; // 1. 易讀性好像更高
+    // console.log(casper === people.casper);
+
+    // 神技 可選串連 optional chaining
+    // 遠端取回來的資料，每次都妥妥的不會亂變
+    console.log(people.ray.name);
+    console.log(1);
+  </script>
+</html>

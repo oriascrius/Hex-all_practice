@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script type="module">
+    // 具名匯出 {}
+    import { myName, callMyName } from "./esm.js"; // 正確
+    console.log(myName);
+    callMyName();
+
+    // A
+    // const myName = "卡司伯";
+    // function callMyName() {
+    //   console.log(myName);
+    // }
+    // callMyName();
+
+    // 預設匯出
+    // B
+    import 小明的物件 from "./esm.js";
+    // const obj = {
+    //   name: "小明",
+    // };
+  </script>
+</html>

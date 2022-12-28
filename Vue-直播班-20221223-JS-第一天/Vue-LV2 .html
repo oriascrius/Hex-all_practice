@@ -48,11 +48,15 @@
               </thead>
               <!-- 表格內容 -->
               <tbody>
-                <tr v-for="(item, key) in products" :key="item.id">
-                  <td width="200">{{ item.title }}</td>
-                  <td width="150">{{ item.origin_price }}</td>
-                  <td width="150">{{ item.price }}</td>
-                  <td width="120" v-if="item.is_enabled" class="text-success">
+                <tr v-for="(product, key) in products" :key="product.id">
+                  <td width="200">{{ product.title }}</td>
+                  <td width="150">{{ product.origin_price }}</td>
+                  <td width="150">{{ product.price }}</td>
+                  <td
+                    width="120"
+                    v-if="product.is_enabled"
+                    class="text-success"
+                  >
                     啟用
                   </td>
                   <td width="120" v-else>不啟用</td>
@@ -61,7 +65,7 @@
                     <button
                       class="btn btn-primary"
                       type="button"
-                      @click="temp = {... item}"
+                      @click="tempProduct = {...product}"
                     >
                       查看細節
                     </button>
@@ -76,31 +80,34 @@
             <h2>單一產品細節</h2>
 
             <!-- 左邊點擊才觸發右邊內容，當暫存區得到 id，顯示該 id 的內容 -->
-            <template v-if="temp.id">
+            <template v-if="tempProduct.id">
               <div class="card mb-4">
                 <img
-                  :src="temp.imageUrl"
+                  :src="tempProduct.imageUrl"
                   class="card-img-top card-image"
                   alt="主圖"
                 />
                 <div class="card-body">
                   <!-- badge 小標籤 -->
                   <h5 class="card-title">
-                    {{temp.title}}<span class="badge bg-primary ms-2"
-                      >{{temp.category}}</span
+                    {{tempProduct.title}}<span class="badge bg-primary ms-2"
+                      >{{tempProduct.category}}</span
                     >
                   </h5>
-                  <p class="card-text">商品描述：{{ temp.description }}</p>
-                  <p class="card-text">商品內容：{{ temp.content }}</p>
                   <p class="card-text">
-                    {{ temp.price }}
-                    <del class="text-secondary">{{ temp.origin_price }}</del
+                    商品描述：{{ tempProduct.description }}
+                  </p>
+                  <p class="card-text">商品內容：{{ tempProduct.content }}</p>
+                  <p class="card-text">
+                    {{ tempProduct.price }}
+                    <del class="text-secondary"
+                      >{{ tempProduct.origin_price }}</del
                     >{{unit}} / 元
                   </p>
                 </div>
               </div>
               <!-- 其餘圖片 -->
-              <template v-for="imgs in temp.imagesUrl" :key="imgs.id">
+              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs.id">
                 <img :src="imgs" class="images m-2" alt="副圖" />
               </template>
             </template>
@@ -120,7 +127,7 @@
     const app = {
       data() {
         return {
-          temp: {},
+          tempProduct: {},
           // 產品資料格式
           products: [
             {

@@ -45,13 +45,13 @@
               </thead>
               <tbody>
                 <!-- v-for 綁定 產品資料 -->
-                <tr v-for="(item, key) in products" :key="item.id">
-                  <td width="150">{{ item.title }}</td>
-                  <td width="120">{{ item.origin_price }}</td>
-                  <td width="120">{{ item.price }}</td>
+                <tr v-for="(product, key) in products" :key="product.id">
+                  <td width="150">{{ product.title }}</td>
+                  <td width="120">{{ product.origin_price }}</td>
+                  <td width="120">{{ product.price }}</td>
                   <td width="150">
                     <!-- v-if = 1 -> true -> 顯示 -->
-                    <span v-if="item.is_enabled" class="text-success"
+                    <span v-if="product.is_enabled" class="text-success"
                       >啟用</span
                     >
                     <!-- v-if != 1 -> false -> 不顯示 -->
@@ -60,7 +60,7 @@
                   <td width="120">
                     <!-- 點擊觸發 -> 暫存區複製一份產品資料 -->
                     <button
-                      @click="temp = {...item}"
+                      @click="tempProduct = {...product}"
                       type="button"
                       class="btn btn-primary"
                     >
@@ -79,34 +79,36 @@
                  v-if="temp.id" -> 監聽到暫存區有資料並以 id 為 key，
                  ->依據該 key 顯示 template
             -->
-            <template v-if="temp.id">
+            <template v-if="tempProduct.id">
               <div class="card mb-3">
                 <img
-                  :src="temp.imageUrl"
+                  :src="tempProduct.imageUrl"
                   class="card-img-top primary-image"
                   alt="主圖"
                 />
                 <div class="card-body">
                   <h5 class="card-title">
-                    {{ temp.title }}
+                    {{ tempProduct.title }}
                     <span class="badge bg-primary ms-2"
-                      >{{ temp.category }}</span
+                      >{{ tempProduct.category }}</span
                     >
                   </h5>
-                  <p class="card-text">商品描述：{{ temp.description }}</p>
-                  <p class="card-text">商品內容：{{ temp.content }}</p>
+                  <p class="card-text">
+                    商品描述：{{ tempProduct.description }}
+                  </p>
+                  <p class="card-text">商品內容：{{ tempProduct.content }}</p>
                   <div class="d-flex">
-                    <p class="card-text me-2">{{ temp.price }}</p>
+                    <p class="card-text me-2">{{ tempProduct.price }}</p>
                     <p class="card-text text-secondary">
-                      <del>{{ temp.origin_price }}</del>
+                      <del>{{ tempProduct.origin_price }}</del>
                     </p>
-                    {{ temp.unit }} / 元
+                    {{ tempProduct.unit }} / 元
                   </div>
                 </div>
               </div>
               <!-- template 筆記，不能加 class，主要用來當外殼 -->
               <!-- 這裡外層已經用 temp 複製資料，再自定一個遍歷圖片陣列 -->
-              <template v-for="imgs in temp.imagesUrl" :key="imgs.id">
+              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs.id">
                 <img :src="imgs" alt="副圖" class="images m-2" />
               </template>
             </template>
@@ -123,7 +125,7 @@
     const app = {
       data() {
         return {
-          temp: {},
+          tempProduct: {},
           // 產品資料格式
           products: [
             {

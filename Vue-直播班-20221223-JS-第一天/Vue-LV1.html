@@ -108,7 +108,9 @@
               </div>
               <!-- template 筆記，不能加 class，主要用來當外殼 -->
               <!-- 這裡外層已經用 temp 複製資料，再自定一個遍歷圖片陣列 -->
-              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs.id">
+              <!-- 由於 imgs 的型別為字串，並非物件，所以無法使用 imgs.id 來綁定 key
+              可以直接使用 imgs 來做為 key （因為 imgs 都是不重複的字串） -->
+              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs">
                 <img :src="imgs" alt="副圖" class="images m-2" />
               </template>
             </template>

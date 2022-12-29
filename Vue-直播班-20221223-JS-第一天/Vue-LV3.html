@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第一周 Vue-作業LV3</title>
+    <style>
+      /* contain 圖片完整且剛好放進去。 */
+      img {
+        object-fit: contain;
+        max-width: 100%;
+      }
+      /* 卡片圖片 */
+      .card-image {
+        height: 300px;
+      }
+      /* 其餘圖片 */
+      .images {
+        height: 150px;
+      }
+      /* 解決 -> 畫面重整時會出現未編譯的資料 */
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    <!-- bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 解決 -> 畫面重整時會出現未編譯的資料 -->
+    <div id="app" v-cloak>
+      <div class="container mt-4">
+        <div class="row">
+          <!-- 商品列表 -->
+          <div class="col-md-8">
+            <h2>商品列表</h2>
+            <table class="table table-hover align-middle text-center">
+              <!-- caption 放在 table 內第一個子項，但默認會在一整個表格下方， 
+              caption-side: top | button 控制  -->
+              <caption style="caption-side: top">
+                目前有 {{products.length}} 項商品
+              </caption>
+              <button
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#editProductModal"
+              >
+                新增一個商品
+              </button>
+              <!-- 表格標題 -->
+              <thead>
+                <tr>
+                  <th>圖片</th>
+                  <th>商品名稱</th>
+                  <th>原價</th>
+                  <th>售價</th>
+                  <th>是否銷售</th>
+                  <th>查看細節</th>
+                  <th>編輯</th>
+                </tr>
+              </thead>
+              <!-- 表格內容 -->
+              <tbody>
+                <tr v-for="(product, key) in products" :key="product.id">
+                  <td>
+                    <img
+                      :src="product.imageUrl"
+                      alt="product.title"
+                      width="80"
+                    />
+                  </td>
+                  <td>{{ product.title }}</td>
+                  <td>{{ product.origin_price }}</td>
+                  <td>{{ product.price }}</td>
+                  <td v-if="product.is_enabled" class="text-warning">啟用</td>
+                  <td v-else class="text-secondary">不啟用</td>
+                  <td>
+                    <!-- 點擊觸發 暫存資料 -->
+                    <button
+                      class="btn btn-primary btn-sm"
+                      type="button"
+                      @click="tempProduct = {...product}"
+                    >
+                      查看細節
+                    </button>
+                  </td>
+                  <td>
+                    <div class="d-flex align-middle justify-content-center">
+                      <button
+                        type="button"
+                        class="btn btn-outline-success btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editProduct"
+                      >
+                        編輯
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger ms-2 btn-sm"
+                        @click="removeProduct(key)"
+                      >
+                        刪除
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 單一產品細節 -->
+          <div class="col-md-4">
+            <div class="d-flex justify-content-between">
+              <h2>單一商品細節</h2>
+              <button
+                v-if="tempProduct.id"
+                type="button"
+                class="btn btn-outline-info ms-3"
+                @click="tempProduct={}"
+              >
+                關閉商品細節
+              </button>
+            </div>
+            <!-- 左邊點擊才觸發右邊內容，當暫存區得到 id，顯示該 id 的內容 -->
+            <template v-if="tempProduct.id">
+              <div class="card mb-4">
+                <img
+                  :src="tempProduct.imageUrl"
+                  class="card-img-top card-image"
+                  alt="主圖"
+                />
+                <div class="card-body">
+                  <!-- badge 小標籤 -->
+                  <h5 class="card-title">
+                    {{tempProduct.title}}<span class="badge bg-primary ms-2"
+                      >{{tempProduct.category}}</span
+                    >
+                  </h5>
+                  <p class="card-text">
+                    商品描述：{{ tempProduct.description }}
+                  </p>
+                  <p class="card-text">商品內容：{{ tempProduct.content }}</p>
+                  <p class="card-text">
+                    {{ tempProduct.price }}
+                    <del class="text-secondary"
+                      >{{ tempProduct.origin_price }}</del
+                    >{{tempProduct.unit}} / 元
+                  </p>
+                </div>
+              </div>
+              <!-- 其餘圖片 -->
+              <!-- 由於 imgs 的型別為字串，並非物件，所以無法使用 imgs.id 來綁定 key。
+              可以直接使用 imgs 來做為 key （因為 imgs 都是不重複的字串） -->
+              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs">
+                <img :src="imgs" class="images m-2" alt="副圖" />
+              </template>
+            </template>
+            <!-- v-else 緊連前個 template if -->
+            <!-- 未顯示 if 時 先顯示下方 else 的內容 -->
+            <p v-else class="text-secondary">請選擇一個商品查看</p>
+          </div>
+        </div>
+      </div>
+      <!-- ------------------------------------------- -->
+      <!-- bootstrap5 Modal 新增互動視窗  -->
+      <div
+        class="modal fade"
+        id="editProductModal"
+        tabindex="-1"
+        aria-labelledby="editProductModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-dark text-white">
+              <h5 class="modal-title" id="editProductModalLabel">
+                <span>新增商品</span>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="mb-3">
+                    <label for="image" class="form-label">輸入圖片網址</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="image"
+                      v-model="newTodo.imageUrl"
+                      placeholder="請輸入圖片連結"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="customFile" class="form-label"
+                      >或 上傳圖片
+                      <i class="fas fa-spinner fa-spin"></i>
+                    </label>
+                    <input type="file" id="customFile" class="form-control" />
+                  </div>
+                  <img class="img-fluid" :src="newTodo.imageUrl" alt="" />
+                  <!-- 延伸技巧，多圖 -->
+                  <div class="mt-5" v-if="newTodo.images">
+                    <div
+                      v-for="(image, key) in newTodo.images"
+                      class="mb-3 input-group"
+                      :key="key"
+                    >
+                      <input
+                        type="url"
+                        class="form-control form-control"
+                        v-model="newTodo.imageUrl[key]"
+                        placeholder="請輸入連結"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        @click="newTodo.imageUrl.splice(key, 1)"
+                      >
+                        移除
+                      </button>
+                    </div>
+                    <div
+                      v-if="
+                      newTodo.images[newTodo.images.length - 1] || !newTodo.images.length
+                "
+                    >
+                      <button
+                        class="btn btn-outline-primary btn-sm d-block w-100"
+                        @click="newTodo.imageUrl.push('')"
+                      >
+                        新增圖片
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="mb-3">
+                    <label for="title" class="form-label">商品名稱</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="title"
+                      v-model="newTodo.title"
+                      placeholder="請輸入商品名稱"
+                    />
+                  </div>
+                  <div class="row gx-2">
+                    <div class="mb-3 col-md-6">
+                      <label for="origin_price" class="form-label">原價</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="origin_price"
+                        v-model.number="newTodo.origin_price"
+                        placeholder="請輸入原價"
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="price" class="form-label">售價</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="price"
+                        v-model.number="newTodo.price"
+                        placeholder="請輸入售價"
+                      />
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        v-model="newTodo.is_enabled"
+                        :true-value="1"
+                        :false-value="0"
+                        id="is_enabled"
+                      />
+                      <label class="form-check-label" for="is_enabled">
+                        是否銷售
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                取消
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="updateProduct"
+              >
+                確認
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- bootstrap5 CDN -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"
+  ></script>
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <script type="module">
+    import products from "./Vue-LV3.js";
+
+    const { createApp } = Vue;
+    const app = {
+      data() {
+        return {
+          // 新增或編輯
+          newTodo: {
+            title: "",
+            origin_price: "",
+            price: "",
+            is_enabled: true,
+            imageUrl: "",
+          },
+          // 暫存，查看單一細節
+          tempProduct: {},
+          // 產品資料格式
+          products,
+        };
+      },
+      methods: {
+        // 刪除
+        removeProduct(key) {
+          this.products.splice(key, 1);
+        },
+        updateProduct() {
+          this.products.push(this.newTodo);
+        },
+      },
+    };
+    createApp(app).mount("#app");
+  </script>
+</html>

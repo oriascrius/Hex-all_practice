@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <input type="email" id="email" />
+      <input type="password" id="password" />
+      <button type="button" id="login">登入</button>
+    </div>
+
+    <div>
+      <button type="button" id="check">確認是否登入</button>
+      <button type="button" id="getProducts">取得後台的產品列表</button>
+    </div>
+
+    <!-- 5. 管理者 -->
+    <!-- 6. 一般用戶 -->
+    <script>
+      // 0. 測試串接
+
+      // 1. 登入
+      // 2. 確認是否登入
+      // 3. 使用管理者的 API
+      const url = "https://vue3-course-api.hexschool.io/v2/";
+      const path = "casper-hexschool";
+
+      // 'https://vue3-course-api.hexschool.io/v2/api/casper-hexschool/products/all/'
+      // console.log(`${url}api/${path}/products/all`);
+      // axios.get(`${url}api/${path}/products/all`)
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+
+      // Lambda
+
+      const emailInput = document.querySelector("#email");
+      const pwInput = document.querySelector("#password");
+      const loginBtn = document.querySelector("#login");
+      const checkBtn = document.querySelector("#check");
+      const getProductsBtn = document.querySelector("#getProducts");
+
+      loginBtn.addEventListener("click", () => {
+        const username = emailInput.value; // email
+        const password = pwInput.value;
+
+        const user = {
+          username,
+          password,
+        };
+        // console.log(user);
+        // 路徑, 資料
+        axios.post(`${url}admin/signin`, user).then((res) => {
+          console.log(res);
+          const { token, expired } = res.data;
+          console.log(token, expired);
+          document.cookie = `hexschool=${token}; expires=${expired};`;
+          axios.defaults.headers.common["Authorization"] = token; // 登入成功時
+        });
+      });
+
+      // 從 cookie 取出的
+      // 當 cookie 有儲存時，就可以取出來
+      const token = document.cookie.replace(
+        /(?:(?:^|.*;\s*)hexschool\s*\=\s*([^;]*).*$)|^.*$/,
+        "$1"
+      );
+      axios.defaults.headers.common["Authorization"] = token; // Cookie 有儲存時
+
+      checkBtn.addEventListener("click", () => {
+        axios
+          .post(`${url}api/user/check`)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+
+      getProductsBtn.addEventListener("click", () => {
+        axios
+          .get(`${url}api/${path}/admin/products/all`)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    </script>
+  </body>
+</html>

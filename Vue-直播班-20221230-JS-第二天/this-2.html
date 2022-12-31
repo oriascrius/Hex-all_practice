@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <script>
+      // var a = '全域';
+      // function fn(params) {
+      //   console.log(params, this, window, arguments);
+      //   debugger;
+      // }
+      // fn('參數');
+      // this 是存在函式作用域裡面的
+
+      // const obj = {
+      //   name: '小明',
+      //   fn() {
+      //     console.log(this, this.name);
+      //   }
+      // }
+      // obj.fn();
+
+      // this 的重點
+      window.someone = "全域";
+      function callSomeone() {
+        console.log(this.someone);
+      }
+      // callSomeone(); // 純粹的呼叫 > 全域
+
+      // 1. this 與如何定義無關，只與呼叫方式有關
+      // const obj = {
+      //   someone: '小明',
+      //   callSomeone() {
+      //     console.log(this.someone);
+      //   }
+      // }
+      // obj.callSomeone(); // 2. 物件下的方法
+
+      // const obj = {
+      //   someone: '小明',
+      //   callSomeone,
+      // }
+      // obj.callSomeone(); // 2. 物件下的方法
+      // 1. 全域，2. 小明
+
+      // const obj = {
+      //   someone: '小明',
+      //   innerObj: {
+      //     someone: '小明的內心戲',
+      //     callSomeone
+      //   }
+      // }
+      // obj.innerObj.callSomeone(); // 2. 物件下的方法
+      // 1. 全域，2. 小明, 3. 小明的內心戲
+
+      // const Card = {
+      //   el: '#app1',
+      //   data: '這是卡片一的資料',
+      //   init() {
+      //     // console.log(Card.data);
+      //     // console.log(this.data);
+      //     this.render()
+      //   },
+      //   render() {
+      //     const dom = document.querySelector(this.el);
+      //     dom.innerHTML = this.data;
+      //   }
+      // }
+      // Card.init();
+
+      // const Card2 = {
+      //   ...Card,
+      //   el: '#app2',
+      //   data: '這是卡片二的資料'
+      // }
+      // Card2.init();
+
+      // callback function 又回來啦
+      // const Card = {
+      //   el: '#app1',
+      //   data: [1, 2, 3],
+      //   text: '', // 塞在這裡
+      //   init() {
+      //     this.render()
+      //   },
+      //   render() {
+      //     const dom = document.querySelector(this.el);
+
+      //     // 等等會把陣列重組到 this.text 裡面，然後渲染
+      //     // 1. 不推薦：使用 const vm = this;
+      //     // 2. 推薦：使用箭頭函式
+      //     // 箭頭函式：沒有自己的 this
+      //     // const vm = this;
+      //     this.data.forEach((item) => { // callback function
+      //       console.log(item);
+
+      //       // console.log(this);
+      //       this.text += item;
+      //     })
+      //     dom.innerHTML = this.text;
+      //   }
+      // }
+      // Card.init();
+
+      window.someone = "全域";
+      const app = {
+        someone: "這是一句話",
+        // fn() {
+        //   setTimeout(() => {
+        //     console.log(this.someone);
+        //   }, 100)
+        // }
+        fn: () => {
+          console.log(this.someone);
+        },
+      };
+      app.fn();
+      // 1. 全 2,這是一句話
+    </script>
+  </body>
+</html>

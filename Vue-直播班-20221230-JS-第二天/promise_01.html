@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue-直播班-20221230-JS-第二天</title>
+  </head>
+  <body>
+    <!-- JS -> 逐行執行 -->
+  </body>
+  <!-- xios CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+  <script>
+    // let data = '';
+    // function updateData() {
+    //   data = '小明';
+    // }
+    // updateData();
+    // console.log(data); // 1. '', 2. '小明'
+
+    // let data = '';
+    // (function() {
+    //   data = '小明';
+    // })();
+    // console.log(data); // 1. '', 2. '小明'
+
+    // 實作
+    // [1, 2, 3,].forEach((item) => {
+    //   console.log(item);
+    // })
+
+    // let data = '';
+    // setTimeout(() => { // web api
+    //   console.log('setTimeout 執行完了');
+    //   data = '小明'
+    // }, 0);
+    // console.log(data); // 1. '', 2. '小明' <- 本行先執行
+
+    // setTimeout(() => {
+    //   // 非同步事件
+    //   console.log('1. setTimeout 執行完了');
+    //   // 1.
+    //   setTimeout(() => {
+    //     console.log('2. setTimeout 執行完了');
+    //     setTimeout(() => {
+    //       console.log('3. setTimeout 執行完了');
+    //       setTimeout(() => {
+    //         console.log('4. setTimeout 執行完了');
+    //       }, 500);
+    //     }, 500);
+    //   }, 500);
+
+    // }, 500);
+    // 2.
+
+    // Promise
+    const promiseSetTimeout = (status) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (status) {
+            resolve("promiseSetTimeout 成功");
+          } else {
+            reject("promiseSetTimeout 失敗");
+          }
+        }, 500);
+      });
+    };
+
+    // 1. 理論
+    // 2. 實作
+    // Promise > 成功、失敗，專門來處理非同步
+
+    // resolve 成功：reject 失敗
+    // 成功 > then, 失敗對應 > catch
+    // promiseSetTimeout(false)
+    //   .then((res)=> {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+
+    // 鏈接
+    // promiseSetTimeout(true)
+    //   .then((res)=> {
+    //     console.log(1, res);
+    //     return promiseSetTimeout(false)
+    //   })
+    //   .then((res) => {
+    //     console.log(2, res);
+    //     return promiseSetTimeout(true)
+    //   })
+    //   .then((res) => {
+    //     console.log(3, res);
+    //   })
+    //   .catch((err)=> {
+    //     console.log(err);
+    //     return promiseSetTimeout(true)
+    //   })
+    //   .then((res) => {
+    //     console.log('敗部復活', res);
+    //   })
+
+    // 1. 更一致的寫法 then, catch
+    // 2. 鏈接
+
+    // async/await 是基於 Promise 在運作
+    // Async function 本質就是 Promise
+    console.dir(axios); // 理論：函式就是物件
+    axios
+      .get("https://randomuser.me/api/")
+      .then((res) => {
+        console.log(res.data); //
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.message);
+      });
+  </script>
+</html>

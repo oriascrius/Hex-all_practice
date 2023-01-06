@@ -78,7 +78,6 @@
           <!-- 單一產品細節 -->
           <div class="col-md-6">
             <h2>單一產品細節</h2>
-
             <!-- 左邊點擊才觸發右邊內容，當暫存區得到 id，顯示該 id 的內容 -->
             <template v-if="tempProduct.id">
               <div class="card mb-4">
@@ -115,7 +114,6 @@
             </template>
             <!-- v-else 緊連前個 template if -->
             <!-- 未顯示 if 時 先顯示下方 else 的內容 -->
-
             <p v-else class="text-secondary">請選擇一個商品查看</p>
           </div>
         </div>

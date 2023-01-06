@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week2-product</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* contain 圖片完整且剛好放進去。 */
+      img {
+        object-fit: contain;
+        max-width: 100%;
+      }
+      .primary-image {
+        height: 300px;
+      }
+      /* 其餘圖片 */
+      .images {
+        height: 150px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-md-6">
+            <h2>產品列表</h2>
+            <table class="table table-hover mt-4">
+              <thead>
+                <tr>
+                  <th width="150">產品名稱</th>
+                  <th width="120">原價</th>
+                  <th width="120">售價</th>
+                  <th width="150">是否啟用</th>
+                  <th width="120">查看細節</th>
+                </tr>
+              </thead>
+              <!-- 表格內容 -->
+              <tbody>
+                <tr v-for="(product, key) in products" :key="product.id">
+                  <td width="200">{{ product.title }}</td>
+                  <td width="150">{{ product.origin_price }}</td>
+                  <td width="150">{{ product.price }}</td>
+                  <td
+                    width="120"
+                    v-if="product.is_enabled"
+                    class="text-success"
+                  >
+                    啟用
+                  </td>
+                  <td width="120" v-else>不啟用</td>
+                  <td width="150">
+                    <!-- 點擊觸發 暫存資料 -->
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      @click="tempProduct = {...product}"
+                    >
+                      查看細節
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>目前有 <span>{{ products.length }}</span> 項產品</p>
+          </div>
+          <!-- 單一產品細節 -->
+          <div class="col-md-6">
+            <h2>單一產品細節</h2>
+            <!-- 左邊點擊才觸發右邊內容，當暫存區得到 id，顯示該 id 的內容 -->
+            <template v-if="tempProduct.id">
+              <div class="card mb-4">
+                <img
+                  :src="tempProduct.imageUrl"
+                  class="card-img-top card-image"
+                  alt="主圖"
+                />
+                <div class="card-body">
+                  <!-- badge 小標籤 -->
+                  <h5 class="card-title">
+                    {{tempProduct.title}}<span class="badge bg-primary ms-2"
+                      >{{tempProduct.category}}</span
+                    >
+                  </h5>
+                  <p class="card-text">
+                    商品描述：{{ tempProduct.description }}
+                  </p>
+                  <p class="card-text">商品內容：{{ tempProduct.content }}</p>
+                  <p class="card-text">
+                    {{ tempProduct.price }}
+                    <del class="text-secondary"
+                      >{{ tempProduct.origin_price }}</del
+                    >{{unit}} / 元
+                  </p>
+                </div>
+              </div>
+              <!-- 其餘圖片 -->
+              <!-- 由於 imgs 的型別為字串，並非物件，所以無法使用 imgs.id 來綁定 key。
+              可以直接使用 imgs 來做為 key （因為 imgs 都是不重複的字串） -->
+              <template v-for="imgs in tempProduct.imagesUrl" :key="imgs">
+                <img :src="imgs" class="images m-2" alt="副圖" />
+              </template>
+            </template>
+            <!-- v-else 緊連前個 template if -->
+            <!-- 未顯示 if 時 先顯示下方 else 的內容 -->
+            <p v-else class="text-secondary">請選擇一個商品查看</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./products.js" type="module"></script>
+  </body>
+</html>

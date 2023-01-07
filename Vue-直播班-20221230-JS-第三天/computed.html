@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>computed</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <!-- 我房子在這 -->
+    <div id="app">
+      <h1>排序技巧</h1>
+      <button type="button" v-on:click="ascending = !ascending">
+        升降冪{{ascending}}
+      </button>
+      排序項目：{{ sortBy }}
+
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th @click="sortBy = 'age'">年齡</th>
+            <th>喜好</th>
+            <th @click="sortBy = 'price'">價格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in sortPeople">
+            <td>{{ item.name }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.like }}</td>
+            <td>{{ item.price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const 範例資料 = {
+        // 資料
+        ascending: true,
+        sortBy: "age",
+        people: [
+          {
+            name: "卡斯伯",
+            age: 26,
+            like: "鍋燒意麵",
+            price: 95,
+            imageUrl:
+              "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+          },
+          {
+            name: "瑞",
+            age: 36,
+            like: "炒麵",
+            price: 80,
+            imageUrl:
+              "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnJpZWQlMjBub29kbGVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
+          },
+          {
+            name: "小明",
+            age: 17,
+            like: "黑胡椒燴飯",
+            price: 120,
+            imageUrl:
+              "https://images.unsplash.com/photo-1637362520022-81292a4bff4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+          },
+          {
+            name: "喬伊",
+            age: 18,
+            like: "生菜沙拉",
+            price: 80,
+            imageUrl:
+              "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+          },
+        ],
+      };
+      const app = Vue.createApp({
+        data() {
+          return 範例資料;
+        },
+        methods: {},
+        computed: {
+          // 產生一個新的值
+          sortPeople() {
+            console.log(this.sortBy); // price
+            const newPeople = [...this.people].sort((a, b) => {
+              return this.ascending
+                ? a[this.sortBy] - b[this.sortBy]
+                : b[this.sortBy] - a[this.sortBy];
+            });
+            return newPeople;
+            // 1. 使用監聽的方式
+            // 2. 並沒有產生新的 Data
+            // 3. 原則上，不會修改到 data
+            // 4. 但 sort 剛好在這會修改到 data
+          },
+        },
+        // computed: {
+        //   // #1 先完成價格排序 v
+        //   // #2 加入 升降冪 v
+        //   // #3 加入價格、年齡的排序
+        // },
+      }).mount("#app");
+
+      const obj = {
+        name: "卡斯柏",
+        age: 18,
+      };
+      const a = "name";
+      console.log(obj.name);
+      console.log(obj["name"]);
+      console.log(obj[a]);
+    </script>
+  </body>
+</html>

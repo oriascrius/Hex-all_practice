@@ -7,27 +7,6 @@ createApp({
       apiPath: "qoqvuedemo",
       products: [],
       tempProduct: {},
-      product: [
-        {
-          category: "甜甜圈",
-          content: "尺寸：14x14cm",
-          description:
-            "濃郁的草莓風味，中心填入滑順不膩口的卡士達內餡，帶來滿滿幸福感！",
-          id: "-L9tH8jxVb2Ka_DYPwng",
-          is_enabled: 1,
-          origin_price: 150,
-          price: 99,
-          title: "草莓莓果夾心圈",
-          unit: "個",
-          num: 10,
-          imageUrl:
-            "https://images.unsplash.com/photo-1583182332473-b31ba08929c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzR8fGRvbnV0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60",
-          imagesUrl: [
-            "https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2832&q=80",
-            "https://images.unsplash.com/photo-1559656914-a30970c1affd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTY0fHxkb251dHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60",
-          ],
-        },
-      ],
     };
   },
   methods: {

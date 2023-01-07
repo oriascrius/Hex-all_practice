@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>watch</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- 我房子在這 -->
+    <div id="app">
+      <h1></h1>
+      <input type="text" v-model="text" /> {{ text }}
+
+      <!-- <br>
+    <input type="text" v-model="seed"> -->
+    </div>
+
+    <script type="module">
+      import { debounce } from "https://cdn.jsdelivr.net/npm/@esm-bundle/lodash@4.17.21/esm/index.js";
+
+      const app = Vue.createApp({
+        data() {
+          return {
+            text: "這裡有一句話",
+            seed: "",
+          };
+        },
+        watch: {
+          // 監聽的目標
+          // text() {
+          //   axios.get(`https://randomuser.me/api/?seed=${this.text}`)
+          //     .then((res) => {
+          //       console.log(res);
+          //     });
+          //   // debounce
+          // },
+          text: debounce(function () {
+            axios
+              .get(`https://randomuser.me/api/?seed=${this.text}`)
+              .then((res) => {
+                console.log(res);
+              });
+          }, 500),
+        },
+        // watch: {
+        //   text(current, old) {
+
+        //     // #1 使用 Watch 取得當前值及舊有值
+        //   },
+
+        //   // 將 debounce 直接作為 seed 函式監聽
+        //   // https://lodash.com/docs/4.17.15#debounce
+        //   seed(current) {
+        //     // #2 使用當前輸入的文字取得遠端資料（https://randomuser.me/documentation）
+        //     // #3 加入 Lodash Debounce CDN
+        //     // #4 使用 debounce 結合 watch 解決過度重複觸發的問題 seed: debounce((current)
+
+        //     console.log(current);
+        //     // axios.get(`https://randomuser.me/api/?seed=${current}`)
+        //     //   .then(res => {
+        //     //     console.log(res.data);
+        //     //   })
+        //   },
+        // },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

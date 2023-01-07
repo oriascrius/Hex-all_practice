@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todoList</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Todo List -->
+      <input type="text" v-model="text" /> {{ text }}
+      <button type="button" @click="addData">新增一個 Todo</button>
+
+      <ul>
+        <li v-for="item in list" :key="item.id">
+          {{ item.text }}
+          <button type="button" @click="editData(item)">編輯</button>
+          <button type="button" @click="removeDate(item)">刪除</button>
+        </li>
+      </ul>
+      <hr />
+      <div v-if="tempData.id">
+        <input type="text" v-model="tempData.text" />
+        <button type="button" @click="confirm">確認編輯</button>
+      </div>
+    </div>
+    <script type="module">
+      import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.esm-browser.min.js";
+
+      const app = {
+        data() {
+          return {
+            text: "",
+            list: [],
+            tempData: {},
+          };
+        },
+        methods: {
+          // 刪除
+          removeDate(item) {
+            const index = this.list.findIndex((li) => li.id === item.id);
+            this.list.splice(index, 1);
+          },
+          // 新增
+          addData() {
+            const newData = {
+              id: new Date().getTime(),
+              text: this.text,
+            };
+            this.text = "";
+            this.list.push(newData);
+          },
+          // 編輯
+          editData(item) {
+            this.tempData = { ...item };
+          },
+          // 確認編輯
+          confirm() {
+            const index = this.list.findIndex(
+              (item) => item.id === this.tempData.id
+            );
+            this.list[index] = this.tempData;
+            this.tempData = {};
+          },
+        },
+        mounted() {},
+      };
+
+      createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

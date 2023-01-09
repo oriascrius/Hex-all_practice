@@ -6,5 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todoList2 - 練習</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <!-- 輸入框 -->
+      <input type="text" v-model="text" />
+      <!-- 新增按鈕 -->
+      <button type="button" @click="addTodo">新增代辦事項</button>
+      <hr />
+      <!-- 顯示事項 -->
+      <ul>
+        <!-- 渲染 list 內的資料 -->
+        <li v-for="item in list" :key="item.id">
+          {{ item.text }}
+          <!-- 編輯 -->
+          <button type="button" @click="editList(item)">編輯</button>
+          <!-- 刪除 -->
+          <button type="button" @click="removeList(item)">刪除</button>
+        </li>
+      </ul>
+      <!-- 編輯事項 -->
+      <!-- v-if="tempList.id"-> 按下編輯得到 id 才會出現 -->
+      <div v-if="tempList.id">
+        <input type="text" / v-model="tempList.text">
+        <button type="button" @click="confirm">確認編輯</button>
+      </div>
+    </div>
+    <script type="module">
+      // 導入 Vue
+      import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.esm-browser.min.js";
+
+      // 建立物件
+      const app = {
+        data() {
+          return {
+            // 輸入框內容
+            text: "",
+            // 放每一條事項 li
+            list: [],
+            // 編輯用 -> 暫存區
+            tempList: [],
+          };
+        },
+        methods: {
+          // 新增代辦
+          addTodo() {
+            // 物件裝 輸入的事項
+            const newTodo = {
+              // id -> 用 new Date().getTime() 取得唯一的時間戳當作 id
+              id: new Date().getTime(),
+              // 輸入框內容
+              text: this.text,
+            };
+            // 將輸入的每條事項放到陣列
+            this.list.push(newTodo);
+            this.text = "";
+          },
+          // 編輯
+          // 按下編輯邏輯 -> 跳出輸入框可以重新輸入內容 -> 所以以下用暫存區複製原有的資料
+          editList(item) {
+            this.tempList = { ...item };
+          },
+          // 刪除
+          // index = 找出對應的第幾個事項 -> 再刪除對應 index 的事項
+          removeList(item) {
+            const index = this.list.findIndex(
+              (item) => item.id === this.tempList.id
+            );
+            this.list.splice(index, 1);
+          },
+          // 確認編輯 - 取得對應的 index -> 更改資料
+          confirm() {
+            // 取得 原有資料 對應 編輯資料 的事項 index -> 意思也是找出第幾個事項
+            const index = this.list.findIndex(
+              (item) => item.id === this.tempList.id
+            );
+            // 並告訴原有資料第幾個事項要更改成 編輯資料
+            this.list[index] = this.tempList;
+            this.tempList = "";
+          },
+        },
+      };
+      // Vue 放入參數物件 -> 掛載在 id=app 的標籤上
+      createApp(app).mount("#app");
+    </script>
+  </body>
 </html>

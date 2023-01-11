@@ -25,6 +25,7 @@ createApp({
           document.cookie = `qoqVueDemo=${token};expires=${new Date(
             expired
           )};path=/`;
+          alert("登入成功");
           window.location = "products.html";
         })
         .catch((err) => {

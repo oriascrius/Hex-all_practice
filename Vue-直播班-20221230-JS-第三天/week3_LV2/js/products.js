@@ -154,6 +154,7 @@ createApp({
         // 成功 -> 登出到登入頁面
         .then(() => {
           sessionStorage.clear();
+          alert("登出");
           window.location = "login.html";
         })
         // 失敗 -> 跳出提醒框、並返回登入頁面

@@ -12,15 +12,7 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <style>
-      /* 解決 -> 畫面重整時會出現未編譯的資料 */
-      [v-cloak] {
-        display: none;
-      }
-      .navBgColor {
-        background-color: #cecccc;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/all.css" />
   </head>
 
   <body>
@@ -66,7 +58,7 @@
       </nav>
 
       <!-- 主要畫面 -->
-      <div class="container-fluid">
+      <div class="container">
         <div class="text-end mt-4 me-5">
           <button
             type="button"
@@ -78,13 +70,13 @@
         </div>
         <table class="table mt-4">
           <thead>
-            <tr>
+            <tr class="">
               <th>分類</th>
               <th>商品名稱</th>
               <th>原價</th>
               <th>售價</th>
               <th>是否啟用</th>
-              <th class="ps-5">編輯</th>
+              <th width="200" class="text-center">編輯</th>
             </tr>
           </thead>
           <tbody>
@@ -97,7 +89,7 @@
                 <span v-if="product.is_enabled" class="text-success">啟用</span>
                 <span v-else class="text-danger">未啟用</span>
               </td>
-              <td>
+              <td width="200" class="text-center">
                 <button
                   type="button"
                   class="btn btn-outline-success"
@@ -107,7 +99,7 @@
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-danger mx-2"
+                  class="btn btn-outline-danger ms-2"
                   @click="openModal('delete', product)"
                 >
                   刪除
@@ -153,6 +145,14 @@
                       placeholder="請輸入圖片連結"
                     />
                     <img class="img-fluid" :src="tempProduct.imageUrl" />
+                    <!-- 上傳本地圖片 -->
+                    <input
+                      type="file"
+                      ref="file"
+                      name="file-to-upload"
+                      class="form-control"
+                      @change="upload"
+                    />
                   </div>
                   <h3 class="mb-3">多圖新增</h3>
                   <div v-if="Array.isArray(tempProduct.imagesUrl)">
@@ -313,7 +313,7 @@
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                class="btn btn-success"
                 @click="updateProduct"
               >
                 確認
@@ -375,6 +375,6 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script src="./products.js" type="module"></script>
+    <script src="./js/products.js" type="module"></script>
   </body>
 </html>

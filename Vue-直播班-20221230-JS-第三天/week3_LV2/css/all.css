@@ -1,0 +1,8 @@
+ /* 解決 -> 畫面重整時會出現未編譯的資料 */
+ [v-cloak] {
+    display: none;
+  }
+  /* nav 顏色 */
+  .navBgColor {
+    background-color: #cecccc;
+  }

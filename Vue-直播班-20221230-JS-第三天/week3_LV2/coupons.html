@@ -113,6 +113,148 @@
           </tbody>
         </table>
       </div>
+
+      <!-- 新增、編輯 Modal -->
+      <div
+        id="couponsModal"
+        ref="couponsModal"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="couponsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-dark text-white">
+              <h5 id="couponsModalLabel" class="modal-title">
+                <span v-if="isNew">新增商品</span>
+                <span v-else>編輯商品</span>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="mb-3">
+                    <label for="title" class="form-label">名稱</label>
+                    <input
+                      id="title"
+                      v-model="tempCoupons.title"
+                      type="text"
+                      class="form-control"
+                      placeholder="請輸入名稱"
+                    />
+                  </div>
+
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="category" class="form-label"
+                        >折扣百分比</label
+                      >
+                      <input
+                        id="category"
+                        v-model="tempCoupons.percent"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入折扣百分比"
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="price" class="form-label">到期日</label>
+                      <input
+                        id="unit"
+                        v-model="tempCoupons.due_date"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入到期日"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input
+                        id="is_enabled"
+                        v-model="tempCoupons.is_enabled"
+                        class="form-check-input"
+                        type="checkbox"
+                        :true-value="1"
+                        :false-value="0"
+                      />
+                      <label class="form-check-label" for="is_enabled"
+                        >是否啟用</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                取消
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="updateCoupons"
+              >
+                確認
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 刪除 Modal -->
+      <div
+        id="delCouponsModal"
+        ref="delCouponsModal"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="delCouponsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content border-0">
+            <div class="modal-header bg-danger text-white">
+              <h5 id="delCouponsModalLabel" class="modal-title">
+                <span>刪除產品</span>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              是否刪除
+              <strong class="text-danger">{{ tempCoupons.title }}</strong>
+              商品(刪除後將無法恢復)。
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                取消
+              </button>
+              <button type="button" class="btn btn-danger" @click="delCoupons">
+                確認刪除
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- axios -->

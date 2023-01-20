@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week4-LV2-products</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/all.css" />
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <!-- nav -->
+      <nav class="navbar navbar-expand-lg navBgColor">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-5" href="products.html">松柏食光</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+              <li class="nav-item me-4">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="products.html"
+                  >商品</a
+                >
+              </li>
+              <li class="nav-item me-4">
+                <a class="nav-link" href="orders.html">訂單</a>
+              </li>
+              <li class="nav-item me-4">
+                <a class="nav-link" href="coupons.html">優惠券</a>
+              </li>
+              <li class="nav-item me-4">
+                <a class="nav-link" href="#" @click.prevent="logout">登出</a>
+              </li>
+            </ul>
+            <!-- <span class="navbar-text"> Navbar text with an inline element </span> -->
+          </div>
+        </div>
+      </nav>
+
+      <!-- 主要畫面 -->
+      <div class="container">
+        <div class="text-end mt-4 me-5">
+          <button
+            type="button"
+            class="btn btn-success"
+            @click="openModal('new')"
+          >
+            增加一個新商品
+          </button>
+        </div>
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th>分類</th>
+              <th>商品名稱</th>
+              <th class="text-center">商品圖片</th>
+              <th>原價</th>
+              <th>售價</th>
+              <th>是否啟用</th>
+              <th class="text-center">編輯</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(product, index) in products"
+              :key="product.id"
+              class="align-middle"
+            >
+              <td width="120">{{ product.category }}</td>
+              <td width="200">{{ product.title }}</td>
+              <td width="150" class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  @click="openModal('lightbox', product)"
+                >
+                  <img
+                    :src="product.imageUrl"
+                    alt="商品圖"
+                    width="100"
+                    height="80"
+                    class="rounded"
+                  />
+                </button>
+              </td>
+              <td width="120">{{ product.origin_price }}</td>
+              <td width="120">{{ product.price }}</td>
+              <td width="120">
+                <span v-if="product.is_enabled" class="text-success">啟用</span>
+                <span v-else class="text-danger">未啟用</span>
+              </td>
+              <td width="200" class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  @click="openModal('edit', product)"
+                >
+                  編輯
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger ms-md-2"
+                  @click="openModal('delete', product)"
+                >
+                  刪除
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 分頁元件 -->
+        <!-- props 寫法 -> :get-data="getData" -->
+        <!-- emit 寫法 -> @change-page="getData" -->
+        <pagination :pages="page" @change-page="getData"></pagination>
+      </div>
+
+      <!-- 新增、編輯 Modal -->
+      <!-- fileInput -->
+      <div
+        id="productModal"
+        ref="productModal"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="productModalLabel"
+        aria-hidden="true"
+      >
+        <!-- 新增、編輯商品 Modal 元件 -->
+        <!-- :temp-product="tempProduct" -> 讀取 modal 內資料 -->
+        <!--  :upload-images="updateProduct" -> 上傳本地圖片 -->
+        <meal-modal
+          :temp-product="tempProduct"
+          @upload-images="upload"
+          :is-new="isNew"
+          @create-images="createImages"
+          @update-meals="updateProduct"
+        ></meal-modal>
+      </div>
+
+      <!-- 刪除 Modal -->
+      <div
+        id="delProductModal"
+        ref="delProductModal"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="delProductModalLabel"
+        aria-hidden="true"
+      >
+        <!-- 刪除商品 Modal 元件 -->
+        <del-meal-modal
+          :temp-product="tempProduct"
+          @del-meals="delProduct"
+        ></del-meal-modal>
+      </div>
+
+      <!-- 燈箱 Modal -->
+      <div
+        id="lightboxModal"
+        ref="lightboxModal"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="lightboxModalLabel"
+        aria-hidden="true"
+      >
+        <lightbox-modal :temp-product="tempProduct"></lightbox-modal>
+      </div>
+    </div>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- bootstrap5 JS -> 叫出 Modal -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/products.js" type="module"></script>
+  </body>
+</html>

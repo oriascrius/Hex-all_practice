@@ -15,24 +15,6 @@ import { apiUrl, apiPath } from "../js/config.js";
 
 export default {
   props: ["tempProduct", "isNew"],
-  methods: {
-    // 圖片上傳 API （本地檔案上傳）
-    upload() {
-      const file = this.$refs.inputFile.files[0];
-      // 將 formData 表單格式轉成物件
-      const formData = new FormData();
-      formData.append("file-to-upload", file);
-      // 上傳
-      axios
-        .post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
-        .then((res) => {
-          this.tempProduct.imageUrl = res.data.imageUrl;
-        })
-        .catch((err) => {
-          alert(err.response.data.message);
-        });
-    },
-  },
   template: `<div class="modal-dialog modal-xl">
     <div class="modal-content border-0">
       <div class="modal-header bg-dark text-white">
@@ -235,4 +217,22 @@ export default {
       </div>
     </div>
   </div>`,
+  methods: {
+    // 圖片上傳 API （本地檔案上傳）
+    upload() {
+      const file = this.$refs.inputFile.files[0];
+      // 將 formData 表單格式轉成物件
+      const formData = new FormData();
+      formData.append("file-to-upload", file);
+      // 上傳
+      axios
+        .post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
+        .then((res) => {
+          this.tempProduct.imageUrl = res.data.imageUrl;
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
+    },
+  },
 };

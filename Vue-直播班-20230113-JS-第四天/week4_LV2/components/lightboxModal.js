@@ -15,7 +15,7 @@ export default {
       ></button>
     </div>
     <div class="modal-body">
-      <img :src="tempProduct.imageUrl" alt="商品圖" class="rounded imgObjectFit">
+      <img :src="tempProduct.imageUrl" alt="商品圖" class="rounded lightBoxImages">
     </div>
   </div>
 </div>`,

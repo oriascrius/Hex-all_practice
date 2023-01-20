@@ -97,9 +97,7 @@
                   <img
                     :src="product.imageUrl"
                     alt="商品圖"
-                    width="100"
-                    height="80"
-                    class="rounded"
+                    class="rounded productImages"
                   />
                 </button>
               </td>
@@ -148,7 +146,6 @@
         <!--  :upload-images="updateProduct" -> 上傳本地圖片 -->
         <meal-modal
           :temp-product="tempProduct"
-          @upload-images="upload"
           :is-new="isNew"
           @create-images="createImages"
           @update-meals="updateProduct"

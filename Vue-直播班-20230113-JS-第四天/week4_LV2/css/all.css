@@ -6,8 +6,14 @@
   .navBgColor {
     background-color: #cecccc;
   }
-  /* 圖片 */
-  .imgObjectFit{
+  /* 商品列表圖片 */
+  .productImages{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+   /* 商品列表圖片 */
+   .lightBoxImages{
     width: 100%;
     height: 100%;
     object-fit: cover;

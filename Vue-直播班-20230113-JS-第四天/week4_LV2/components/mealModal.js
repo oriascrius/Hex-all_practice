@@ -9,8 +9,30 @@
 // v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]"
 // !tempProduct.imagesUrl.length -> 沒有圖片就出現新增圖片按鈕 -> 反之有圖片時會出現刪除
 // tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1] -> 當最後一個欄位有資料出現新增圖片按鈕 -> 反之沒有填資料會出現刪除
+
+// 引入 公用 API 元件
+import { apiUrl, apiPath } from "../js/config.js";
+
 export default {
   props: ["tempProduct", "isNew"],
+  methods: {
+    // 圖片上傳 API （本地檔案上傳）
+    upload() {
+      const file = this.$refs.inputFile.files[0];
+      // 將 formData 表單格式轉成物件
+      const formData = new FormData();
+      formData.append("file-to-upload", file);
+      // 上傳
+      axios
+        .post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
+        .then((res) => {
+          this.tempProduct.imageUrl = res.data.imageUrl;
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+        });
+    },
+  },
   template: `<div class="modal-dialog modal-xl">
     <div class="modal-content border-0">
       <div class="modal-header bg-dark text-white">
@@ -43,7 +65,7 @@ export default {
                 ref="inputFile"
                 name="file-to-upload"
                 class="form-control"
-                @change="$emit('uploadImages')"
+                @change="upload"
               />
             </div>
             <h3 class="mb-3">多圖新增</h3>

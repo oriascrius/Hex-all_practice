@@ -149,22 +149,22 @@ const app = createApp({
       this.tempProduct.imagesUrl.push("");
     },
     // 圖片上傳 API （本地檔案上傳）
-    upload() {
-      console.dir(this.$refs.inputFile);
-      const file = this.$refs.inputFile.files[0];
-      // 將 formData 表單格式轉成物件
-      const formData = new FormData();
-      formData.append("file-to-upload", file);
-      // 上傳
-      axios
-        .post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
-        .then((res) => {
-          this.tempProduct.imageUrl = res.data.imageUrl;
-        })
-        .catch((err) => {
-          alert(err.response.data.message);
-        });
-    },
+    // upload() {
+    //   console.dir(this.$refs.inputFile);
+    //   const file = this.$refs.inputFile.files[0];
+    //   // 將 formData 表單格式轉成物件
+    //   const formData = new FormData();
+    //   formData.append("file-to-upload", file);
+    //   // 上傳
+    //   axios
+    //     .post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
+    //     .then((res) => {
+    //       this.tempProduct.imageUrl = res.data.imageUrl;
+    //     })
+    //     .catch((err) => {
+    //       alert(err.response.data.message);
+    //     });
+    // },
     // 登出
     logout() {
       const url = `${apiUrl}/logout`;

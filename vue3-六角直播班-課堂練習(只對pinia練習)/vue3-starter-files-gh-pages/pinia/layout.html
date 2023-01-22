@@ -13,6 +13,19 @@
       integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
       crossorigin="anonymous"
     />
+    <style>
+      .table-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+      /* class="card-img-top" -> bootstrap5 卡片 預設圖片 class 寫法 */
+      /* 再加寫讓圖一樣高度並不變形 */
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body class="bg-lighter">
     <div class="container main my-5">
@@ -23,36 +36,54 @@
             <h1 class="mt-0 text-muted">版型製作</h1>
             <small>檔名：<code>layout.html</code></small>
           </div>
-          <!-- 🔥🔥練習開始🔥🔥 -->
-          <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1">松柏食光</span>
-              <button type="button" class="btn">
-                購物車<span class="badge rounded-pill bg-danger">0</span>
-              </button>
-            </div>
-          </nav>
+          <!-- 1.引入 Pinia CDN -->
+          <!-- 2.  const { createPinia } = Pinia; -->
+          <!-- 3.app.use pinia -->
+          <!-- 4.建立 store/productsStore.js 裡面放 Pinia 控制元件 -->
 
-          <!-- v-if -->
-          <div class="classb-light -4 my-4 p-4">購物車沒有任何品項</div>
-          <!-- v-else -->
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><a href="#" class="text-dark">x</a></td>
-                <td width="100">
-                  <img
-                    src="https://media.istockphoto.com/id/1370926806/zh/%E7%85%A7%E7%89%87/fried-thin-pancakes-crepe-stuffed-potato-with-herring-fish-in-plate.jpg?s=2048x2048&w=is&k=20&c=BsT3L2ClPmdopuN4dFYP3pke6vCxa7zpCcJwZ0MGp_k="
-                    alt="商品圖片"
-                  />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-            <tfoot></tfoot>
-          </table>
+          <!-- 🔥🔥練習開始🔥🔥 -->
+          <div id="app">
+            <navbar-component></navbar-component>
+            <cart-components></cart-components>
+            <products-components></products-components>
+          </div>
+
+          <!-- VueDemi，使用 Pinia 必要的相依套件 -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-demi/0.13.11/index.iife.js"></script>
+          <script>
+            const I = VueDemi;
+            const vueDemi = VueDemi;
+          </script>
+          <!-- Pinia 網頁版，實戰中還是以 npm 為主，這是比較少見的使用方式 -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/pinia/2.0.22/pinia.iife.js"></script>
+          <script type="module">
+            const { createApp } = Vue;
+            const { createPinia } = Pinia;
+
+            // 引入 Pinia 元件 -> 目前這裡沒有全域使用可以先不用寫
+            import productsStore from "./store/productsStore.js";
+
+            // 引入 navbar 元件
+            import navbarComponent from "./homeworkComponents/navbarComponent.js";
+            // 引入 購物車 元件
+            import cartComponents from "./homeworkComponents/cartComponents.js";
+            // 引入 商品列表 元件
+            import productsComponents from "./homeworkComponents/productsComponents.js";
+
+            const app = createApp({
+              components: {
+                // navbar 元件
+                navbarComponent,
+                // 購物車 元件
+                cartComponents,
+                // 商品列表 元件
+                productsComponents,
+              },
+            });
+            const pinia = createPinia();
+            app.use(pinia);
+            app.mount("#app");
+          </script>
 
           <!-- 🙇🙇練習結束🙇🙇 -->
         </main>

@@ -1,7 +1,8 @@
 import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
-
+// 引入 公用 API 元件
+import { apiUrl } from "../js/config.js";
 // 申請 API 的網址，第二版補上 v2
-const url = "https://vue3-course-api.hexschool.io/v2";
+// const url = "https://vue3-course-api.hexschool.io/v2";
 
 const app = createApp({
   data() {
@@ -16,7 +17,7 @@ const app = createApp({
     // 1.登入
     login() {
       axios
-        .post(`${url}/admin/signin`, this.user)
+        .post(`${apiUrl}/admin/signin`, this.user)
         .then((response) => {
           // 存取登入的 token、expired
           const { token, expired } = response.data;

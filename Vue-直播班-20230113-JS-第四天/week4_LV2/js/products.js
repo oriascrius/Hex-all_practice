@@ -1,13 +1,13 @@
 // vue
 import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 // 引入分頁元件
-import pagination from "../components/pagination.js";
+import Pagination from "../components/Pagination.js";
 // 引入 新增、編輯商品 Modal 元件
-import mealModal from "../components/mealModal.js";
+import MealModal from "../components/MealModal.js";
 // 引入 刪除商品 Modal 元件
-import delMealModal from "../components/delMealModal.js";
+import DelmealModal from "../components/DelmealModal.js";
 // 引入 燈箱 Modal 元件
-import lightboxModal from "../components/lightboxModal.js";
+import LightboxModal from "../components/LightboxModal.js";
 // 引入 公用 API 元件
 import { apiUrl, apiPath } from "../js/config.js";
 
@@ -184,13 +184,13 @@ const app = createApp({
   },
   components: {
     // 分頁元件
-    pagination,
+    Pagination,
     // 新建、編輯商品 modal 元件
-    mealModal,
+    MealModal,
     // 刪除商品 Modal 元件
-    delMealModal,
+    DelmealModal,
     // 燈箱效果元件
-    lightboxModal,
+    LightboxModal,
   },
   // modal 放在 mounted -> 可以在 dom 生成後 才建立，這樣 modal 裡面才能綁定 vue 拿到資料
   mounted() {

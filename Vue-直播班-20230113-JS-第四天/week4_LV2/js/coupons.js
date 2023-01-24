@@ -1,10 +1,10 @@
 import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 // 優惠券分頁元件
-import couponPagination from "../components/couponPagination.js";
+import CouponPagination from "../components/CouponPagination.js";
 // 新增、編輯優惠券 Modal 元件
-import couponModal from "../components/couponModal.js";
+import CouponModal from "../components/CouponModal.js";
 // 刪除優惠券 Modal 元件
-import delCouponModal from "../components/delCouponModal.js";
+import DelCouponModal from "../components/DelCouponModal.js";
 // 引入 公用 API 元件
 import { apiUrl, apiPath } from "../js/config.js";
 

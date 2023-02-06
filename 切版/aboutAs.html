@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>關於我們</title>
+    <!-- bootstrap icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <!-- bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* 全域 寬高、底色 設定 */
+      body {
+        box-sizing: border-box;
+        background: #fef5f2;
+      }
+      /* 全域 img 設定 */
+      img {
+        object-fit: cover;
+      }
+      /* 全域 li 設定 */
+      li {
+        list-style: none;
+      }
+      /* 全域 a 設定 */
+      a {
+        text-decoration: none;
+      }
+      /* 1. nav 設定 */
+      nav {
+        height: 85px;
+        color: #747d54;
+      }
+      nav li a {
+        color: #747d54;
+      }
+      nav li a:hover {
+        color: #9ca57c;
+      }
+      /* 2. banner 設定*/
+      .banner_block {
+        height: 786px;
+      }
+      /* 3. 主要內容 關於我們 設定 */
+      .aboutAs_card {
+        position: relative;
+        height: 342px;
+        width: 612px;
+        background: rgba(116, 125, 84, 0.8);
+      }
+      .aboutAs_card img {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+      }
+      /* 4. 訂閲 設定 */
+      .subscribe_image {
+        position: relative;
+        height: 378px;
+        width: 100%;
+        /* 設定背景圖片 */
+        background-image: url(./images/Subscribe_Banner.png);
+        /* 讓圖片不重覆排列 */
+        background-repeat: no-repeat;
+        /* 固定背景圖片位置 */
+        background-attachment: fixed;
+        background-position: right;
+        /* cover 可以讓背景圖片自動縮放到覆蓋內容區域的最小尺寸 */
+        background-size: cover;
+      }
+      .subscribe_block {
+        position: absolute;
+        top: 100px;
+        left: 900px;
+        width: 416px;
+        height: 188px;
+        border: 2px solid #747d54;
+        background-color: rgba(255, 255, 255, 0.87);
+        color: #747d54;
+      }
+      /* 5. footer 設定 */
+      footer {
+        height: 357px;
+        color: rgba(255, 255, 255, 0.87);
+        background: #4e4d3c;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      footer a {
+        color: rgba(255, 255, 255, 0.87);
+      }
+      footer span {
+        font-size: 16px;
+      }
+      .footer_top {
+        height: 86px;
+      }
+      .footer_bottom {
+        height: 86px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- bootstrap JS -->
+    <!-- 1. nav -->
+    <nav class="container-fluid">
+      <div class="row align-items-center justify-content-around">
+        <div class="col-3 border-start border-success">
+          <a href="./home.html">
+            <img
+              src="./images/Logo.png"
+              alt="Logo"
+              height="62.12px"
+              width="297px"
+          /></a>
+        </div>
+        <div class="col-4">
+          <ul class="row pt-4">
+            <li class="col border-start border-success active">
+              <a href="./aboutAs.html"><h4>關於我們</h4></a>
+            </li>
+            <li class="col border-start border-success">
+              <a href="./menu.html"><h4>美味餐點</h4></a>
+            </li>
+            <li class="col border-start border-success">
+              <a href="#"><h4>聯絡我們</h4></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 2. banner -->
+    <div class="banner_block">
+      <img
+        src="./images/AboutUs_Banner_004.png"
+        alt="banner"
+        width="100%"
+        height="100%"
+      />
+    </div>
+    <!-- 3. 主要內容 關於我們 -->
+    <main class="container mt-5 py-5">
+      <div class="row">
+        <div class="col">
+          <ul>
+            <li>
+              <p>
+                我們堅持餐點品質、服務細節，用最好的服務態度，最合理的價格及負責任的食材品質，來服務我們的客人。提供愉悅的用餐環境是我們的責任，並且有自信向每一位前來的朋友們推廣我們的料理。
+              </p>
+            </li>
+            <button type="button" class="btn btn-success mt-4">即刻享用</button>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="aboutAs_card">
+            <img
+              src="./images/AboutUs_Banner_004.png"
+              alt="關於我們"
+              width="612"
+              height="342"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 flex-row-reverse align-items-end">
+        <div class="col">
+          <ul class="">
+            <li>
+              <p>
+                從香煎鮭魚的誘人香氣到背景中咖啡豆研磨機的嗡嗡聲，再到每天準備的<br />西式風格輕食菜單的迷人香味，我們不僅僅是間普通的早午餐店。
+              </p>
+            </li>
+            <button type="button" class="btn btn-success mt-4">即刻享用</button>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="aboutAs_card">
+            <img
+              src="./images/AboutUs_Banner_005.png"
+              alt="關於我們"
+              width="612"
+              height="342"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 align-items-end">
+        <div class="col">
+          <ul>
+            <li>
+              <p>
+                對於每位員工及夥伴們，我們期許的做事態度是：「回歸烹飪的初心，創造能夠帶給人們幸福感的美好料理」，並期待有理想抱負的夥伴與我們一起加入打拼。
+              </p>
+            </li>
+            <button type="button" class="btn btn-success mt-4">即刻享用</button>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="aboutAs_card">
+            <img
+              src="./images/AboutUs_Banner_003.png"
+              alt="關於我們"
+              width="612"
+              height="342"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 flex-row-reverse align-items-end">
+        <div class="col">
+          <ul>
+            <li>
+              <p>
+                我們不僅是一間早午餐店，我們希望每個客人都可以把 Cedar Brunch &
+                Cafe
+                當作另一個家，一個你想跟愛人分享早餐的家，一個你想與摯友閒聊喝杯咖啡的家，一個你想為了所愛之人舉辦派對的家。
+              </p>
+            </li>
+            <button type="button" class="btn btn-success mt-4">即刻享用</button>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="aboutAs_card">
+            <img
+              src="./images/AboutUs_Banner_002.png"
+              alt="關於我們"
+              width="612"
+              height="342"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 align-items-end">
+        <div class="col">
+          <ul>
+            <li>
+              <p>
+                不管何時何地，什麼場合或什麼節日，我們都希望 Cedar Brunch & Cafe
+                可以給你最好的選擇與最好的回憶。
+              </p>
+            </li>
+            <button type="button" class="btn btn-success mt-4">即刻享用</button>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="aboutAs_card">
+            <img
+              src="./images/AboutUs_Banner_001.png"
+              alt="關於我們"
+              width="612"
+              height="342"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- 4. 訂閱 -->
+    <div class="subscribe_image mt-5 pt-5">
+      <div class="subscribe_block">
+        <ul>
+          <li class="mt-4"><h4>訂閱優惠訊息</h4></li>
+          <li>
+            <p>
+              我們會時常推出活動，告知最新消息<br />
+              按下訂閱，就可以取得折扣優惠碼唷 ><
+            </p>
+          </li>
+          <li>
+            <nav class="navbar navbar-light">
+              <form class="d-flex mb-5">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="請輸入信箱取得信箱"
+                  aria-label="Search"
+                />
+                <button class="btn btn-success" type="button">Subscribe</button>
+              </form>
+            </nav>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 5. footer -->
+    <footer class="container-fluid text-center">
+      <div class="row border border-1 footer_top align-items-center">
+        <div class="col">
+          <a href="#">關於我們</a>
+          <a href="#">美味餐點</a>
+          <a href="#">聯絡我們</a>
+        </div>
+        <div class="col">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+      <div class="row border border-top-0 footer_bottom align-items-end p-2">
+        <span>Copyright © 2022 泊岸 版權所有</span>
+      </div>
+    </footer>
+    <!-- bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

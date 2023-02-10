@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+</head>
+<body>
+  <div id="app" class="container mt-3">
+    <input type="number" v-model="outerNum">
+    <hr>
+    <card :num="outerNum"></card>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          outerNum: 10
+        }
+      },
+    });
+
+    app.component('card', {
+      template: `<div class="card">
+        <div class="card-body">
+          原始 props: {{ num }} <br />
+          mounted 生命週期的預設值：<input type="number" v-model="innerNum" />
+          <br />
+          watch 同步的值：<input type="number" v-model="newNum" />
+        </div>
+      </div>`,
+      props: ['num'],
+      data() {
+        return {
+          innerNum: 0,
+          newNum: 0,
+        }
+      },
+      watch: {
+        num() { // 抓 props 的值
+          console.log('num 更新了');
+          this.newNum = this.num;
+        }
+      },
+      mounted() {
+        this.innerNum = this.num;
+        this.newNum = this.num; // watch 也需要給予預設
+
+      }
+    })
+
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

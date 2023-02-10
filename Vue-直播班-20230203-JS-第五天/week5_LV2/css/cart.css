@@ -1,0 +1,81 @@
+   /* 解決 -> 畫面重整時會出現未編譯的資料 */
+   [v-cloak] {
+    display: none;
+  }
+ /* 全域 寬高、底色 設定 */
+ body {
+    box-sizing: border-box;
+    background: #fef5f2;
+  }
+  /* 全域 img 設定 */
+  img {
+    object-fit: cover;
+  }
+  /* 全域 li 設定 */
+  li {
+    list-style: none;
+  }
+  /* 全域 a 設定 */
+  a {
+    text-decoration: none;
+  }
+  /* 1. nav 設定 */
+  nav {
+    height: 85px;
+    color: #747d54;
+  }
+  #navbarNav a{
+    color: #747d54;
+  }
+  #navbarNav a:hover {
+    color: #9ca57c;
+  }
+  .cart_icon{
+    position: relative;
+  }
+  .badge{
+    position:absolute;
+    top: -5px;
+    left: 30px;
+  }
+  /* 2. banner 設定 */
+  .banner_block {
+   height: 768px;
+   background-image: url("../images/AboutUs_Banner_005.png");
+   background-size: cover;
+   background-position: center;
+  }
+  /* 3. 菜單分類 設定 */
+.nav-tabs a{
+    color: #747d54;
+}
+.nav-tabs a:hover{
+    color: #9ca57c;
+}
+ /* 5. footer 設定 */
+ footer {
+    height: 357px;
+    color: rgba(255, 255, 255, 0.87);
+    background: #4e4d3c;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  footer a {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  footer span {
+    font-size: 16px;
+  }
+  .footer_top {
+    height: 86px;
+  }
+  .footer_top a{
+    line-height: 86px;
+  }
+  .footer_bottom {
+    height: 86px;
+  }
+  /* .footer_block{
+    height: 168px;
+    width: 1296px;
+  } */

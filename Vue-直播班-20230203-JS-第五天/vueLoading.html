@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+  <script src="
+  https://cdn.jsdelivr.net/npm/vue-loading-overlay@6.0.2/dist/index.min.js
+  "></script>
+  <link href="
+  https://cdn.jsdelivr.net/npm/vue-loading-overlay@6.0.2/dist/css/index.min.css
+  " rel="stylesheet">
+
+</head>
+<body>
+  <div id="app">
+    {{ text }}
+    <!-- <loading :active="isLoading" /> -->
+
+  </div>
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          text: '這是一段文字',
+          // isLoading: false
+        }
+      },
+      mounted() {
+        // this.$loading.show()
+        let loader = this.$loading.show();
+        // simulate AJAX
+        setTimeout(() => {
+            loader.hide()
+        }, 5000)
+      }
+    });
+    console.log(VueLoading);
+
+    // 1. 元件
+    // app.component('loading', VueLoading.Component);
+    // 元件註冊
+    // 2. 作為 plugin
+    // app.use(VueLoading.LoadingPlugin);
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

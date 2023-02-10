@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 假設這段資料是不穩定的
+    const person = {
+      name: '卡斯伯',
+      // innerObj: {
+      //   name: '卡斯伯的內心'
+      // },
+      // like: ['鍋燒意麵', '提拉米書', '牛肉麵']
+    };
+
+    // 純粹取值
+    console.log(person.innerObj); // 單一層不需要加
+    console.log(person?.innerObj?.name); // 可選串連
+    console.log(1);
+
+    // 1. 紅字 -> 後面程式碼就不跑了
+    // 2. undefined
+    // 3. 沒什麼錯（卡斯伯還是有取得）
+
+    // 補判斷
+    if (Array.isArray(person.like)) {
+      person.like.forEach((item) => {
+        console.log(item);
+      })
+    }
+  </script>
+</body>
+</html>

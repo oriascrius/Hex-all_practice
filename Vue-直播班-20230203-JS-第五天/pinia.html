@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-demi/0.13.11/index.iife.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pinia/2.0.29/pinia.iife.js"></script>
+</head>
+<body>
+  <div id="app">
+    <card1></card1>
+    <hr>
+    <card2></card2>
+  </div>
+  <script>
+    const {createApp} = Vue;
+    const { defineStore, createPinia, mapActions, mapState } = Pinia;
+
+    // defineStore: 自定義名稱, {}
+    const cardStore = defineStore('card', {
+      state: () => { // data
+        return { 
+          number: 0
+        }
+      },
+      actions: { // methods
+        updateNumber(num) {
+          this.number = num;
+        }
+      },
+      getters: { // computed
+        doubleNumber({ number, updateNumber }) {
+          console.log(number, updateNumber);
+          return number * 2;
+        }
+      }
+    })
+
+    const card1 = {
+      data() {
+        return {
+          num: 1
+        }
+      },
+      methods: {
+        // mapActions(store名稱, ['要取得的方法名稱'])
+        ...mapActions(cardStore, ['updateNumber']),
+      },
+      template: `<div class="card">
+        這是卡片一
+        <input type="number" v-model="num"> {{num}}
+        <button type="button" @click="updateNumber(num)">儲存資料</button>
+      </div>`,
+    }
+
+    const card2 = {
+      template: `<div class="card">
+        卡片 2 <br />
+        {{ number }} | {{ doubleNumber }}
+      </div>`,
+      computed: {
+        // mapState(store名稱, ['要取得的值'])
+        ...mapState(cardStore, ['number', 'doubleNumber'])
+      },
+    }
+
+    const app = createApp({
+      components: {
+        card1,
+        card2
+      }
+    });
+
+    const pinia = createPinia();
+    app.use(pinia);
+
+    app.mount('#app');
+  </script>
+</body>
+</html>

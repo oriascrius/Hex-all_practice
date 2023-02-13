@@ -149,11 +149,11 @@ const app = createApp({
   },
   components: {
     // 優惠券分頁
-    couponPagination,
+    CouponPagination,
     // 新建、編輯優惠券 Modal 元件
-    couponModal,
+    CouponModal,
     // 刪除優惠券 Modal 元件
-    delCouponModal,
+    DelCouponModal,
   },
   // modal 放在 mounted -> 可以在 dom 生成後 才建立，這樣 modal 裡面才能綁定 vue 拿到資料
   mounted() {

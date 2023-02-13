@@ -39,6 +39,7 @@ const app = createApp({
       axios
         .get(url)
         .then((response) => {
+          console.log(response);
           this.orders = response.data.orders;
         })
         .catch((err) => {

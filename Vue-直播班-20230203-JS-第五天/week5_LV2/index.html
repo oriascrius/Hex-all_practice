@@ -42,26 +42,14 @@
       <ul
         class="nav nav-tabs m-5 p-5 justify-content-center flex-nowrap text-nowrap"
       >
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">全部</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">早午餐</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">輕食</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">義大利麵</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">炸物</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">飲料</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">甜點</a>
+        <li class="nav-item" v-for="tabItem in productsTab" :key="tabItem">
+          <a
+            href="#"
+            class="nav-link"
+            :class="{'active': isActive === tabItem}"
+            @click.prevent="isActive = tabItem"
+            >{{ tabItem }}</a
+          >
         </li>
       </ul>
       <!-- 4. 商品列表 -->
@@ -78,65 +66,46 @@
             class="mb-5"
           ></product-modal>
           <!-- 商品列表 -->
-          <table class="table align-middle">
-            <thead>
-              <tr>
-                <th>圖片</th>
-                <th>商品名稱</th>
-                <th>價格</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="product in products" :key="product.id">
-                <td style="width: 200px">
-                  <!-- 不常更動的 圖片 CSS 可以直接寫在 HTML 上 -->
-                  <div
-                    style="
-                      height: 100px;
-                      background-size: cover;
-                      background-position: center;
-                    "
-                    :style="{backgroundImage:`url(${product.imageUrl})`}"
-                  ></div>
-                </td>
-                <td>{{ product.title }}</td>
-                <td>
-                  <!-- 折價後價格 -->
-                  <div
-                    v-if="product.price ===  product.origin_price"
-                    class="h5"
-                  >
-                    {{ product.price }} 元
+          <div class="container">
+            <div class="row">
+              <div
+                class="col-md-4 g-4"
+                v-for="productsItem in productsFiltered"
+                :key="productsItem.id"
+              >
+                <div class="card">
+                  <img
+                    :src="productsItem.imageUrl"
+                    class="card-img-top"
+                    :alt="productsItem.title"
+                    width="300"
+                    height="200"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{ productsItem.title }}</h5>
+                    <p class="card-text">{{ productsItem.price }}</p>
                   </div>
-                  <!-- 原價 -->
-                  <del v-else class="h6"
-                    >原價 {{ product.origin_price }} 元</del
-                  >
-                  <div class="h5">現在只要 {{ product.price }} 元</div>
-                </td>
-                <td>
-                  <div class="btn-group btn-group-sm">
+                  <div class="card-footer text-center">
                     <button
                       type="button"
-                      class="btn btn-outline-secondary"
-                      @click="openModal(product.id)"
+                      class="btn btn-outline-secondary mx-3"
+                      @click="openModal(productsItem.id)"
                     >
                       查看更多
                     </button>
                     <button
                       type="button"
-                      class="btn btn-outline-danger"
-                      @click="addToCart(product.id)"
-                      :disabled="product.id === loadingItem"
+                      class="btn btn-outline-danger mx-3"
+                      @click="addToCart(productsItem.id)"
+                      :disabled="productsItem.id === loadingItem"
                     >
                       加到購物車
                     </button>
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- 分頁元件 -->
           <pagination :pages="page" @change-page="getProducts"></pagination>
           <!-- 購物車列表 -->

@@ -30,6 +30,13 @@
   #navbarNav a:hover {
     color: #9ca57c;
   }
+  h1{
+    background-image: url(../images/Logo.png);
+    background-size: cover;
+    background-position: center;
+    height: 62.12px;
+    width: 297px;
+  }
   .cart_icon{
     position: relative;
   }
@@ -41,7 +48,7 @@
   /* 2. banner 設定 */
   .banner_block {
    height: 768px;
-   background-image: url("../images/AboutUs_Banner_005.png");
+   background-image: url(../images/AboutUs_Banner_005.png);
    background-size: cover;
    background-position: center;
   }

@@ -2,16 +2,11 @@ export default {
   template: `<nav class="navbar navbar-expand-md">
   <div class="container">
     <!-- Logo -->
-    <h1><a href="#"><img
-    src="./images/Logo.png"
-    alt="松柏食光"
-    hight="62.12"
-    width="297"
-/></a></h1>
+    <a href="#"><h1></h1></a>
     <!-- 導覽 -->
     <button
     class="navbar-toggler"
-    type="button"
+    type="button" 
     data-bs-toggle="collapse"
     data-bs-target="#navbarNav"
     aria-controls="navbarSupportedContent"

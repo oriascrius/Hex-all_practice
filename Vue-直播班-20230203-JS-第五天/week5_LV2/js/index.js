@@ -90,6 +90,7 @@ const app = createApp({
       page: {},
       // 防止一直觸發請求 API，給予 loading 緩衝，判斷有 id 時，先禁止按鈕
       loadingItem: "",
+      // 存放使用者輸入資料
       form: {
         user: {
           name: "",
@@ -99,10 +100,24 @@ const app = createApp({
         },
         message: "",
       },
+      // 商品品項種類
+      productsTab: [
+        "全部",
+        "主食",
+        "早午餐",
+        "漢堡",
+        "炸物",
+        "甜點",
+        "沙拉",
+        "飲料",
+      ],
+      // 預設頁籤在全部
+      isActive: "全部",
     };
   },
   methods: {
     // 商品列表 - 取得商品列表 API
+    // background-image: url(""../src/assets/loading.png")
     getProducts(page = 1) {
       // VueLoading
       let loader = this.$loading.show();
@@ -277,6 +292,16 @@ const app = createApp({
         });
     },
   },
+  computed: {
+    // 篩選商品分類
+    productsFiltered() {
+      if (this.isActive === "全部") {
+        return this.products;
+      } else {
+        return this.products.filter((item) => item.category === this.isActive);
+      }
+    },
+  },
   components: {
     // 詳細商品 modal
     productModal,
@@ -300,6 +325,6 @@ app.component("VField", VeeValidate.Field);
 app.component("ErrorMessage", VeeValidate.ErrorMessage);
 // VueLoading
 // app.component("loading", VueLoading.Component);
-app.use(VueLoading.LoadingPlugin);
+app.use(VueLoading.LoadingPlugin, {});
 
 app.mount("#app");

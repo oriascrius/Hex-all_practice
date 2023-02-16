@@ -1,0 +1,1 @@
+import{_ as e,c as n,o as t}from"./index-c7cc0fff.js";const o={name:"IndexView",data(){return{}}};function r(a,c,s,_,d,p){return t(),n("div",null," 首頁 ")}const f=e(o,[["render",r]]);export{f as default};

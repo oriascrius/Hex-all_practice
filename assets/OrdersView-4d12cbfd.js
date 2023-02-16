@@ -1,0 +1,1 @@
+import{_ as e,c as r,o as t}from"./index-c7cc0fff.js";const n={name:"OrdersView",data(){return{}}};function o(s,a,c,_,d,p){return t(),r("div",null," 這裡是 訂單列表 ")}const f=e(n,[["render",o]]);export{f as default};

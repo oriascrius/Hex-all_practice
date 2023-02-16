@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as r,a as t}from"./index-c7cc0fff.js";const s={name:"ErrorView",data(){return{}}},a=t("h1",null,"錯誤畫面",-1),n=[a];function c(_,d,i,l,p,u){return r(),o("div",null,n)}const m=e(s,[["render",c]]);export{m as default};

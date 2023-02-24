@@ -27,7 +27,7 @@ export default {
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
-        ></button>
+      上傳本地圖片  ></button>
       </div>
       <div class="modal-body">
         <div class="row">
